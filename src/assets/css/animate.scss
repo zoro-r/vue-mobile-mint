@@ -1,0 +1,14 @@
+.show-hide-enter-active {
+  transition: all .5s ease;
+}
+
+.show-hide-leave-active {
+  transition: all .5s ease;
+}
+
+.show-hide-enter,
+.show-hide-leave-active {
+  transform: scale(0);
+  height: 0px;
+  opacity: 0;
+}

@@ -1,0 +1,44 @@
+[
+  [{
+    "text": "美食",
+    "img": "static/img/item/1.jpeg",
+    "url": ""
+  }, {
+    "text": "甜品美食",
+    "img": "static/img/item/2.jpeg",
+    "url": ""
+  }, {
+    "text": "商超便利",
+    "img": "static/img/item/3.jpeg",
+    "url": ""
+  }, {
+    "text": "预定早餐",
+    "img": "static/img/item/4.jpeg",
+    "url": ""
+  }, {
+    "text": "果蔬生鲜",
+    "img": "static/img/item/5.jpeg",
+    "url": ""
+  }, {
+    "text": "新店特惠",
+    "img": "static/img/item/6.jpeg",
+    "url": ""
+  }, {
+    "text": "打牌比吃",
+    "img": "static/img/item/7.jpeg",
+    "url": ""
+  }, {
+    "text": "帮买帮送",
+    "img": "static/img/item/8.jpeg",
+    "url": ""
+  }],
+  [{
+    "text": "美食1",
+    "img": "static/img/item/9.jpeg",
+    "url": ""
+  }, {
+    "text": "美食2",
+    "img": "static/img/item/10.jpeg",
+    "url": ""
+  }]
+]

@@ -1,0 +1,93 @@
+  @import 'vars.scss';
+  @import 'mixin.scss';
+  @import 'animate.scss';
+  html {
+    color: $normal-color;
+    background-color: $primary-bg-color;
+    font-size: 10px; // background-color: $pageBgColor;
+    font-family: 'Helvetica Neue', Tahoma, Arial, PingFangSC-Regular, 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+  }
+  
+  body {
+    margin: 0px;
+    padding: 0px;
+  }
+  
+  .noFixed {
+    opacity: 0;
+    height: 0px;
+  }
+  
+  .footer_fixd {
+    transition: all .25s linear;
+  }
+  
+  .primary_bg {
+    background: -webkit-gradient(linear, left top, right top, from(rgb(0, 170, 255)), to(rgb(0, 133, 255)));
+    border: none;
+  }
+  
+  .primary_flex_center {
+    align-items: center;
+    display: flex;
+    -webkit-box-pack: justify;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    .col {
+      flex: 0 0 25%;
+    }
+  }
+  
+  .primary_mg {
+    padding: .5rem 1rem;
+  }
+  
+  .primary_mg_ver {
+    padding: .5rem 0rem;
+  }
+  
+  .primary_mg_ver {
+    padding: .5rem 0rem;
+  }
+  
+  .primary_mg_hor {
+    padding: 0rem 1rem;
+  }
+  
+  .shopList {
+    margin-top: 1rem;
+    .title {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+  }
+  
+  .primary_bg_white {
+    background: white;
+  } // *:hover {
+  //   transition: all linear 1s;
+  //   transform: rotateZ(360deg) scale(2);
+  // }
+  h2 {
+    margin: 0px;
+    font-size: 1.4rem;
+  } //字体大小 从8到18
+  .fn-c {
+    color: $normal-color-light;
+  } //------------------------函数生产区域
+  @for $i from 8 through 18 {
+    .fn-#{$i} {
+      font-size: .1rem * $i;
+      font-weight: 100*($i - 7)
+    }
+  }
+  
+  @each $name,
+  $value in $bgcolorList {
+    #{$name} {
+      @include font-block($value);
+    }
+  }

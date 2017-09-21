@@ -1,0 +1,25 @@
+{
+  "presets": [
+    ["env", {
+      "modules": false,
+      "targets": {
+        "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+      }
+    }],
+    // ["es2015", { "modules": false }],
+    "stage-2"
+  ],
+  "plugins": [
+    // ["component", [{
+    //   "libraryName": "mint-ui",
+    //   "style": true
+    // }]],
+    "transform-runtime"
+  ],
+  "env": {
+    "test": {
+      "presets": ["env", "stage-2"],
+      "plugins": ["istanbul"]
+    }
+  }
+}

@@ -1,0 +1,16 @@
+@mixin box($size:13px) {
+  width: $size;
+  height: $size;
+}
+
+@mixin font-block($bgColor:rgb(240, 115, 115)) {
+  @include box;
+  background: $bgColor;
+  line-height: 14px;
+  padding: .1rem;
+  border-radius: 2px;
+  display: inline-block;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
