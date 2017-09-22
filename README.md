@@ -25,7 +25,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 导航插件 https://github.com/zack24q/vue-navigation
 地址插件 https://github.com/jcc/v-distpicker
 
-
+#
 解决弹出相册后页面白屏方案
 在MainViewController.m中添加如下代码：
 
@@ -40,7 +40,10 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
     }
     [super viewWillDisappear:animated];
 }
+```
 解决-webkit-overflow-scrolling引起的bug
 添加插件
 cordova plugin add https://github.com/ionic-team/cordova-plugin-wkwebview-engine.git --save
 github地址 https://github.com/ionic-team/cordova-plugin-wkwebview-engine
+npm run build --report
+```
