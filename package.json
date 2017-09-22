@@ -16,6 +16,7 @@
     "mint-ui": "^2.2.9",
     "vue": "^2.3.3",
     "vue-awesome": "^2.3.3",
+    "vue-cordova": "^0.1.2",
     "vue-lazy-images": "^1.4.2",
     "vue-navigation": "^1.1.1",
     "vue-router": "^2.6.0",

@@ -3,7 +3,7 @@ window.globalConfig = {
   iosUrl: "",
   env: "int", //目前版本环境分别为---int---uat---sh
   isDebug: false, //是否开启接口debug模式
-  plat: 'WEB', //WEB、NATIVE
+  plat: 'NATIVE', //WEB、NATIVE
   timeout: 1000 * 180 //默认是3000毫秒
 }
 import Vue from 'vue'
@@ -23,16 +23,16 @@ import Navigation from 'vue-navigation'
 import Page from './components/common/Page'
 import vueScrollBehavior from 'vue-scroll-behavior'
 import utils from './utils'
-import 'vue-awesome/icons'
+// import 'vue-awesome/icons'
 import VueLazyImage from "vue-lazy-images";
 Vue.use(VueLazyImage)
   /* Register component with one of 2 methods */
-import Icon from 'vue-awesome/components/Icon'
+  // import Icon from 'vue-awesome/components/Icon'
 Vue.use(MintUI)
 
-/**引入图标库 */
-
-Vue.component('icon', Icon)
+/**引入图标库 太大暂时不引入*/
+// Vue.component('icon', Icon)
+window.Vue = Vue
 window.utils = utils
 Vue.use(AlloyFingerVue)
 Vue.component('page', Page)
@@ -50,7 +50,8 @@ Vue.mixin({
   data() {
     return {
       screenWidth: document.documentElement.clientWidth,
-      screenHeight: document.documentElement.clientHeight
+      screenHeight: document.documentElement.clientHeight,
+      loaddingImg: "static/img/common/loading1.gif"
     }
   },
   methods: {
@@ -63,12 +64,42 @@ Vue.mixin({
   }
 })
 
-new Vue({
-  el: '#app',
-  router,
-  store,
-  template: '<App/>',
-  components: {
-    App
-  }
-})
+console.log(navigator.platform)
+if (window.navigator.platform == 'iPhone') {
+  //移动端组件---------------------start---------------------
+  document.addEventListener('deviceready', function() {
+    new Vue({
+      el: '#app',
+      router,
+      store,
+      template: '<App/>',
+      components: {
+        App
+      }
+    })
+    console.log(window.navigator, StatusBar)
+    window.navigator.splashscreen.hide();
+    StatusBar.overlaysWebView(false)
+    StatusBar.styleDefault();
+    if (navigator.appVersion.indexOf('11') < 0) {
+      //ios11 以下判断
+    }
+  }, false);
+} else {
+  new Vue({
+    el: '#app',
+    router,
+    store,
+    template: '<App/>',
+    components: {
+      App
+    }
+  })
+}
+
+window.addEventListener('statusTap', function() {
+  // scroll-up with document.body.scrollTop = 0; or do whatever you want
+  document.body.scrollTop = 0;
+  console.log("我点击的statusTap")
+});
+//移动端组件---------------------end---------------------

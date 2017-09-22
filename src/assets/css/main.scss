@@ -1,18 +1,37 @@
   @import 'vars.scss';
   @import 'mixin.scss';
   @import 'animate.scss';
-  html {
+  html,
+  body {
+    z-index: 0;
+    @include box(100%);
+    user-select: none;
     color: $normal-color;
     background-color: $primary-bg-color;
     font-size: 10px; // background-color: $pageBgColor;
     font-family: 'Helvetica Neue', Tahoma, Arial, PingFangSC-Regular, 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
-  }
-  
-  body {
+    position: fixed;
+    overflow: hidden;
     margin: 0px;
     padding: 0px;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -webkit-user-drag: none;
+    -ms-content-zooming: none;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    word-wrap: break-word;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    text-size-adjust: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
   
+  // body {}
   .noFixed {
     opacity: 0;
     height: 0px;
@@ -77,11 +96,21 @@
   } //字体大小 从8到18
   .fn-c {
     color: $normal-color-light;
+  }
+  
+  .has-footer {
+    padding-bottom: 6rem;
   } //------------------------函数生产区域
   @for $i from 8 through 18 {
     .fn-#{$i} {
       font-size: .1rem * $i;
       font-weight: 100*($i - 7)
+    }
+  }
+  
+  @for $i from 8 through 20 {
+    .icon-#{$i} {
+      width: $i*.1rem;
     }
   }
   

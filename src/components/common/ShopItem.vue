@@ -1,7 +1,7 @@
 <template>
   <section class="shopItem primary_mg">
     <section class="left">
-      <lazy-image :src="'static/img/shop/2.jpeg'" :placeholder="'static/img/common/loading.gif'" />
+      <lazy-image :src="'static/img/shop/2.jpeg'" :placeholder="loaddingImg" />
     </section>
     <section class="right">
       <div class="shop_detail">
@@ -21,7 +21,9 @@
             <span>月售3615单</span>
           </h2>
           <section class="index_right">
-            <span class="primary_bg fn-8" style=" color: white;border:none;padding:1px;border-redius:3px">蜂鸟转送</span>
+            <span class="primary_bg fn-8" style=" color: white;border:none;padding:1px;border-redius:3px">
+              蜂鸟专送
+            </span>
           </section>
         </section>
         <section class="index_1 primary_flex_center">
@@ -46,7 +48,7 @@
           <section class="index_right " @click="down=!down">
             <span class="showac fn-10 primary_flex_center" style="border:none">
               4个活动
-              <icon v-bind:class="[down?'':'fz']" scale=".8" name="caret-down"></icon>
+              <img v-bind:class="[down?'':'fz']" class="icon-10 icon_img" src="static/img/icon/down.png" />
             </span>
           </section>
         </section>
@@ -115,14 +117,14 @@ export default {
   .left {
     // width: 30%;
     img {
-      width: 6rem;
-      height: 6rem;
+      width: 5.5rem;
+      height: 5.5rem;
     }
   }
   .right {
     width: 75%;
     .shop_detail {
-      height: 6rem;
+      height: 5.5rem;
       border-bottom: 1px dashed rgb(168, 168, 168);
       .has_before::before {
         content: "|";
@@ -130,14 +132,14 @@ export default {
         margin: 0 5px;
       }
       .index_1 {
-        margin-bottom: 5px;
+        margin-bottom: 3px;
         justify-content: space-between;
         h2 {
-          width: 186px;
+          width: 65%;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          font-size: 1rem;
+          font-size: .8rem;
           font-weight: 200;
         }
         .isp::before {
@@ -162,7 +164,7 @@ export default {
             padding: 0rem;
           }
           .showac {
-            .fa-icon {
+            .icon_img {
               margin-left: 3px;
               transition: all linear .5s;
             }

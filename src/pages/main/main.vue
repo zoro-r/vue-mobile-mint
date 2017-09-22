@@ -1,6 +1,6 @@
 <template>
   <div id="main">
-    <router-view class="child-view" style="min-height:100vh"></router-view>
+    <router-view style="min-height:100vh"></router-view>
   </div>
 </template>
 <script>

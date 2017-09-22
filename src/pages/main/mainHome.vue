@@ -1,10 +1,10 @@
 <template>
-  <section class="mainHome" @top-method="loadTop">
+  <section class="mainHome has-footer" @top-method="loadTop">
     <section class="heard_card primary_mg primary_bg primary_flex_center fn-17">
       <div class="index_left">
-        <icon scale="1.2" name="map-marker"></icon>
-        <span class="fn-14">闵行区浦江第一中学(浦锦路西50米)</span>
-        <icon scale=".8" name="sort-desc"></icon>
+        <img class="icon-18" src="static/img/icon/location.png" />
+        <span class="fn-16">闵行区浦江第一中学(浦锦路西50米)</span>
+        <img class="icon-10" src="static/img/icon/down-w.png" />
       </div>
       <aside class="index_right">
         <div>
@@ -14,26 +14,31 @@
         <img src="static/img/dark.png" alt="">
       </aside>
     </section>
-    <section class="primary_bg input_box primary_flex_center search primary_mg" style="height:3.5rem;z-index:10">
+    <!-- <section style="min-height:3.5rem"> -->
+    <!-- <affix> -->
+    <section class="primary_bg input_box primary_flex_center search primary_mg" style="height:3.5rem;z-index:10;top:0px">
       <div class="ipt_item primary_flex_center fn-12">
-        <icon scale=".8" name="search"></icon>&nbsp;&nbsp;搜索商家，商家名称
+        <img class="icon-10" src="static/img/icon/search.png" />&nbsp;&nbsp;搜索商家，商家名称
       </div>
     </section>
+    <!-- </affix> -->
+    <!-- </section> -->
     <section class="primary_bg primary_mg_hor" style="height:0px;overflow:hidden;height:35px;">
       <div style="overflow-x: scroll;white-space: nowrap;position:relative;height:45px">
-        <div class="input_box primary_flex_center scrllX" style="padding:0px;">
+        <div class="input_box primary_flex_center scrllX fn-13" style="padding:0px;">
           <a v-for="item in tipList" :key="item">{{item}}</a>
         </div>
       </div>
     </section>
-    <section class="primary_bg_white" style="height:170px;z-index:2">
+    <section class="primary_bg_white" style="height:175px;">
       <mt-swipe :auto="0" height="100%">
         <mt-swipe-item v-for="(item,index) in menuList" :key="index">
           <div class="row">
             <div class="col col_item" v-for="(it,index1) in item" :key="index1">
               <div>
                 <!-- <span>{{it.img}}</span> -->
-                <img v-bind:src="it.img" />
+                <!-- <img v-bind:src="it.img" /> -->
+                <lazy-image :src="it.img" :placeholder="loaddingImg" />
               </div>
               <span>{{it.text}}</span>
             </div>
@@ -41,6 +46,9 @@
         </mt-swipe-item>
       </mt-swipe>
     </section>
+    <div>
+      商家库
+    </div>
     <section class="primary_mg_hor primary_bg_white">
       <img src="static/img/common/youhui.png" style="width: 100%" />
     </section>
@@ -67,11 +75,12 @@ export default {
       tipList: [
         "烧烤", "馒头", "麻辣烫", "粥", "面包", "芒果", "拉面", "酸辣粉", "冒菜", "蛋糕"
       ],
-      shopList: [1, 1, 1,2,3,4,5,6]
+      shopList: [1, 1, 1, 2, 3, 4, 5, 6]
     };
   },
   components: {
     shopItem: r => { require(['../../components/common/ShopItem'], r) },
+    affix: r => { require(['../../components/common/Affix'], r) }
   },
   methods: {
     handleTopChange(status) {
@@ -93,13 +102,19 @@ export default {
 </script>
 <style lang='scss'>
 .mainHome {
+  .ivu-affix {
+    z-index: 2;
+  }
   .mint-swipe-indicators {
     .mint-swipe-indicator {
-      width: 5px;
-      height: 5px;
+      width: 10px;
+      height: 2px;
+      border-radius: 1px;
+      opacity: 1;
+      background: gray;
     }
     .is-active {
-      background: red;
+      background: black;
     }
   }
   font-weight: 200;
@@ -119,8 +134,8 @@ export default {
       display: flex;
       justify-content: center;
       img {
-        width: 4rem;
-        height: 4rem;
+        width: 4.5rem;
+        height: 4.5rem;
         display: block;
       }
     }
@@ -159,6 +174,7 @@ export default {
     justify-content: center;
     color: gray;
     .ipt_item {
+      color: black;
       text-align: center;
       background: rgb(255, 255, 255);
       width: 100%;

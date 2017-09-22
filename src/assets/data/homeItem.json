@@ -33,12 +33,36 @@
     "url": ""
   }],
   [{
-    "text": "美食1",
+    "text": "午餐",
     "img": "static/img/item/9.jpeg",
     "url": ""
   }, {
-    "text": "美食2",
+    "text": "浪漫鲜花",
     "img": "static/img/item/10.jpeg",
+    "url": ""
+  }, {
+    "text": "医药健康",
+    "img": "static/img/item/11.jpeg",
+    "url": ""
+  }, {
+    "text": "汉堡薯条",
+    "img": "static/img/item/12.jpeg",
+    "url": ""
+  }, {
+    "text": "包子粥店",
+    "img": "static/img/item/13.jpeg",
+    "url": ""
+  }, {
+    "text": "地方菜系",
+    "img": "static/img/item/14.jpeg",
+    "url": ""
+  }, {
+    "text": "披萨意面",
+    "img": "static/img/item/15.jpeg",
+    "url": ""
+  }, {
+    "text": "麻辣烫",
+    "img": "static/img/item/16.jpeg",
     "url": ""
   }]
 ]
