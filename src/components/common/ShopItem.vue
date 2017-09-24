@@ -7,7 +7,7 @@
       <div class="shop_detail">
         <section class="index_1 primary_flex_center">
           <h2 class="isp">
-            <span class="fn-14">上海麦当劳瞿溪路餐厅十一号接到的小刘</span>
+            <span class="fn-12" style="font-weight:700;color:black">上海麦当劳瞿溪路餐厅十一号接到的小刘</span>
           </h2>
           <section class="index_right">
             <span>保</span>
@@ -21,7 +21,7 @@
             <span>月售3615单</span>
           </h2>
           <section class="index_right">
-            <span class="primary_bg fn-8" style=" color: white;border:none;padding:1px;border-redius:3px">
+            <span class="primary_bg fn-8" style=" color: white;border:none;padding:2px;border-redius:3px">
               蜂鸟专送
             </span>
           </section>
@@ -58,34 +58,34 @@
             <span>满70减5</span>
           </h2>
         </section>
-        <transition name="show-hide">
-          <section v-if="!down">
-            <section class="index_1 primary_flex_center">
-              <h2>
-                <span class="te">品</span>
-                <span>蜀地冒菜</span>
-              </h2>
-            </section>
-            <section class="index_1 primary_flex_center">
-              <h2>
-                <span class="te">满</span>
-                <span>满120.0元赠送大可乐或雪碧1份，满70.0元赠送荔枝汁1份</span>
-              </h2>
-            </section>
-            <section class="index_1 primary_flex_center">
-              <h2>
-                <span class="zeng">折</span>
-                <span>折扣活动</span>
-              </h2>
-            </section>
-            <section class="index_1 primary_flex_center">
-              <h2>
-                <span class="zeng">折</span>
-                <span>折扣活动</span>
-              </h2>
-            </section>
+        <!-- <transition name="show-hide"> -->
+        <section v-bind:style="{height: down?'0px':4 * 1.7+.5+'rem'}" class="transition_3">
+          <section class="index_1 primary_flex_center">
+            <h2>
+              <span class="te">品</span>
+              <span>蜀地冒菜</span>
+            </h2>
           </section>
-        </transition>
+          <section class="index_1 primary_flex_center">
+            <h2>
+              <span class="te">满</span>
+              <span>满120.0元赠送大可乐或雪碧1份，满70.0元赠送荔枝汁1份</span>
+            </h2>
+          </section>
+          <section class="index_1 primary_flex_center">
+            <h2>
+              <span class="zeng">折</span>
+              <span>折扣活动</span>
+            </h2>
+          </section>
+          <section class="index_1 primary_flex_center">
+            <h2>
+              <span class="zeng">折</span>
+              <span>折扣活动</span>
+            </h2>
+          </section>
+        </section>
+        <!-- </transition> -->
       </div>
     </section>
   </section>
@@ -106,7 +106,10 @@ export default {
 }
 </script>
 <style lang="scss">
+$height_size:5.5rem;
 .shopItem {
+  overflow: hidden;
+  padding-bottom: 0px;
   position: relative;
   border-bottom: 1px solid rgb(238, 238, 238);
   background-color: rgb(255, 255, 255);
@@ -117,14 +120,14 @@ export default {
   .left {
     // width: 30%;
     img {
-      width: 5.5rem;
-      height: 5.5rem;
+      width: $height_size;
+      height: $height_size;
     }
   }
   .right {
     width: 75%;
     .shop_detail {
-      height: 5.5rem;
+      height: $height_size+.5rem;
       border-bottom: 1px dashed rgb(168, 168, 168);
       .has_before::before {
         content: "|";
@@ -132,23 +135,26 @@ export default {
         margin: 0 5px;
       }
       .index_1 {
-        margin-bottom: 3px;
+        margin-bottom: 5px;
         justify-content: space-between;
         h2 {
           width: 65%;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          font-size: .8rem;
+          font-size: .9rem;
           font-weight: 200;
+          &::last-of-type {
+            margin-bottom: 5px;
+          }
         }
         .isp::before {
           content: "品牌";
           background: linear-gradient(-139deg, rgb(255, 241, 0), rgb(255, 227, 57));
-          margin-right: .51rem;
-          font-size: 1.2rem;
-          padding: .1rem;
-          border-radius: .3rem;
+          margin-right: .22rem;
+          font-size: 1rem;
+          padding: .3rem;
+          border-radius: .5rem;
           width: .3rem;
           color: rgb(111, 63, 21)
         }

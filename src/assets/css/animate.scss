@@ -1,10 +1,17 @@
-.show-hide-enter-active {
-  height: 100px;
-  transition: all .5s ease;
+@import './animates.css';
+.slideDown-enter-active {
+  animation-name: slideInDown;
+  animation-duration: 15s;
 }
 
-.show-hide-leave-active {
-  height: 0px;
+.slideDown-leave-active {
+  animation-name: slideInUp;
+  animation-duration: 15s;
+}
+
+// 局部效果
+.show-hide-enter-active {
+  // height: 8.1rem;
   transition: all .5s ease;
 }
 
@@ -13,5 +20,10 @@
 }
 
 .show-hide-leave-active {
-  transform: scale(0);
+  height: 0px;
+  transition: all .5s ease;
+}
+
+.show-hide-leave {
+  // height: 8.1rem;
 }

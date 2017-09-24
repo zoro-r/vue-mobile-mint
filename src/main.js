@@ -99,7 +99,7 @@ if (window.navigator.platform == 'iPhone') {
 
 window.addEventListener('statusTap', function() {
   // scroll-up with document.body.scrollTop = 0; or do whatever you want
-  document.body.scrollTop = 0;
+  document.getElementsByClassName("child-view")[0].body.scrollTop = 0;
   console.log("我点击的statusTap")
 });
 //移动端组件---------------------end---------------------

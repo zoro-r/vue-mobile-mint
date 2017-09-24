@@ -1,5 +1,5 @@
 <template>
-  <section class="mainHome has-footer" @top-method="loadTop">
+  <section class="mainHome has-footer">
     <section class="heard_card primary_mg primary_bg primary_flex_center fn-17">
       <div class="index_left">
         <img class="icon-18" src="static/img/icon/location.png" />
@@ -11,12 +11,13 @@
           <h2>20.2°</h2>
           <p>晴夜</p>
         </div>
+        <!-- <lazy-image :src="'static/img/dark.png'" :placeholder="loaddingImg" /> -->
         <img src="static/img/dark.png" alt="">
       </aside>
     </section>
     <!-- <section style="min-height:3.5rem"> -->
     <!-- <affix> -->
-    <section class="primary_bg input_box primary_flex_center search primary_mg" style="height:3.5rem;z-index:10;top:0px">
+    <section @click="showSearch" class="primary_bg input_box primary_flex_center search primary_mg" style="height:4rem;z-index:10;top:0px">
       <div class="ipt_item primary_flex_center fn-12">
         <img class="icon-10" src="static/img/icon/search.png" />&nbsp;&nbsp;搜索商家，商家名称
       </div>
@@ -25,7 +26,7 @@
     <!-- </section> -->
     <section class="primary_bg primary_mg_hor" style="height:0px;overflow:hidden;height:35px;">
       <div style="overflow-x: scroll;white-space: nowrap;position:relative;height:45px">
-        <div class="input_box primary_flex_center scrllX fn-13" style="padding:0px;">
+        <div class="input_box primary_flex_center scrllX fn-13" style="padding:0px;height:35px;">
           <a v-for="item in tipList" :key="item">{{item}}</a>
         </div>
       </div>
@@ -46,12 +47,9 @@
         </mt-swipe-item>
       </mt-swipe>
     </section>
-    <div>
-      商家库
-    </div>
-    <section class="primary_mg_hor primary_bg_white">
-      <img src="static/img/common/youhui.png" style="width: 100%" />
-    </section>
+    <!-- 商家广告区域 -->
+    <shopAds></shopAds>
+    <!-- 商家列表 -->
     <section class="shopList primary_bg_white">
       <div class="primary_mg">
         <span class="title ">推荐商家</span>
@@ -60,6 +58,7 @@
         <shopItem v-for="(item,index) in shopList" :key="index"></shopItem>
       </div>
     </section>
+    <section class="footer_line">我是有底线了</section>
   </section>
 </template>
 <script type="text/babel">
@@ -80,22 +79,16 @@ export default {
   },
   components: {
     shopItem: r => { require(['../../components/common/ShopItem'], r) },
-    affix: r => { require(['../../components/common/Affix'], r) }
+    affix: r => { require(['../../components/common/Affix'], r) },
+    shopAds: r => { require(['./components/shopAds'], r) }
   },
   methods: {
-    handleTopChange(status) {
-      this.moveTranslate = 1;
-      this.topStatus = status;
-    },
-    translateChange(translate) {
-      const translateNum = +translate;
-      this.translate = translateNum.toFixed(2);
-      this.moveTranslate = (1 + translateNum / 70).toFixed(2);
-    },
-    loadTop(isFinish) {
-      setTimeout(function() {
-        isFinish()
-      }, 3000);
+    /**
+     * 显示搜索框
+     */
+    showSearch() {
+      console.log(this.$parent)
+      this.$store.commit('POP_STATUS', true)
     }
   }
 };
@@ -169,7 +162,7 @@ export default {
     }
   }
   .input_box {
-    height: 35px;
+    height: 4.5rem;
     text-align: center;
     justify-content: center;
     color: gray;
@@ -178,7 +171,8 @@ export default {
       text-align: center;
       background: rgb(255, 255, 255);
       width: 100%;
-      height: 80%; // line-height: 39px;
+      min-height: 3rem;
+      height: 3rem; // line-height: 39px;
       justify-content: center;
       border-radius: 2px;
     }

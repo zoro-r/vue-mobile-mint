@@ -1,15 +1,26 @@
   @import 'vars.scss';
   @import 'mixin.scss';
   @import 'animate.scss';
-  html,
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+  }
+  
+  html {
+    width: 100%;
+    height: 100%;
+    font-size: 10px;
+    text-size-adjust: 100%;
+    font-family: 'Helvetica Neue', Tahoma, Arial, PingFangSC-Regular, 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+  }
+  
   body {
-    z-index: 0;
     @include box(100%);
     user-select: none;
     color: $normal-color;
     background-color: $primary-bg-color;
-    font-size: 10px; // background-color: $pageBgColor;
-    font-family: 'Helvetica Neue', Tahoma, Arial, PingFangSC-Regular, 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
     position: fixed;
     overflow: hidden;
     margin: 0px;
@@ -31,7 +42,14 @@
     user-select: none;
   }
   
-  // body {}
+  * {
+    outline-style: none;
+  }
+  
+  input {
+    appearance: none;
+  }
+  
   .noFixed {
     opacity: 0;
     height: 0px;
@@ -57,6 +75,9 @@
     flex-wrap: wrap;
     .col {
       flex: 0 0 25%;
+    }
+    .col_1 {
+      flex: 1;
     }
   }
   
@@ -99,7 +120,23 @@
   }
   
   .has-footer {
-    padding-bottom: 6rem;
+    // padding-bottom: 6rem;
+  }
+  
+  .transition_3 {
+    transition: all ease .3s
+  }
+  
+  .footer_line {
+    min-height: 50px;
+    line-height: 50px;
+    text-align: center;
+    &::before {
+      content: '-----------------'
+    }
+    &::after {
+      content: '-----------------'
+    }
   } //------------------------函数生产区域
   @for $i from 8 through 18 {
     .fn-#{$i} {
@@ -118,5 +155,11 @@
   $value in $bgcolorList {
     #{$name} {
       @include font-block($value);
+    }
+  }
+  
+  @for $i from 1 through 5 {
+    h#{$i} {
+      margin: 0px;
     }
   }

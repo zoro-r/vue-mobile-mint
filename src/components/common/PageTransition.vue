@@ -1,11 +1,13 @@
 <template>
   <section class="main_page">
-    <transition name="slide-x-transition">
-      <navigation>
-        <router-view class="child-view"></router-view>
-      </navigation>
-    </transition>
-    <mt-tabbar style="position: fixed;bottom: 0px;z-index:10" v-model="selected">
+    <div>
+      <transition name="slide-x-transition">
+        <navigation>
+          <router-view v-bind:style="{'overflow-y':isScroll && !$store.state.common.isPop? 'auto':'hidden'}" class="child-view scroll-content"></router-view>
+        </navigation>
+      </transition>
+    </div>
+    <mt-tabbar v-model="selected">
       <mt-tab-item id="1">
         <div slot="icon" v-show="selected != '1'" class="icon_tabs" style="background-image:url(static/img/common/e.png)"></div>
         <div slot="icon" v-show="selected == '1'" class="icon_tabs" style="background-image:url(static/img/common/e-active.png)"></div>
@@ -38,7 +40,8 @@ export default {
   },
   data() {
     return {
-      selected: "1"
+      selected: "1",
+      isScroll: false
     }
   },
   watch: {
@@ -69,6 +72,11 @@ export default {
     onFail(e) {
       console.log(e);
     }
+  },
+  created() {
+      setTimeout(e=>{
+          this.isScroll = true;
+      },200)
   }
 }
 </script>
@@ -82,14 +90,30 @@ export default {
   .icon_tabs {
     transition: all ease .5s;
   }
-  .child-view {
-    z-index: 10;
+  .scroll-content {
+    // z-index: 0;
+    // -webkit-overflow-scrolling: touch;
     position: absolute;
     top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: scroll;
+    right: 0;
+    bottom: 0;
+    left: 0; // z-index: 1;
+    display: block;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
+    will-change: scroll-position;
+    contain: size style layout;
+    margin-bottom: 4.5rem;
+    &::before {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      content: "";
+      bottom: -1px;
+    }
+    &::after {
+      top: -1px;
+    }
   }
 
   .mint-tab-item {
