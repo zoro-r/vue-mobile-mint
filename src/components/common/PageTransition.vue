@@ -1,70 +1,60 @@
 <template>
-  <section class="main_page">
+  <section class="main_page" v-bind:class="[$store.state.common.hasFooter?'has-footer':'']">
     <div>
-      <transition name="slide-x-transition">
+      <transition :name="transitionName">
         <navigation>
           <router-view v-bind:style="{'overflow-y':isScroll && !$store.state.common.isPop? 'auto':'hidden'}" class="child-view scroll-content"></router-view>
         </navigation>
       </transition>
     </div>
-    <mt-tabbar v-model="selected">
-      <mt-tab-item id="1">
-        <div slot="icon" v-show="selected != '1'" class="icon_tabs" style="background-image:url(static/img/common/e.png)"></div>
-        <div slot="icon" v-show="selected == '1'" class="icon_tabs" style="background-image:url(static/img/common/e-active.png)"></div>
-        外卖
-      </mt-tab-item>
-      <mt-tab-item id="2">
-        <div slot="icon" v-show="selected != '2'" class="icon_tabs" style="background-image:url(static/img/common/compass.png)"></div>
-        <div slot="icon" v-show="selected == '2'" class="icon_tabs" style="background-image:url(static/img/common/compass-active.png)"></div>
-        发现
-      </mt-tab-item>
-      <mt-tab-item id="3">
-        <div slot="icon" v-show="selected != '3'" class="icon_tabs" style="background-image:url(static/img/common/order.png)"></div>
-        <div slot="icon" v-show="selected == '3'" class="icon_tabs" style="background-image:url(static/img/common/order-active.png)"></div>
-        订单
-      </mt-tab-item>
-      <mt-tab-item id="4">
-        <div slot="icon" v-show="selected != '4'" class="icon_tabs" style="background-image:url(static/img/common/user.png)"></div>
-        <div slot="icon" v-show="selected == '4'" class="icon_tabs" style="background-image:url(static/img/common/user-active.png)"></div>
-        我的
-      </mt-tab-item>
-    </mt-tabbar>
+    <transition name="slideInUp">
+      <mt-tabbar v-show="$store.state.common.hasFooter" v-model="selected">
+        <mt-tab-item id="1">
+          <!-- <div slot="icon"  class="icon_tabs animated" style="background-image:url(static/img/common/e.png)"></div> -->
+          <div slot="icon" v-bind:style="{'background-image':selected == '1'?'url(static/img/common/e-active.png)':'url(static/img/common/e.png)'}" v-bind:class="[selected == '1' ?'bounceIn':'']" class="animated icon_tabs"></div>
+          外卖
+        </mt-tab-item>
+        <mt-tab-item id="2">
+          <div slot="icon" v-bind:style="{'background-image':selected == '2'?'url(static/img/common/compass-active.png)':'url(static/img/common/compass.png)'}" v-bind:class="[selected == '2' ?'bounceIn':'']" class="animated icon_tabs"></div>
+          发现
+        </mt-tab-item>
+        <mt-tab-item id="3">
+          <div slot="icon" v-bind:style="{'background-image':selected == '3'?'url(static/img/common/order-active.png)':'url(static/img/common/order.png)'}" v-bind:class="[selected == '3' ?'bounceIn':'']" class="animated icon_tabs"></div>
+          订单
+        </mt-tab-item>
+        <mt-tab-item id="4">
+          <div slot="icon" v-bind:style="{'background-image':selected == '4'?'url(static/img/common/user-active.png)':'url(static/img/common/user.png)'}" v-bind:class="[selected == '4' ?'bounceIn':'']" class="animated icon_tabs"></div>
+          我的
+        </mt-tab-item>
+      </mt-tabbar>
+    </transition>
   </section>
 </template>
 
 <script>
-import Toast from '../common/Toast.vue'
 export default {
   components: {
-    'toast': Toast
   },
   data() {
     return {
       selected: "1",
-      isScroll: false
+      isScroll: false,
+      transitionName: "slideInRight"
     }
   },
   watch: {
     //监听底部切换
     selected(newVal, oldVal) {
-      // if (newVal == '4') {
-      // } else {
-      //   newVal == '1' ? StatusBar.hide() : StatusBar.show();
-      //   StatusBar.overlaysWebView(newVal != '2');
-      //   console.log(StatusBar, 'black')
-      //   StatusBar.backgroundColorByName(newVal == '2' ? "blue" : 'white');
-      // console.log(navigator, StatusBar)
-      // navigator.camera.getPicture(e => {
-      //   console.log(e);
-      // }, e => {
-      //   console.log(e);
-      // }, {
-      //     quality: 50,
-      //     destinationType: Camera.DestinationType.DATA_URL,
-      //     encodingType: Camera.EncodingType.JPEG,
-      //     sourceType: 1
-      //   })
-      // }
+      let routerMap = {
+        "1": "mainHome",
+        "2": "mainHome",
+        "3": "mainHome",
+        "4": "mineHome",
+      };
+      this.transitionName = oldVal < newVal ? "slideInRight" : "slideInLeft";
+      console.log(this.transitionName)
+      this.$router.push({ name: routerMap[newVal] })
+
     },
     onSuccess(e) {
       console.log(e);
@@ -74,9 +64,9 @@ export default {
     }
   },
   created() {
-      setTimeout(e=>{
-          this.isScroll = true;
-      },200)
+    setTimeout(e => {
+      this.isScroll = true;
+    }, 200)
   }
 }
 </script>
@@ -103,7 +93,6 @@ export default {
     -webkit-overflow-scrolling: touch;
     will-change: scroll-position;
     contain: size style layout;
-    margin-bottom: 4.5rem;
     &::before {
       position: absolute;
       width: 1px;

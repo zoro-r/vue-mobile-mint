@@ -10,5 +10,8 @@
       name: 'mainHome',
       path: 'mainHome',
       component: mainHome,
+      meta: {
+        hasFooter: true
+      }
     }]
   }]

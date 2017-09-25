@@ -64,7 +64,6 @@ Vue.mixin({
   }
 })
 
-console.log(navigator.platform)
 if (window.navigator.platform == 'iPhone') {
   //移动端组件---------------------start---------------------
   document.addEventListener('deviceready', function() {
@@ -77,7 +76,6 @@ if (window.navigator.platform == 'iPhone') {
         App
       }
     })
-    console.log(window.navigator, StatusBar)
     window.navigator.splashscreen.hide();
     StatusBar.overlaysWebView(false)
     StatusBar.styleDefault();

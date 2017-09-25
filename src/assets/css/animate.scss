@@ -1,29 +1,32 @@
 @import './animates.css';
-.slideDown-enter-active {
-  animation-name: slideInDown;
-  animation-duration: 15s;
+@import './mixin.scss';
+$aniList: (slideInUp:slideOutDown, slideInRight:slideOutLeft, slideInLeft:slideOutRight);
+//生成动画
+@each $name,
+$value in $aniList {
+  .#{$name}-enter-active {
+    @include ani-block($name);
+  }
+  .#{$name}-leave-active {
+    @include ani-block($value);
+  }
 }
 
-.slideDown-leave-active {
-  animation-name: slideInUp;
-  animation-duration: 15s;
-}
-
-// 局部效果
-.show-hide-enter-active {
-  // height: 8.1rem;
-  transition: all .5s ease;
-}
-
-.show-hide-enter {
-  height: 0px;
-}
-
-.show-hide-leave-active {
-  height: 0px;
-  transition: all .5s ease;
-}
-
-.show-hide-leave {
-  // height: 8.1rem;
-}
+// //slideDown
+// .slideDown-enter-active {
+//   animation-name: slideInUp;
+//   animation-duration: $aniTime;
+// }
+// .slideDown-leave-active {
+//   animation-name: slideOutDown;
+//   animation-duration: .6s;
+// }
+// //slideLeft
+// .slideDown-enter-active {
+//   animation-name: slideInUp;
+//   animation-duration: .6s;
+// }
+// .slideDown-leave-active {
+//   animation-name: slideOutDown;
+//   animation-duration: .6s;
+// }

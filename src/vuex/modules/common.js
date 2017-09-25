@@ -13,7 +13,9 @@ const types = {
   //微信用户信息
   WX_USERINFO: "WX_USERINFO",
   //微信用户信息
-  POP_STATUS: "POP_STATUS"
+  POP_STATUS: "POP_STATUS",
+  //是否显示底部导航
+  SHOW_FOOTER: "SHOW_FOOTER"
 }
 
 const state = {
@@ -91,9 +93,6 @@ const mutations = {
   [types.LOCK_SCREEN](state, isLock) {
     state.lockScreen = isLock
   },
-  [types.TOGGLE_TAB](state, show) {
-    state.hasFooter = show
-  },
   [types.TOGGLE_TOAST](state, params) {
     state.toast = params.toast
     state.toastMsg = params.toastMsg
@@ -133,6 +132,10 @@ const mutations = {
   //提交pop信息
   [types.POP_STATUS](state, params) {
     state.isPop = params;
+  },
+  //显示底部导航
+  [types.SHOW_FOOTER](state, params) {
+    state.hasFooter = params;
   }
 }
 

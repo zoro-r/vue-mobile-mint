@@ -3,6 +3,7 @@
   height: $size;
 }
 
+//生产小的字体
 @mixin font-block($bgColor:rgb(240, 115, 115)) {
   @include box;
   background: $bgColor;
@@ -13,4 +14,10 @@
   align-items: center;
   text-align: center;
   color: white;
+}
+
+//生成动画
+@mixin ani-block($name:'slideUp', $aniTime:.6s) {
+  animation-name: $name;
+  animation-duration: $aniTime;
 }

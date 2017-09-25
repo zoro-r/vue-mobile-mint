@@ -10,5 +10,8 @@
       name: 'homeShow',
       path: 'homeShow',
       component: homeShow,
+      meta: {
+        hasFooter: true
+      }
     }]
   }]

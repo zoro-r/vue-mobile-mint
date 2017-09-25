@@ -4,6 +4,7 @@ import store from '../vuex/store'
 
 import main from './main'
 import home from './home'
+import mine from './mine'
 
 Vue.use(Router)
 const router = new Router({
@@ -15,28 +16,15 @@ const router = new Router({
     component(resolve) {
       require.ensure([], () => resolve(require('../components/common/PageTransition.vue')), 'pageTransition')
     },
-    children: [...main, ...home]
+    children: [...main, ...home, ...mine]
   }]
 })
 
 //制作权限控制
-// router.beforeEach((to, from, next) => {
-//   document.title = to.meta.title || document.title
-//   store.commit('TOGGLE_TAB', to.meta.hasFooter == true)
-//   if (to.meta.login != false && !store.state.common.user) {
-//     store.commit('TOGGLE_TOAST', {
-//       toast: true,
-//       toastMsg: '请先登录！'
-//     })
-//     next('/page/login')
-//   } else {
-//     next()
-//   }
-// })
-
-// router.afterEach(route => {
-// document.body.scrollTop = 0
-// })
+router.beforeEach((to, from, next) => {
+  store.state.common.hasFooter = to.meta.hasFooter;
+  next()
+})
 Router.prototype.goBack = function(path) {
   this.isBack = true
   if (typeof path == 'string') {

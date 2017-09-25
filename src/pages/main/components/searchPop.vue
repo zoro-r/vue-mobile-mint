@@ -51,19 +51,16 @@ export default {
      */
     onfocus() {
       this.isFocus = true;
-      console.log('onfocus')
     },
     /**
      * 失去焦点
      */
     onblur() {
       this.isFocus = false;
-      console.log('onblur')
     }
   },
   watch: {
     ['$store.state.common.isPop'](newVal) {
-      console.log(newVal)
       newVal && setTimeout(() => {
         this.$refs.input.focus()
       }, 300);;
@@ -102,6 +99,7 @@ $btnWidth:4.5rem;
   .searchBar {
     padding: 0.5rem 0px;
     img {
+      width: 0px;
       margin: 5px 0px;
     }
     .search {
