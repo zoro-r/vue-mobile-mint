@@ -39,7 +39,7 @@ export default {
     return {
       selected: "1",
       isScroll: false,
-      transitionName: "slideInRight"
+      transitionName: "slideInLeft"
     }
   },
   watch: {

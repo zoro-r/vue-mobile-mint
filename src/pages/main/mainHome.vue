@@ -1,7 +1,7 @@
 <template>
   <section class="mainHome has-footer">
     <section class="heard_card primary_mg primary_bg primary_flex_center fn-17">
-      <div class="index_left">
+      <div @click="showLocation" class="index_left">
         <img class="icon-18" src="static/img/icon/location.png" />
         <span class="fn-16">闵行区浦江第一中学(浦锦路西50米)</span>
         <img class="icon-10" src="static/img/icon/down-w.png" />
@@ -17,8 +17,8 @@
     </section>
     <!-- <section style="min-height:3.5rem"> -->
     <!-- <affix> -->
-    <section @click="showSearch" class="primary_bg input_box primary_flex_center search primary_mg" style="height:4rem;z-index:10;top:0px">
-      <div class="ipt_item primary_flex_center fn-12">
+    <section class="primary_bg input_box primary_flex_center search primary_mg" style="height:4rem;z-index:10;top:0px">
+      <div @click="showSearch" class="ipt_item primary_flex_center fn-12">
         <img class="icon-10" src="static/img/icon/search.png" />&nbsp;&nbsp;搜索商家，商家名称
       </div>
     </section>
@@ -87,7 +87,12 @@ export default {
      * 显示搜索框
      */
     showSearch() {
-      console.log(this.$parent)
+      this.$store.commit('POP_STATUS', true)
+    },
+    /**
+    * 显示地址
+    */
+    showLocation() {
       this.$store.commit('POP_STATUS', true)
     }
   }
