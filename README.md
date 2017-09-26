@@ -47,3 +47,7 @@ cordova plugin add https://github.com/ionic-team/cordova-plugin-wkwebview-engine
 github地址 https://github.com/ionic-team/cordova-plugin-wkwebview-engine
 npm run build --report
 ```
+
+github地址 https://github.com/ionic-team/cordova-plugin-wkwebview-engine
+
+IOSApp下载地址：https://www.pgyer.com/nVE4
