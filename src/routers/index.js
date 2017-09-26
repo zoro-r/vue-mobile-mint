@@ -3,20 +3,23 @@ import Router from 'vue-router'
 import store from '../vuex/store'
 
 import main from './main'
-import home from './home'
+// import home from './home'
 import mine from './mine'
 
 Vue.use(Router)
 const router = new Router({
   routes: [{
     path: '/',
-    redirect: '/page/main/mainHome'
+    redirect: '/home'
   }, {
-    path: '/page',
+    path: '/home',
     component(resolve) {
-      require.ensure([], () => resolve(require('../components/common/PageTransition.vue')), 'pageTransition')
+      require.ensure([], () => resolve(require('../pages/home/home.vue')), 'home')
     },
-    children: [...main, ...home, ...mine]
+    meta: {
+      hasFooter: true
+    },
+    children: [...main, ...mine]
   }]
 })
 

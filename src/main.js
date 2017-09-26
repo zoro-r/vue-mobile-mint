@@ -20,7 +20,6 @@ import '@/assets/lib/finger/alloy_finger.js'
 import '@/assets/lib/finger/alloy_finger.vue.js'
 // import '@/directives/title.js'
 import Navigation from 'vue-navigation'
-import Page from './components/common/Page'
 import vueScrollBehavior from 'vue-scroll-behavior'
 import utils from './utils'
 // import 'vue-awesome/icons'
@@ -35,7 +34,6 @@ Vue.use(MintUI)
 window.Vue = Vue
 window.utils = utils
 Vue.use(AlloyFingerVue)
-Vue.component('page', Page)
 Vue.config.productionTip = false
 Vue.use(vueScrollBehavior, {
   router: router

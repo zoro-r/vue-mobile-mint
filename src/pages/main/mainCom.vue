@@ -87,13 +87,13 @@ export default {
      * 显示搜索框
      */
     showSearch() {
-      this.$store.commit('POP_STATUS', true)
+      this.$store.commit('POP_STATUS_S', true)
     },
     /**
     * 显示地址
     */
     showLocation() {
-      this.$store.commit('POP_STATUS', true)
+      this.$store.commit('POP_STATUS_L', true)
     }
   }
 };

@@ -1,6 +1,6 @@
 <template>
   <section class="searchPop">
-    <mt-popup v-model="$store.state.common.isPop" popup-transition="popup-fade" class="mint-popup" :modal="true">
+    <mt-popup v-model="$store.state.common.popObj.searchPop" popup-transition="popup-fade" class="mint-popup" :modal="true">
       <div class="primary_flex_center searchBar">
         <img @click="$store.state.common.isPop = false" v-bind:style="{width:isFocus?'0rem':'2.2rem'}" src="../../../../static/img/icon/left.png" class="transition_3" />
         <section class="search">
@@ -44,7 +44,7 @@ export default {
      * 取消搜索
      */
     cancel() {
-      this.$store.state.common.isPop = this.value !== '';
+      this.$store.commit('POP_STATUS_S', this.value !== '')
     },
     /**
      * 当进入焦点的时候
@@ -60,10 +60,10 @@ export default {
     }
   },
   watch: {
-    ['$store.state.common.isPop'](newVal) {
+    ['$store.state.common.popObj.searchPop'](newVal) {
       newVal && setTimeout(() => {
         this.$refs.input.focus()
-      }, 300);;
+      }, 100);;
     }
   },
   mounted() {

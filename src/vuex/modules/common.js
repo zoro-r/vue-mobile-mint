@@ -1,16 +1,23 @@
 import utils from '../../utils'
 
 const types = {
-  //微信用户信息
-  POP_STATUS: "POP_STATUS",
+  //弹出框信息
+  POP_STATUS_S: "POP_STATUS_S",
+  //弹出框信息
+  POP_STATUS_L: "POP_STATUS_L",
   //是否显示底部导航
-  SHOW_FOOTER: "SHOW_FOOTER"
+  SHOW_FOOTER: "SHOW_FOOTER",
+  //底部导航tab显示
+  TAB_SELECTED: "TAB_SELECTED"
 }
 
 const state = {
-  isPop: false,
-  isScroll: true,
+  popObj: {
+    searchPop: false,
+    locationPop: false
+  },
   hasFooter: true,
+  tabSelected: 1,
 }
 
 const getters = {
@@ -30,12 +37,20 @@ const actions = {
 
 const mutations = {
   //提交pop信息
-  [types.POP_STATUS](state, params) {
-    state.isPop = params;
+  [types.POP_STATUS_L](state, params) {
+    state.popObj.locationPop = params;
+  },
+  //提交pop信息
+  [types.POP_STATUS_S](state, params) {
+    state.popObj.searchPop = params;
   },
   //显示底部导航
   [types.SHOW_FOOTER](state, params) {
     state.hasFooter = params;
+  },
+  //切换显示
+  [types.TAB_SELECTED](state, params) {
+    state.tabSelected = params;
   }
 }
 
