@@ -1,5 +1,5 @@
 <template>
-  <section class="mainHome has-footer">
+  <section class="mainHome">
     <section class="heard_card primary_mg primary_bg primary_flex_center fn-17">
       <div @click="showLocation" class="index_left">
         <img class="icon-18" src="static/img/icon/location.png" />

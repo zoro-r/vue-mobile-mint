@@ -1,12 +1,12 @@
 <template>
-  <section class="main_page" v-bind:class="[$store.state.common.hasFooter?'has-footer':'']">
+  <section class="main_page">
     <transition :name="transitionName">
       <navigation>
-        <router-view v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" class="child-view scroll-content"></router-view>
+        <router-view  v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" class="child-view scroll-content"></router-view>
       </navigation>
     </transition>
     <!-- 模块区域 -->
-    <section v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" class="child-view scroll-content">
+    <section v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" class="child-view scroll-content">
       <transition :name="transitionName">
         <section v-show="selected == 1" style="height:100vh">
           <mainCom></mainCom>

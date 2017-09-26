@@ -10,7 +10,7 @@
           <span class="right fn-15">新增地址</span>
         </div>
         <div class="x">
-          <div class="left">
+          <div class="left fn-13">
             上海市 <img src="static/img/icon/down-w.png" style="width:10px;height:auto;text-align:center" alt="">
           </div>
           <div class="title" style="flex:2;text-align:center">
