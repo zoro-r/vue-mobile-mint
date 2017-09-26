@@ -6,42 +6,25 @@
       </navigation>
     </transition>
     <!-- 模块区域 -->
-    <section v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" class="child-view scroll-content">
-      <!-- <section style="height:100vh">
-            <mt-tab-container v-model="selected" swipeable>
-              <mt-tab-container-item id="1">
-                <transition :name="transitionName">
-                  <mainCom></mainCom>
-                </transition>
-              </mt-tab-container-item>
-              <mt-tab-container-item id="2">
-                <mt-cell v-for="n in 51" title="tab-container 2"></mt-cell>
-              </mt-tab-container-item>
-              <mt-tab-container-item id="3">
-                <mt-cell v-for="n in 711" title="tab-container 3"></mt-cell>
-              </mt-tab-container-item>
-              <mt-tab-container-item id="4">
-                <mt-cell v-for="n in 71" title="tab-container 4"></mt-cell>
-              </mt-tab-container-item>
-            </mt-tab-container>
-          </section> -->
+    <!-- v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" class="child-view scroll-content" -->
+    <section>
       <transition :name="transitionName">
-        <section v-show="selected == 1" style="height:100vh">
+        <section v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" v-show="selected == 1" class="scroll-content ">
           <mainCom></mainCom>
         </section>
       </transition>
       <transition :name="transitionName">
-        <section v-show="selected == 2" style="height:100vh">
+        <section v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" v-show="selected == 2" class="scroll-content ">
           <orderCom></orderCom>
         </section>
       </transition>
       <transition :name="transitionName">
-        <section v-show="selected == 3" style="height:100vh">
+        <section v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" v-show="selected == 3" class="scroll-content ">
           <searchCom></searchCom>
         </section>
       </transition>
       <transition :name="transitionName">
-        <section v-show="selected == 4" style="height:100vh">
+        <section v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" v-show="selected == 4" class="scroll-content ">
           <minCom></minCom>
         </section>
       </transition>
@@ -130,6 +113,15 @@ export default {
 }
 
 .main_page {
+  // .scroll-content  {
+  //   height: 100vh;
+  //   position: absolute;
+  //   top: 0px;
+  //   width: 100%;
+  //   overflow: scroll;
+  //    -webkit-overflow-scrolling: touch;
+  // will-change: scroll-position;
+  // }
   .icon_tabs {
     background-size: 100%;
   }

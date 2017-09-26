@@ -1,6 +1,6 @@
 <template>
   <section class="mineCom">
-    <mt-header class="primary_bg" title="我的" :fixed="true">
+    <mt-header class="primary_bg" title="我的" style="position: sticky;top: 0px;">
       <mt-button slot="left">
         <img src="../../../static/img/icon/reminder.png" style="width:17px" alt="">
       </mt-button>
@@ -8,7 +8,7 @@
         <img src="../../../static/img/icon/set.png" style="width:20px" alt="">
       </mt-button>
     </mt-header>
-    <section class="content " style="margin-top:39px">
+    <section class="content">
       <section class="header primary_bg">
         <div class="left">
           <img src="../../../static/img/header.jpg" alt="">
