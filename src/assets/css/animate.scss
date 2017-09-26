@@ -1,6 +1,6 @@
 @import './animates.css';
 @import './mixin.scss';
-$aniList: (slideInUp:slideOutDown, slideInRight:slideOutLeft, slideInLeft:slideOutRight);
+$aniList: (slideInUp:slideOutDown, slideInRight:fadeOutLeft, slideInLeft:fadeOutRight);
 //生成动画
 @each $name,
 $value in $aniList {

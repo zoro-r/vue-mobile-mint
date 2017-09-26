@@ -120,8 +120,7 @@
   }
   
   .has-footer {
-    margin-bottom: 4.5rem;
-    // padding-bottom: 6rem;
+    margin-bottom: 4.5rem; // padding-bottom: 6rem;
   }
   
   .transition_3 {
@@ -138,7 +137,9 @@
     &::after {
       content: '-----------------'
     }
-  } //------------------------函数生产区域
+  }
+  
+  //------------------------函数生产区域
   @for $i from 8 through 18 {
     .fn-#{$i} {
       font-size: .1rem * $i;

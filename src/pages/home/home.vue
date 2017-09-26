@@ -2,11 +2,29 @@
   <section class="main_page">
     <transition :name="transitionName">
       <navigation>
-        <router-view  v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" class="child-view scroll-content"></router-view>
+        <router-view v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" class="child-view scroll-content"></router-view>
       </navigation>
     </transition>
     <!-- 模块区域 -->
     <section v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" class="child-view scroll-content">
+      <!-- <section style="height:100vh">
+            <mt-tab-container v-model="selected" swipeable>
+              <mt-tab-container-item id="1">
+                <transition :name="transitionName">
+                  <mainCom></mainCom>
+                </transition>
+              </mt-tab-container-item>
+              <mt-tab-container-item id="2">
+                <mt-cell v-for="n in 51" title="tab-container 2"></mt-cell>
+              </mt-tab-container-item>
+              <mt-tab-container-item id="3">
+                <mt-cell v-for="n in 711" title="tab-container 3"></mt-cell>
+              </mt-tab-container-item>
+              <mt-tab-container-item id="4">
+                <mt-cell v-for="n in 71" title="tab-container 4"></mt-cell>
+              </mt-tab-container-item>
+            </mt-tab-container>
+          </section> -->
       <transition :name="transitionName">
         <section v-show="selected == 1" style="height:100vh">
           <mainCom></mainCom>
@@ -61,7 +79,7 @@ export default {
   name: 'home',
   data() {
     return {
-      selected: "1",
+      selected: "4",
       isScroll: true,
       transitionName: "slideInLeft"
     }
@@ -84,6 +102,7 @@ export default {
       //   "4": "mineHome",
       // };
       this.transitionName = oldVal < newVal ? "slideInRight" : "slideInLeft";
+      console.log(this.transitionName)
       // this.$router.push({ name: routerMap[newVal] })
     },
     ['$store.state.common.popObj']: {
