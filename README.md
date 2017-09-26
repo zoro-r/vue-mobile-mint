@@ -22,7 +22,9 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 
 框架增加插件地址
+
 导航插件 https://github.com/zack24q/vue-navigation
+
 地址插件 https://github.com/jcc/v-distpicker
 
 #
