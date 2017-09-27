@@ -7,23 +7,23 @@
     <!-- 模块区域 -->
     <!-- v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" class="child-view scroll-content" -->
     <section v-show="$store.state.common.isHome">
-      <transition :name="transitionName">
-        <section v-show="selected == 1" class="tab_item_page">
+      <transition :name="$parent.transitionName">
+        <section v-show="$parent.selected == 1" class="tab_item_page">
           <mainCom></mainCom>
         </section>
       </transition>
-      <transition :name="transitionName">
-        <section v-show="selected == 2" class="tab_item_page">
+      <transition :name="$parent.transitionName">
+        <section v-show="$parent.selected == 2" class="tab_item_page">
           <orderCom></orderCom>
         </section>
       </transition>
-      <transition :name="transitionName">
-        <section v-show="selected == 3" class="tab_item_page">
+      <transition :name="$parent.transitionName">
+        <section v-show="$parent.selected == 3" class="tab_item_page">
           <searchCom></searchCom>
         </section>
       </transition>
-      <transition :name="transitionName">
-        <section v-show="selected == 4" class="tab_item_page">
+      <transition :name="$parent.transitionName">
+        <section v-show="$parent.selected == 4" class="tab_item_page">
           <minCom></minCom>
         </section>
       </transition>
@@ -40,11 +40,9 @@ export default {
   name: 'home',
   data() {
     return {
-      selected: "1",
       isScroll: true,
-      transitionName: "slideInRight",
-      showHome: false,
-      positons: {}
+      // $parent.transitionName: "slideInRight",
+      showHome: false
     }
   },
   components: {
@@ -56,35 +54,9 @@ export default {
     locationPop: r => { require(['../main/components/locationPop'], r) }
   },
   watch: {
-    selected(newVal, oldVal) {
-      this.$store.commit('TAB_SELECTED', newVal)
-      this.savePositon()
-      // let routerMap = {
-      //   "1": "mainHome",
-      //   "2": "mainHome",
-      //   "3": "mainHome",
-      //   "4": "mineHome",
-      // };
-      this.transitionName = oldVal < newVal ? "slideInRight" : "slideInLeft"
-      this.savePositon(oldVal)
-      this.$router.currentRoute.name !== 'home' && this.$router.push({ name: "home" })
-      setTimeout(() => {
-        this.toPositon()
-      }, 100);
-    }
+
   },
   methods: {
-    //滚动到相对位置
-    toPositon(key) {
-      document.getElementById("scroll-content").scrollTo(0, this.positons[key] ? this.positons[key].y : 0)
-    },
-    //保存位置信息
-    savePositon(key) {
-      console.log(document.getElementById("scroll-content").scrollTop)
-      this.positons[key] = {
-        y: document.getElementById("scroll-content") && document.getElementById("scroll-content").scrollTop
-      }
-    }
   },
   created() {
   }
@@ -107,7 +79,7 @@ export default {
   .icon_tabs {
     background-size: 100%;
   }
-  .is-selected,
+  .is-$parent.selected,
   .icon_tabs {
     transition: all ease .5s;
   }

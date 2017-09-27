@@ -1,10 +1,10 @@
 <template>
- <section>
-   <section v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" class="child-view scroll-content" id="scroll-content">
-    <router-view> </router-view>
-    <!-- 底部导航 -->
-  </section>
-   <transition name="slideInUp">
+  <section>
+    <section v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" class="child-view scroll-content" id="scroll-content">
+      <router-view> </router-view>
+      <!-- 底部导航 -->
+    </section>
+    <transition name="slideInUp">
       <mt-tabbar v-show="$store.state.common.hasFooter" v-model="selected">
         <mt-tab-item id="1">
           <img v-bind:class="[selected == '1' ?'bounceIn':'']" class="animated icon_tabs" slot="icon" :src="selected == '1'?'static/img/common/e-active.png':'static/img/common/e.png'" /> 外卖
@@ -20,8 +20,7 @@
         </mt-tab-item>
       </mt-tabbar>
     </transition>
- </section>
-
+  </section>
 </template>
 
 <script>
@@ -32,7 +31,8 @@ export default {
       selected: "1",
       isScroll: true,
       transitionName: "slideInRight",
-      showHome: false
+      showHome: false,
+      positons: {}
     }
   },
   watch: {
@@ -47,6 +47,34 @@ export default {
         this.$store.commit('SHOW_FOOTER', this.isScroll)
       },
       deep: true
+    },
+    selected(newVal, oldVal) {
+      this.$store.commit('TAB_SELECTED', newVal)
+      this.savePositon()
+      // let routerMap = {
+      //   "1": "mainHome",
+      //   "2": "mainHome",
+      //   "3": "mainHome",
+      //   "4": "mineHome",
+      // };
+      this.transitionName = oldVal < newVal ? "slideInRight" : "slideInLeft";
+      // this.savePositon(oldVal)
+      this.$router.currentRoute.name !== 'home' && this.$router.push({ name: "home" })
+      // setTimeout(() => {
+        this.toPositon(oldVal)
+      // }, 100);
+    }
+  },
+  methods: {
+    //滚动到相对位置
+    toPositon(key) {
+      document.getElementById("scroll-content").scrollTo(0, this.positons[key] ? this.positons[key].y : 0)
+    },
+    //保存位置信息
+    savePositon(key) {
+      this.positons[key] = {
+        y: document.getElementById("scroll-content") && document.getElementById("scroll-content").scrollTop
+      }
     }
   },
   created() {
