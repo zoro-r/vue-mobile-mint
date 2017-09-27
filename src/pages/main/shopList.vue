@@ -1,6 +1,6 @@
 <template>
   <section id="shopList">
-    <mt-button @click="toHome">返回首页</mt-button>
+    <mt-button @click="go('shopDetail')">返回首页</mt-button>
   </section>
 </template>
 <script>

@@ -20,7 +20,7 @@ import '@/assets/lib/finger/alloy_finger.js'
 import '@/assets/lib/finger/alloy_finger.vue.js'
 // import '@/directives/title.js'
 import Navigation from 'vue-navigation'
-import vueScrollBehavior from 'vue-scroll-behavior'
+import vueScrollBehavior from './components/common/scrolleBhavior/src/vue-scroll-behavior'
 import utils from './utils'
 // import 'vue-awesome/icons'
 import VueLazyImage from "vue-lazy-images";
@@ -42,7 +42,8 @@ Vue.use(Navigation, {
   router,
   store,
   moduleName: 'policy',
-  keyName: 'RH'
+  keyName: 'RH',
+  id: "scroll-content"
 })
 Vue.mixin({
   data() {

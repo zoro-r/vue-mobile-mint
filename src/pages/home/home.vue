@@ -2,37 +2,35 @@
   <section class="main_page">
     <!-- 子页面 -->
     <transition :name="'slideInRight'">
-      <navigation>
-        <router-view v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" class="child-view scroll-content"></router-view>
-      </navigation>
+      <router-view style="min-height:600px"></router-view>
     </transition>
     <!-- 模块区域 -->
     <!-- v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" class="child-view scroll-content" -->
-    <section v-if="$store.state.common.isHome">
+    <section v-show="$store.state.common.isHome">
       <transition :name="transitionName">
-        <section v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" v-show="selected == 1" class="scroll-content primary_bg_gray">
+        <section v-show="selected == 1" class="tab_item_page">
           <mainCom></mainCom>
         </section>
       </transition>
       <transition :name="transitionName">
-        <section v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" v-show="selected == 2" class="scroll-content primary_bg_gray">
+        <section v-show="selected == 2" class="tab_item_page">
           <orderCom></orderCom>
         </section>
       </transition>
       <transition :name="transitionName">
-        <section v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" v-show="selected == 3" class="scroll-content primary_bg_gray">
+        <section v-show="selected == 3" class="tab_item_page">
           <searchCom></searchCom>
         </section>
       </transition>
       <transition :name="transitionName">
-        <section v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" v-show="selected == 4" class="scroll-content primary_bg_gray">
+        <section v-show="selected == 4" class="tab_item_page">
           <minCom></minCom>
         </section>
       </transition>
     </section>
     <!-- 底部导航 -->
     <transition name="slideInUp">
-      <mt-tabbar v-show="$store.state.common.hasFooter" v-model="selected">
+      <mt-tabbar v-show="$store.state.common.hasFooter" v-model="selected" :fixed="true">
         <mt-tab-item id="1">
           <img v-bind:class="[selected == '1' ?'bounceIn':'']" class="animated icon_tabs" slot="icon" :src="selected == '1'?'static/img/common/e-active.png':'static/img/common/e.png'" /> 外卖
         </mt-tab-item>
@@ -62,7 +60,8 @@ export default {
       selected: "1",
       isScroll: true,
       transitionName: "slideInRight",
-      showHome: false
+      showHome: false,
+      positons: {}
     }
   },
   components: {
@@ -76,27 +75,32 @@ export default {
   watch: {
     selected(newVal, oldVal) {
       this.$store.commit('TAB_SELECTED', newVal)
+      this.savePositon()
       // let routerMap = {
       //   "1": "mainHome",
       //   "2": "mainHome",
       //   "3": "mainHome",
       //   "4": "mineHome",
       // };
-      this.transitionName = oldVal < newVal ? "slideInRight" : "slideInLeft";
-      console.log(this.transitionName)
-      // this.$router.push({ name: routerMap[newVal] })
+      this.transitionName = oldVal < newVal ? "slideInRight" : "slideInLeft"
+      this.savePositon(oldVal)
+      this.$router.currentRoute.name !== 'home' && this.$router.push({ name: "home" })
+      setTimeout(() => {
+        this.toPositon()
+      }, 100);
+    }
+  },
+  methods: {
+    //滚动到相对位置
+    toPositon(key) {
+      document.getElementById("scroll-content").scrollTo(0, this.positons[key] ? this.positons[key].y : 0)
     },
-    ['$store.state.common.popObj']: {
-      handler(newVal) {
-        this.isScroll = true;
-        for (var key in newVal) {
-          if (newVal[key]) {
-            this.isScroll = false;
-          }
-        }
-        this.$store.commit('SHOW_FOOTER', this.isScroll)
-      },
-      deep: true
+    //保存位置信息
+    savePositon(key) {
+      console.log(document.getElementById("scroll-content").scrollTop)
+      this.positons[key] = {
+        y: document.getElementById("scroll-content") && document.getElementById("scroll-content").scrollTop
+      }
     }
   },
   created() {
@@ -111,45 +115,18 @@ export default {
 }
 
 .main_page {
-  // .scroll-content  {
-  //   height: 100vh;
-  //   position: absolute;
-  //   top: 0px;
-  //   width: 100%;
-  //   overflow: scroll;
-  //    -webkit-overflow-scrolling: touch;
-  // will-change: scroll-position;
-  // }
+  .tab_item_page {
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    right: 0px;
+  }
   .icon_tabs {
     background-size: 100%;
   }
   .is-selected,
   .icon_tabs {
     transition: all ease .5s;
-  }
-  .scroll-content {
-    // z-index: 0;
-    // -webkit-overflow-scrolling: touch;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0; // z-index: 1;
-    display: block;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-    will-change: scroll-position;
-    contain: size style layout;
-    &::before {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      content: "";
-      bottom: -1px;
-    }
-    &::after {
-      top: -1px;
-    }
   }
 
   .mint-tab-item {

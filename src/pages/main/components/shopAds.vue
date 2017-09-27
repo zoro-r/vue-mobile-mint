@@ -1,7 +1,12 @@
 <template>
   <section class="shopAds">
-    <section class="primary_mg_hor primary_bg_white">
-      <img src="static/img/common/youhui.png" style="width: 100%" />
+    <section class="primary_mg_hor primary_bg_white" style="height:90px">
+       <mt-swipe :auto="2000" height="100%">
+        <mt-swipe-item v-for="(item,index) in imgList" :key="index">
+          <img src="static/img/common/youhui.png" style="width: 100%" />
+        </mt-swipe-item>
+      </mt-swipe>
+      <!-- <img src="static/img/common/youhui.png" style="width: 100%" /> -->
     </section>
     <div>
       <!-- 第一列 -->
@@ -47,6 +52,7 @@
 export default {
   data() {
     return {
+      imgList:[1,1,1,1,1]
     };
   },
   components: {

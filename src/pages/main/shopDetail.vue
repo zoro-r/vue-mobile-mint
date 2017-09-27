@@ -1,14 +1,11 @@
 <template>
-  <section id="main">
-    <!-- 跟路由 -->
-    <navigation>
-      <router-view style="min-height:100vh"></router-view>
-    </navigation>
+  <section id="shopList">
+    <mt-button @click="toHome">返回首页</mt-button>
   </section>
 </template>
 <script>
 export default {
-  name: 'main',
+  name: 'shopList',
   components: {
     searchPop: r => { require(['./components/searchPop'], r) },
     locationPop: r => { require(['./components/locationPop'], r) }
