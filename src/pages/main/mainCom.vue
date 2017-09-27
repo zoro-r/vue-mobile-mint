@@ -2,24 +2,24 @@
   <section class="mainHome">
     <section class="heard_card primary_mg primary_bg primary_flex_center fn-17">
       <div @click="showLocation" class="index_left">
-        <img class="icon-18" src="../../assets/img/icon/location.png" />
+        <img class="icon-18" src="static/img/icon/location.png" />
         <span class="fn-16">闵行区浦江第一中学(浦锦路西50米)</span>
-        <img class="icon-10" src="../../assets/img/icon/down-w.png" />
+        <img class="icon-10" src="static/img/icon/down-w.png" />
       </div>
       <aside class="index_right">
         <div>
           <h2>20.2°</h2>
           <p>晴夜</p>
         </div>
-        <!-- <lazy-image :src="'../../assets/img/dark.png'" :placeholder="loaddingImg" /> -->
-        <img src="../../assets/img/dark.png" alt="">
+        <!-- <lazy-image :src="'static/img/dark.png'" :placeholder="loaddingImg" /> -->
+        <img src="static/img/dark.png" alt="">
       </aside>
     </section>
     <!-- <section style="min-height:3.5rem"> -->
     <!-- <affix> -->
     <section class="primary_bg input_box primary_flex_center search primary_mg" style="height:4rem;z-index:10;top:0px">
       <div @click="showSearch" class="ipt_item primary_flex_center fn-12">
-        <img class="icon-10" src="../../assets/img/icon/search.png" />&nbsp;&nbsp;搜索商家，商家名称
+        <img class="icon-10" src="static/img/icon/search.png" />&nbsp;&nbsp;搜索商家，商家名称
       </div>
     </section>
     <!-- </affix> -->
@@ -124,7 +124,7 @@ export default {
   }
   font-weight: 200;
   .youhui {
-    width: 100%; // background: url('../../assets/img/common/youhui.png');
+    width: 100%; // background: url('static/img/common/youhui.png');
     // padding: 0px 10px;
     img {
       width: calc(100% - 20px);

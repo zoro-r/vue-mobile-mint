@@ -1,7 +1,7 @@
 <template>
   <section @click="$parent.toShopList(231312)" class="shopItem primary_mg">
     <section  class="left">
-      <lazy-image :src="'../../assets/img/shop/2.jpeg'" :placeholder="loaddingImg" />
+      <lazy-image :src="'static/img/shop/2.jpeg'" :placeholder="loaddingImg" />
     </section>
     <section class="right">
       <div class="shop_detail">
@@ -47,7 +47,7 @@
           <section class="index_right ">
             <span class="showac fn-10 primary_flex_center" style="border:none">
               4个活动
-              <img v-bind:class="[down?'':'fz']" class="icon-10 icon_img" src="../../../assets/img/icon/down.png" />
+              <img v-bind:class="[down?'':'fz']" class="icon-10 icon_img" src="static/img/icon/down.png" />
             </span>
           </section>
         </section>

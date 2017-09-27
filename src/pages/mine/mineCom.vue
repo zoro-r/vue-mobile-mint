@@ -2,23 +2,23 @@
   <section class="mineCom">
     <mt-header class="primary_bg" title="我的" style="position: sticky;top: 0px;">
       <mt-button slot="left">
-        <img src="../../assets/img/icon/reminder.png" style="width:17px" alt="">
+        <img src="static/img/icon/reminder.png" style="width:17px" alt="">
       </mt-button>
       <mt-button slot="right">
-        <img src="../../assets/img/icon/set.png" style="width:20px" alt="">
+        <img src="static/img/icon/set.png" style="width:20px" alt="">
       </mt-button>
     </mt-header>
     <section class="content">
       <section class="header primary_bg">
         <div class="left">
-          <img src="../../assets/img/header.jpg" alt="">
+          <img src="static/img/header.jpg" alt="">
         </div>
         <section class="title">
           <h3 class="fn-16">刘德华</h3>
           <span class="fn-13">13771162599</span>
         </section>
         <div class="right">
-          <img src="../../assets/img/icon/right-w.png" alt="">
+          <img src="static/img/icon/right-w.png" alt="">
         </div>
       </section>
       <div class="content-tabs">
@@ -75,56 +75,56 @@ export default {
         {
           title: "收货地址",
           text: "",
-          img: "../../assets/img/mine/address.png"
+          img: "static/img/mine/address.png"
         },
         {
           title: "我的收藏",
           text: "",
-          img: "../../assets/img/mine/heat.png"
+          img: "static/img/mine/heat.png"
         }
       ],
       list_two: [
         {
           title: "推荐有奖",
           text: "5元现金",
-          img: "../../assets/img/mine/gift.png"
+          img: "static/img/mine/gift.png"
         },
         {
           title: "积分商城",
           text: "0元好物在这里",
-          img: "../../assets/img/mine/shopping.png"
+          img: "static/img/mine/shopping.png"
         },
         {
           title: "每日精选",
           text: "全场包邮一元起",
-          img: "../../assets/img/mine/xing.png"
+          img: "static/img/mine/xing.png"
         },
         {
           title: "饿了么联名卡",
           text: "免费领超级会员",
-          img: "../../assets/img/mine/bank card.png"
+          img: "static/img/mine/bank card.png"
         },
         {
           title: "免费流量",
           text: "每月最高500m",
-          img: "../../assets/img/mine/phone.png"
+          img: "static/img/mine/phone.png"
         }
       ],
       list_three: [
         {
           title: "服务中心",
           text: "",
-          img: "../../assets/img/mine/hua.png"
+          img: "static/img/mine/hua.png"
         },
         {
           title: "欢迎评分",
           text: "",
-          img: "../../assets/img/mine/zan.png"
+          img: "static/img/mine/zan.png"
         },
         {
           title: "加盟合作",
           text: "",
-          img: "../../assets/img/mine/dianpu.png"
+          img: "static/img/mine/dianpu.png"
         }
       ]
     };
