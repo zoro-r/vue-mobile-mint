@@ -1,59 +1,56 @@
 <template>
   <section class="main_page">
-    <transition :name="transitionName">
+    <!-- 子页面 -->
+    <transition :name="'slideInRight'">
       <navigation>
         <router-view v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" class="child-view scroll-content"></router-view>
       </navigation>
     </transition>
     <!-- 模块区域 -->
     <!-- v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" class="child-view scroll-content" -->
-    <section>
+    <section v-if="$store.state.common.isHome">
       <transition :name="transitionName">
-        <section v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" v-show="selected == 1" class="scroll-content ">
+        <section v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" v-show="selected == 1" class="scroll-content primary_bg_gray">
           <mainCom></mainCom>
         </section>
       </transition>
       <transition :name="transitionName">
-        <section v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" v-show="selected == 2" class="scroll-content ">
+        <section v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" v-show="selected == 2" class="scroll-content primary_bg_gray">
           <orderCom></orderCom>
         </section>
       </transition>
       <transition :name="transitionName">
-        <section v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" v-show="selected == 3" class="scroll-content ">
+        <section v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" v-show="selected == 3" class="scroll-content primary_bg_gray">
           <searchCom></searchCom>
         </section>
       </transition>
       <transition :name="transitionName">
-        <section v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" v-show="selected == 4" class="scroll-content ">
+        <section v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" v-show="selected == 4" class="scroll-content primary_bg_gray">
           <minCom></minCom>
         </section>
       </transition>
     </section>
+    <!-- 底部导航 -->
+    <transition name="slideInUp">
+      <mt-tabbar v-show="$store.state.common.hasFooter" v-model="selected">
+        <mt-tab-item id="1">
+          <img v-bind:class="[selected == '1' ?'bounceIn':'']" class="animated icon_tabs" slot="icon" :src="selected == '1'?'../../assets/img/common/e-active.png':'../../assets/img/common/e.png'" /> 外卖
+        </mt-tab-item>
+        <mt-tab-item id="2">
+          <img slot="icon" v-bind:class="[selected == '2' ?'bounceIn':'']" class="animated icon_tabs" :src="selected == '2'?'../../assets/img/common/compass-active.png':'../../assets/img/common/compass.png'" /> 发现
+        </mt-tab-item>
+        <mt-tab-item id="3">
+          <img slot="icon" :src="selected == '3'?'../../assets/img/common/order-active.png':'../../assets/img/common/order.png'" v-bind:class="[selected == '3' ?'bounceIn':'']" class="animated icon_tabs" /> 订单
+        </mt-tab-item>
+        <mt-tab-item id="4">
+          <img slot="icon" :src="selected == '4'?'../../assets/img/common/user-active.png':'../../assets/img/common/user.png'" v-bind:class="[selected == '4' ?'bounceIn':'']" class="animated icon_tabs" /> 我的
+        </mt-tab-item>
+      </mt-tabbar>
+    </transition>
     <!-- 搜索弹出框 -->
     <searchPop></searchPop>
     <!-- 定位选择框 -->
     <locationPop></locationPop>
-    <transition name="slideInUp">
-      <mt-tabbar v-show="$store.state.common.hasFooter" v-model="selected">
-        <mt-tab-item id="1">
-          <div slot="icon" v-bind:style="{'background-image':selected == '1'?'url(static/img/common/e-active.png)':'url(static/img/common/e.png)'}" v-bind:class="[selected == '1' ?'bounceIn':'']" class="animated icon_tabs"></div>
-          <!-- <div slot="icon"  class="icon_tabs animated" style="background-image:url(static/img/common/e.png)"></se> -->
-          外卖
-        </mt-tab-item>
-        <mt-tab-item id="2">
-          <div slot="icon" v-bind:style="{'background-image':selected == '2'?'url(static/img/common/compass-active.png)':'url(static/img/common/compass.png)'}" v-bind:class="[selected == '2' ?'bounceIn':'']" class="animated icon_tabs"></div>
-          发现
-        </mt-tab-item>
-        <mt-tab-item id="3">
-          <div slot="icon" v-bind:style="{'background-image':selected == '3'?'url(static/img/common/order-active.png)':'url(static/img/common/order.png)'}" v-bind:class="[selected == '3' ?'bounceIn':'']" class="animated icon_tabs"></div>
-          订单
-        </mt-tab-item>
-        <mt-tab-item id="4">
-          <div slot="icon" v-bind:style="{'background-image':selected == '4'?'url(static/img/common/user-active.png)':'url(static/img/common/user.png)'}" v-bind:class="[selected == '4' ?'bounceIn':'']" class="animated icon_tabs"></div>
-          我的
-        </mt-tab-item>
-      </mt-tabbar>
-    </transition>
   </section>
 </template>
 <script>
@@ -62,9 +59,10 @@ export default {
   name: 'home',
   data() {
     return {
-      selected: "4",
+      selected: "1",
       isScroll: true,
-      transitionName: "slideInLeft"
+      transitionName: "slideInRight",
+      showHome: false
     }
   },
   components: {

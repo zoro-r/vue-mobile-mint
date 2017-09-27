@@ -8,7 +8,9 @@ const types = {
   //是否显示底部导航
   SHOW_FOOTER: "SHOW_FOOTER",
   //底部导航tab显示
-  TAB_SELECTED: "TAB_SELECTED"
+  TAB_SELECTED: "TAB_SELECTED",
+  //判断是否是home页面
+  IS_HOME: "IS_HOME"
 }
 
 const state = {
@@ -18,6 +20,7 @@ const state = {
   },
   hasFooter: true,
   tabSelected: 1,
+  isHome: true
 }
 
 const getters = {
@@ -51,6 +54,9 @@ const mutations = {
   //切换显示
   [types.TAB_SELECTED](state, params) {
     state.tabSelected = params;
+  }, //切换显示
+  [types.IS_HOME](state, params) {
+    state.isHome = params;
   }
 }
 

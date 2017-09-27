@@ -1,7 +1,7 @@
 <template>
   <section class="shopAds">
     <section class="primary_mg_hor primary_bg_white">
-      <img src="static/img/common/youhui.png" style="width: 100%" />
+      <img src="../../../assets/img/common/youhui.png" style="width: 100%" />
     </section>
     <div>
       <!-- 第一列 -->
@@ -11,7 +11,7 @@
           <h3>超值美味 9.9元起</h3>
           <h3>
             <font style="color:red">333人</font> 正在抢 ></h3>
-          <img src="../../../../static/img/shop/3.png" />
+          <img src="../../../assets/img/shop/3.png" />
         </div>
         <div class="col_1">
           <h2 style="color:black">热卖套餐</h2>
@@ -19,7 +19,7 @@
           <h3>
             <font style="color:rgb(175, 130, 96)">TOP 100 ></font>
           </h3>
-          <img src="../../../../static/img/shop/4.png" />
+          <img src="../../../assets/img/shop/4.png" />
         </div>
       </section>
       <!-- 第二列 -->
@@ -27,17 +27,17 @@
         <div class="col_1 col_2">
           <h3 class="fn-14">天天特价</h3>
           <font class="box" style="color:red">低至一折</font>
-          <img src="../../../../static/img/shop/5.png" />
+          <img src="../../../assets/img/shop/5.png" />
         </div>
         <div class="col_1 col_2">
           <h3 class="fn-14">乐享鲜果</h3>
           <font class="box">鲜果7折</font>
-          <img src="../../../../static/img/shop/6.png" />
+          <img src="../../../assets/img/shop/6.png" />
         </div>
         <div class="col_1 col_2">
           <h3 class="fn-14">品质优选</h3>
           <font class="box">尖货来袭</font>
-          <img src="../../../../static/img/shop/7.png" />
+          <img src="../../../assets/img/shop/7.png" />
         </div>
       </section>
     </div>

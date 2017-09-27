@@ -4,14 +4,14 @@
       <section class="primary_bg header">
         <div class="x">
           <div @click="close" class="left">
-            <img src="static/img/icon/close.png" alt="">
+            <img src="../../../assets/img/icon/close.png" alt="">
           </div>
           <h3 class="title fn-16">选择收货地址</h3>
           <span class="right fn-15">新增地址</span>
         </div>
         <div class="x">
           <div class="left fn-13">
-            上海市 <img src="static/img/icon/down-w.png" style="width:10px;height:auto;text-align:center" alt="">
+            上海市 <img src="../../../assets/img/icon/down-w.png" style="width:10px;height:auto;text-align:center" alt="">
           </div>
           <div class="title" style="flex:2;text-align:center">
             <input type="text" placeholder="请输入地址" />
@@ -100,7 +100,7 @@ export default {
           border-radius: 2px;
           border: none;
           padding: 0px 25px;
-          background-image: url('../../../../static/img/icon/search1.png');
+          background-image: url('../../../assets/img/icon/search1.png');
           background-repeat: no-repeat;
           background-position-y: center;
           background-size: 15px;

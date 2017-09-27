@@ -42,6 +42,10 @@
     user-select: none;
   }
   
+  .primary_bg_gray {
+    background-color: $primary-bg-color;
+  }
+  
   * {
     outline-style: none;
   }
@@ -121,6 +125,7 @@
   
   .has-footer {
     margin-bottom: 4.5rem; // padding-bottom: 6rem;
+    padding-bottom: 1rem; // bottom: 4.5rem!important;
   }
   
   .transition_3 {
@@ -137,9 +142,7 @@
     &::after {
       content: '-----------------'
     }
-  }
-  
-  //------------------------函数生产区域
+  } //------------------------函数生产区域
   @for $i from 8 through 18 {
     .fn-#{$i} {
       font-size: .1rem * $i;

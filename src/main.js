@@ -58,6 +58,10 @@ Vue.mixin({
     },
     back(url) {
       router.goBack(url)
+    },
+    //返回首页
+    toHome() {
+      router.goBack("/home")
     }
   }
 })

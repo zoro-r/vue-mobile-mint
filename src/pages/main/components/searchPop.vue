@@ -1,8 +1,9 @@
 <template>
   <section class="searchPop">
-    <mt-popup v-model="$store.state.common.popObj.searchPop" popup-transition="popup-fade" class="mint-popup" :modal="true">
+    <!-- popup-transition="popup-fade" -->
+    <mt-popup position="right" v-model="$store.state.common.popObj.searchPop" class="mint-popup" :modal="true">
       <div class="primary_flex_center searchBar">
-        <img @click="$store.state.common.isPop = false" v-bind:style="{width:isFocus?'0rem':'2.2rem'}" src="../../../../static/img/icon/left.png" class="transition_3" />
+        <img @click="$store.state.common.isPop = false" v-bind:style="{width:isFocus?'0rem':'2.2rem'}" src="../../../assets/img/icon/left.png" class="transition_3" />
         <section class="search">
           <!-- <mt-search v-model="value" :result.sync="result"></mt-search> -->
           <input ref="input" @focus="onfocus" @blur="onblur" class="fn-12" type="search" placeholder="请输入商家、商品名称" />
@@ -13,7 +14,7 @@
       <section class="hot_search">
         <h2>历史搜索</h2>
         <div class="row">
-          <div v-for="(item,index) in history" :key="index" class="item">{{item}}</div>
+          <mt-button v-for="(item,index) in history" :key="index" class="item">{{item}}</mt-button>
         </div>
       </section>
       <br/>
@@ -21,7 +22,7 @@
       <section class="hot_search">
         <h2>热门搜索</h2>
         <div class="row">
-          <div v-for="(item,index) in data" :key="index" class="item">{{item}}</div>
+          <mt-button v-for="(item,index) in data" :key="index" class="item">{{item}}</mt-button>
         </div>
       </section>
     </mt-popup>
@@ -85,7 +86,6 @@ $btnWidth:4.5rem;
       .item {
         font-size: 1.4rem;
         height: 3rem;
-        padding: 1rem;
         color: rgb(102, 102, 102);
         background-color: rgb(247, 247, 247);
         margin-right: 1rem;
@@ -115,7 +115,7 @@ $btnWidth:4.5rem;
         width: 100%;
         height: 100%;
         outline: 0;
-        background-image: url('../../../../static/img/icon/search1.png');
+        background-image: url('../../../assets/img/icon/search1.png');
         background-repeat: no-repeat;
         background-size: 1.2rem;
         padding-left: 3rem;

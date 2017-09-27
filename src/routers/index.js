@@ -9,9 +9,11 @@ import mine from './mine'
 Vue.use(Router)
 const router = new Router({
   routes: [{
+    name: "home",
     path: '/',
     redirect: '/home'
   }, {
+    name: "home",
     path: '/home',
     component(resolve) {
       require.ensure([], () => resolve(require('../pages/home/home.vue')), 'home')
@@ -25,7 +27,8 @@ const router = new Router({
 
 //制作权限控制
 router.beforeEach((to, from, next) => {
-  store.state.common.hasFooter = to.meta.hasFooter;
+  store.commit('SHOW_FOOTER', to.meta.hasFooter);
+  store.commit('IS_HOME', to.name == 'home');
   next()
 })
 Router.prototype.goBack = function(path) {
