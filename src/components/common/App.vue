@@ -1,7 +1,27 @@
 <template>
-  <section v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" class="child-view scroll-content" id="scroll-content">
+ <section>
+   <section v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" class="child-view scroll-content" id="scroll-content">
     <router-view> </router-view>
+    <!-- 底部导航 -->
   </section>
+   <transition name="slideInUp">
+      <mt-tabbar v-show="$store.state.common.hasFooter" v-model="selected">
+        <mt-tab-item id="1">
+          <img v-bind:class="[selected == '1' ?'bounceIn':'']" class="animated icon_tabs" slot="icon" :src="selected == '1'?'static/img/common/e-active.png':'static/img/common/e.png'" /> 外卖
+        </mt-tab-item>
+        <mt-tab-item id="2">
+          <img slot="icon" v-bind:class="[selected == '2' ?'bounceIn':'']" class="animated icon_tabs" :src="selected == '2'?'static/img/common/compass-active.png':'static/img/common/compass.png'" /> 发现
+        </mt-tab-item>
+        <mt-tab-item id="3">
+          <img slot="icon" :src="selected == '3'?'static/img/common/order-active.png':'static/img/common/order.png'" v-bind:class="[selected == '3' ?'bounceIn':'']" class="animated icon_tabs" /> 订单
+        </mt-tab-item>
+        <mt-tab-item id="4">
+          <img slot="icon" :src="selected == '4'?'static/img/common/user-active.png':'static/img/common/user.png'" v-bind:class="[selected == '4' ?'bounceIn':'']" class="animated icon_tabs" /> 我的
+        </mt-tab-item>
+      </mt-tabbar>
+    </transition>
+ </section>
+
 </template>
 
 <script>
