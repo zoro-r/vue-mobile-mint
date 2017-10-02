@@ -5,7 +5,8 @@
     path: 'home',
     component: home,
     meta: {
-      hasFooter: true
+      hasFooter: true,
+      noScroll: true
     },
     children: []
   }]

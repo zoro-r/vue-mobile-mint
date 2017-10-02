@@ -1,9 +1,7 @@
 <template>
   <section id="main">
     <!-- 跟路由 -->
-    <navigation>
       <router-view style="min-height:100vh"></router-view>
-    </navigation>
   </section>
 </template>
 <script>

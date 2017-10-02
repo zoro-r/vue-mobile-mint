@@ -1,6 +1,6 @@
 <template>
   <section>
-    <section v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" class="child-view scroll-content" id="scroll-content">
+    <section v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll && !$store.state.common.noScroll? 'auto':'hidden'}" class="child-view scroll-content" id="scroll-content">
       <router-view> </router-view>
       <!-- 底部导航 -->
     </section>
@@ -50,7 +50,7 @@ export default {
     },
     selected(newVal, oldVal) {
       this.$store.commit('TAB_SELECTED', newVal)
-      this.savePositon()
+      // this.savePositon()
       // let routerMap = {
       //   "1": "mainHome",
       //   "2": "mainHome",
@@ -61,7 +61,7 @@ export default {
       // this.savePositon(oldVal)
       this.$router.currentRoute.name !== 'home' && this.$router.push({ name: "home" })
       // setTimeout(() => {
-        this.toPositon(oldVal)
+      // this.toPositon(oldVal)
       // }, 100);
     }
   },

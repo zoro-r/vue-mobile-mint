@@ -10,7 +10,9 @@ const types = {
   //底部导航tab显示
   TAB_SELECTED: "TAB_SELECTED",
   //判断是否是home页面
-  IS_HOME: "IS_HOME"
+  IS_HOME: "IS_HOME",
+  //判断页面是否允许滚动
+  NO_SCROLL: "NO_SCROLL"
 }
 
 const state = {
@@ -20,7 +22,8 @@ const state = {
   },
   hasFooter: true,
   tabSelected: 1,
-  isHome: true
+  isHome: true,
+  noScroll: false
 }
 
 const getters = {
@@ -54,9 +57,14 @@ const mutations = {
   //切换显示
   [types.TAB_SELECTED](state, params) {
     state.tabSelected = params;
-  }, //切换显示
+  },
+  //切换显示
   [types.IS_HOME](state, params) {
     state.isHome = params;
+  },
+  //切换显示
+  [types.NO_SCROLL](state, params) {
+    state.noScroll = params;
   }
 }
 

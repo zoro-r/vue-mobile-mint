@@ -29,9 +29,10 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   store.commit('SHOW_FOOTER', to.meta.hasFooter);
   store.commit('IS_HOME', to.name == 'home');
+  store.commit('NO_SCROLL', to.meta.nScroll);
   next()
 })
-Router.prototype.goBack = function(path) {
+Router.prototype.goBack = function (path) {
   this.isBack = true
   if (typeof path == 'string') {
     router.push(path)

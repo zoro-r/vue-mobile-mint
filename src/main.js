@@ -25,10 +25,14 @@ import utils from './utils'
 // import 'vue-awesome/icons'
 import VueLazyImage from "vue-lazy-images";
 Vue.use(VueLazyImage)
-  /* Register component with one of 2 methods */
-  // import Icon from 'vue-awesome/components/Icon'
 Vue.use(MintUI)
-
+//引入swiper滑动组件
+require('swiper/dist/css/swiper.css')
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+Vue.use(VueAwesomeSwiper)
+//页面级别组件
+import page from './components/common/Page.vue'
+Vue.use('page', page)
 /**引入图标库 太大暂时不引入*/
 // Vue.component('icon', Icon)
 window.Vue = Vue
@@ -45,6 +49,8 @@ Vue.use(Navigation, {
   keyName: 'RH',
   id: "scroll-content"
 })
+// Vue.use(vueg, router)
+
 Vue.mixin({
   data() {
     return {
@@ -66,10 +72,9 @@ Vue.mixin({
     }
   }
 })
-
-if (window.navigator.platform == 'iPh1one') {
+if (window.navigator.platform == 'iPhone') {
   //移动端组件---------------------start---------------------
-  document.addEventListener('deviceready', function() {
+  document.addEventListener('deviceready', function () {
     new Vue({
       el: '#app',
       router,
@@ -98,7 +103,7 @@ if (window.navigator.platform == 'iPh1one') {
   })
 }
 
-window.addEventListener('statusTap', function() {
+window.addEventListener('statusTap', function () {
   // scroll-up with document.body.scrollTop = 0; or do whatever you want
   document.getElementsByClassName("child-view")[0].body.scrollTop = 0;
   console.log("我点击的statusTap")
