@@ -64,7 +64,7 @@ export default {
     ['$store.state.common.popObj.searchPop'](newVal) {
       newVal && setTimeout(() => {
         this.$refs.input.focus()
-      }, 100);;
+      }, 300);;
     }
   },
   mounted() {
