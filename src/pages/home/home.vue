@@ -24,12 +24,12 @@
       </transition>
       <transition :name="$parent.transitionName">
         <section v-show="$parent.selected == 2" class="tab_item_page scroll_content">
-          <orderCom></orderCom>
+          <searchCom></searchCom>
         </section>
       </transition>
       <transition :name="$parent.transitionName">
         <section v-show="$parent.selected == 3" class="tab_item_page scroll_content">
-          <searchCom></searchCom>
+          <orderCom></orderCom>
         </section>
       </transition>
       <transition :name="$parent.transitionName">

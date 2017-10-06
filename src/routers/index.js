@@ -19,7 +19,8 @@ const router = new Router({
       require.ensure([], () => resolve(require('../pages/home/home.vue')), 'home')
     },
     meta: {
-      hasFooter: true
+      hasFooter: true,
+      noScroll: true
     },
     children: [...main, ...mine]
   }]
@@ -27,9 +28,10 @@ const router = new Router({
 
 //制作权限控制
 router.beforeEach((to, from, next) => {
+  console.log(to)
   store.commit('SHOW_FOOTER', to.meta.hasFooter);
   store.commit('IS_HOME', to.name == 'home');
-  store.commit('NO_SCROLL', to.meta.nScroll);
+  store.commit('NO_SCROLL', to ? to.meta.noScroll : true);
   next()
 })
 Router.prototype.goBack = function (path) {

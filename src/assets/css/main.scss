@@ -145,17 +145,23 @@
   }
 
   .scroll_content {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-    will-change: scroll-position;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      will-change: scroll-position;
   }
 
   ; //------------------------函数生产区域
-  @for $i from 8 through 18 {
+  @for $i from 8 through 25 {
       .fn-#{$i} {
           font-size: .1rem * $i;
           font-weight: 100*($i - 7)
+      }
+  }
+
+  @for $i from 1 through 8 {
+      .fw-#{$i} {
+          font-weight: 100*$i
       }
   }
 
@@ -176,4 +182,9 @@
       h#{$i} {
           margin: 0px;
       }
+  }
+
+  //-----------------------------设置字体颜色区域---------------------
+  .fn-c-memo-light {
+      color: $memo-color-light;
   }

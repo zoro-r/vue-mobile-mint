@@ -1,24 +1,63 @@
 <template>
-  <section>
-    <mt-button @click="hide" type="default">显示隐藏订单页面</mt-button>
+  <section class="orderHome">
+    <mt-header class="primary_bg" title="发现" style="position: sticky;top: 0px;">
+    </mt-header>
+    <div class="order_content">
+      <div style="margin-top:10px;background:white" v-for="(item,index) in list" :key="index">
+        <orderItem :value="item"></orderItem>
+      </div>
+    </div>
   </section>
 </template>
 <script type="text/babel">
 export default {
   name: "mineHome",
+  components: {
+    orderItem: r => { require(['./components/orderItem'], r) },
+  },
   data() {
     return {
+      list: [
+        {
+          title: "艾比克（明珠广场店）",
+          content: "招牌卤肉-招牌卤肉等两件商品",
+          img: require('../../assets/img/order/1.jpeg'),
+          color: "rgb(255, 151, 0)"
+        }, {
+          title: "西城港式创意茶餐厅",
+          content: "最夯外卖指南",
+          img: require('../../assets/img/order/2.jpeg'),
+          color: "rgb(245, 120, 93)"
+        }, {
+          title: "大唐酸菜鱼",
+          content: "5元现金拿不停",
+          img: require('../../assets/img/order/3.png'),
+          color: "rgb(27, 169, 225)"
+        }, {
+          title: "土耳其烤肉饭",
+          content: "领取口碑好卷",
+          img: require('../../assets/img/order/4.png'),
+          color: "rgb(245, 120, 93)"
+        }, {
+          title: "老盛昌（三林店）",
+          content: "领取口碑好卷",
+          img: require('../../assets/img/order/5.png'),
+          color: "rgb(245, 120, 93)"
+        }
+      ]
     };
-  },
-  components: {
   },
   methods: {
     hide() {
-      this.$store.commit('SHOW_FOOTER', !this.$store.state.common.hasFooter)
     }
   }
 };
 </script>
 <style lang='scss'>
-.mineHome {}
+@import 'src/assets/css/vars.scss';
+.orderHome {
+  .primary_bg{
+    z-index: 20140202;
+  }
+}
 </style>
