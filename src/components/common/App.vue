@@ -28,7 +28,7 @@ export default {
   name: 'app',
   data() {
     return {
-      selected: "3",
+      selected: "1",
       isScroll: true,
       transitionName: "slideInRight",
       showHome: false,

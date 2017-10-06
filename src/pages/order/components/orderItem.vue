@@ -4,8 +4,8 @@
       <div class="shop_header">
         <img :src="value.img" alt="">
         <div class="shop_text">
-          <h2 class="fn-16 fw-2">
-            {{value.title}}
+          <h2 class="fn-15 fw-2">
+            <span> {{value.title}}</span>
             <img src="../../../../static/img/icon/right.png" alt="">
           </h2>
           <span class="fn-c-memo-light">2017.11.23</span>
@@ -60,15 +60,14 @@ export default {
     align-items: center;
     min-height: 50px;
     display: flex;
-    justify-content: space-between;
-    // border-bottom: .5px solid #e5e5e5;
-    box-shadow: 0 0 1px rgba(0,0,0,.11);
+    justify-content: space-between; // border-bottom: .5px solid #e5e5e5;
+    box-shadow: 0 0 1px rgba(0, 0, 0, .11);
     .shop_header {
       flex: 2;
       display: flex;
       align-items: center;
       .shop_text {
-        width: calc(100% - 83px);
+        width: calc(100% - 103px);
         span {
           overflow: hidden;
           white-space: nowrap;
@@ -77,16 +76,27 @@ export default {
         h2 {
           width: 100%;
           white-space: nowrap;
-          text-overflow: ellipsis;
-          overflow: hidden;
+          text-overflow: ellipsis; // overflow: hidden;
           position: relative;
           display: flex;
           align-items: center;
+          // &::after {
+          //   background-image: url('../../../../static/img/icon/right.png');
+          //   content: "";
+          //   display: block;
+          //   height: 15px;
+          //   width: 15px;
+          //   position: absolute;
+          //   right: -24px;
+          //   top: 4px;
+          //   background-size: 15px 15px;
+          // }
           img {
             height: 15px;
             width: 15px; // top: -5px;
             // right: -15px;
             // position: absolute;
+            margin: 5px;
           }
         }
       }
@@ -96,7 +106,7 @@ export default {
       }
     }
     .order_state {
-      flex: .5; // flex: 0 0 100px;
+      flex: .6; // flex: 0 0 100px;
       display: flex;
       align-items: center;
     }

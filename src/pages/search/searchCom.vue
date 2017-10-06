@@ -5,8 +5,8 @@
     <div class="order_cell row">
       <div v-for="(item,index) in list" :key="index" class="col">
         <div class="col_item">
-          <h2 class="fn-18" v-bind:style="{color:item.color}">{{item.title}}</h2>
-          <span>{{item.content}}</span>
+          <h2 class="fn-16" v-bind:style="{color:item.color}">{{item.title}}</h2>
+          <span class="fn-12">{{item.content}}</span>
         </div>
         <img :src="item.img" />
       </div>
@@ -82,7 +82,7 @@ export default {
       .col_item {
         display: flex;
         flex-direction: column;
-        padding: 12px;
+        padding-left: 1rem;
         span {
           margin-top: 3px;
           color: $memo-color-light;
@@ -90,9 +90,9 @@ export default {
       }
       img {
         flex-shrink: 0;
-        width: 45px; //
-        height: 45px;
-        margin: 10px;
+        width: 40px; //
+        height: 40px;
+        margin-right: 10px;
       }
     }
   }

@@ -7,7 +7,7 @@
           <img v-if="type==1" src="../../../assets/img/mine/zan.png" />
           <img v-if="type==2" src="../../../assets/img/mine/pen.png" />
           <img v-if="type==3" src="../../../assets/img/mine/clock.png" />
-          <h3 class="fn-17">{{label}}</h3>
+          <h3 class="fn-15">{{label}}</h3>
         </div>
         <span class="line"></span>
       </div>
