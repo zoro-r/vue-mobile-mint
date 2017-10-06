@@ -72,7 +72,7 @@ Vue.mixin({
     }
   }
 })
-if (window.navigator.platform == 'iPhone') {
+if (window.navigator.platform == 'iPh2one') {
   //移动端组件---------------------start---------------------
   document.addEventListener('deviceready', function () {
     new Vue({
