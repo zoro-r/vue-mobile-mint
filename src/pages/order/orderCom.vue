@@ -1,6 +1,6 @@
 <template>
   <section class="orderHome">
-    <mt-header class="primary_bg" title="发现" style="position: sticky;top: 0px;">
+    <mt-header class="primary_bg" title="订单" style="position: sticky;top: 0px;">
     </mt-header>
     <div class="order_content">
       <div style="margin-top:10px;background:white" v-for="(item,index) in list" :key="index">
