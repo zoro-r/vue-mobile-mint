@@ -68,7 +68,7 @@ Vue.mixin({
     },
     //返回首页
     toHome() {
-      router.goBack("/home")
+      router.goBack("/baseHome")
     }
   }
 })

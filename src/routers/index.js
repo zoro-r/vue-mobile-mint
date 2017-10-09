@@ -9,14 +9,14 @@ import mine from './mine'
 Vue.use(Router)
 const router = new Router({
   routes: [{
-    name: "home",
+    name: "baseHome",
     path: '/',
-    redirect: '/home'
+    redirect: '/baseHome'
   }, {
-    name: "home",
-    path: '/home',
+    name: "baseHome",
+    path: '/baseHome',
     component(resolve) {
-      require.ensure([], () => resolve(require('../pages/home/home.vue')), 'home')
+      require.ensure([], () => resolve(require('../pages/home/BaseHome.vue')), 'baseHome')
     },
     meta: {
       hasFooter: true,
@@ -29,8 +29,11 @@ const router = new Router({
 //制作权限控制
 router.beforeEach((to, from, next) => {
   console.log(to)
+  //是否显示底部导航
   store.commit('SHOW_FOOTER', to.meta.hasFooter);
-  store.commit('IS_HOME', to.name == 'home');
+  //判断是否为baseHome页面
+  store.commit('IS_HOME', to.name == 'baseHome');
+  //页面是否需要滚动
   store.commit('NO_SCROLL', to ? to.meta.noScroll : true);
   next()
 })

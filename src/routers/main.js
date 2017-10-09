@@ -1,7 +1,7 @@
   //例子父路由
-  const main = r => require.ensure([], () => r(require('../pages/main/main.vue')), 'main');
-  const shopList = r => require.ensure([], () => r(require('../pages/main/shopList.vue')), 'shopList');
-  const shopDetail = r => require.ensure([], () => r(require('../pages/main/shopDetail.vue')), 'shopDetail');
+  const main = r => require.ensure([], () => r(require('../pages/main/Main.vue')), 'Main');
+  const shopList = r => require.ensure([], () => r(require('../pages/main/ShopList.vue')), 'ShopList');
+  const shopDetail = r => require.ensure([], () => r(require('../pages/main/ShopDetail.vue')), 'ShopDetail');
   // 例子首页
   export default [{
     name: 'main',

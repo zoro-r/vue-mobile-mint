@@ -1,9 +1,9 @@
   //例子父路由
-  const mine = r => require.ensure([], () => r(require('../pages/mine/mine.vue')), 'mine')
+  const Mine = r => require.ensure([], () => r(require('../pages/mine/Mine.vue')), 'Mine')
     // 例子首页
   export default [{
     name: 'mine',
     path: 'mine',
-    component: mine,
+    component: Mine,
     children: []
   }]
