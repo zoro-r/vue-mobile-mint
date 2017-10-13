@@ -21,3 +21,31 @@ $second-button-color-end:#FF4944;
 $primary-bg-color:rgb(245, 245, 245); //基础颜色
 // 定义数组
 $bgcolorList: ('.shou':rgb(240, 115, 115), '.jian':rgb(112, 188, 70), '.te':rgb(241, 136, 79), '.zeng':rgb(60, 199, 145));
+//定义基础变量
+$fn-hg:16px;
+$fn-lg:15px;
+$fn-md:14px;
+$fn-sm:12px;
+$fn-tn:11px;
+$mg-hg:20px;
+$mg-lg:16px;
+$mg-md:10px;
+$mg-sm:6px;
+$mg-tn:2px;
+$pd-hg:20px;
+$pd-lg:16px;
+$pd-md:10px;
+$pd-sm:6px;
+$pd-tn:2px;
+//设计规范颜色
+$primary-color:#3399FF; //大面积使用，用于特别需要强调Icon、文字超链
+$emphasize-color:#7a7e83; //小面积使用，用于特别需要强调和突出的文字
+$warning-color:#F86365; //小面积使用，用于警示性突出的文字
+$title-color: #303030; //用于重要级文字信息，标题文字
+$description-color:#999999; //用于辅助、次要的文字信息
+$description-color-light:#CCCCCC; //用于弱文字信息的辅助文字信息
+$divider-color:#E5E5E5; //用于分割线
+$bg-color: #F0EFF5; //用于底色
+$white-color: #FFFFFF; //白色
+//-----------
+$primary-green:#4CD964;

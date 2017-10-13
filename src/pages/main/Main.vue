@@ -1,6 +1,6 @@
 <template>
   <section id="main">
-    <!-- 跟路由 -->
+    <!-- 跟路由 v-bind:style="{'min-height':screenHeight + 'px'}"-->
     <router-view style="min-height:100vh"></router-view>
   </section>
 </template>

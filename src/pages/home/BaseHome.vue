@@ -1,23 +1,15 @@
 <template>
   <section class="main_page">
     <!-- 子页面 -->
-    <transition :name="'slideInRight'">
+    <transition :name="transitionName">
       <navigation>
-        <router-view style="min-height:600px"></router-view>
+        <router-view style="min-height:100vh;transition: all .3s ease-out;"></router-view>
       </navigation>
     </transition>
     <!-- 模块区域 -->
     <!-- v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" class="child-view scroll_content" -->
-    <transition name="slideInUp">
+    <transition name="slideInRight">
       <section v-show="$store.state.common.isHome" v-bind:style="{height:screenHeight - 55 +'px'}">
-        <!-- <swiper :options="swiperOption">
-                      <swiper-slide>
-                        <div class="dsadasds">
-                          <mainCom></mainCom>
-                        </div>
-                      </swiper-slide>
-                      <swiper-slide>Slide 2</swiper-slide>
-                    </swiper> -->
         <transition :name="$parent.transitionName">
           <section v-show="$parent.selected == 1" class="tab_item_page scroll_content">
             <MainCom />
@@ -62,6 +54,7 @@ export default {
         //   shadowScale: 0.94
         // }
       },
+      transitionName: 'slide-left',
       isScroll: true,
       // $parent.transitionName: "slideInRight",
       showHome: false
@@ -82,8 +75,16 @@ export default {
   },
   methods: {
   },
-  created() {
-  }
+  beforeRouteUpdate(to, from, next) {
+    let isBack = this.$router.isBack
+    if (isBack) {
+      this.transitionName = 'slide-right'
+    } else {
+      this.transitionName = 'slide-left'
+    }
+    this.$router.isBack = false
+    next()
+  },
 }
 </script>
 <style rel="stylesheet/scss" lang="scss" >

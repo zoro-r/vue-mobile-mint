@@ -1,6 +1,6 @@
 <template>
   <section class="mineCom">
-    <mt-header class="primary_bg" title="我的" style="position: sticky;top: 0px;">
+    <mt-header class="primary_bg" title="我的" style="position: sticky;top: 0px;" :fixed="true">
       <mt-button slot="left">
         <img src="static/img/icon/reminder.png" style="width:17px" alt="">
       </mt-button>

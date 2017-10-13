@@ -1,6 +1,6 @@
 <template>
   <section class="searchHome">
-    <mt-header class="primary_bg" title="发现" style="position: sticky;top: 0px;">
+    <mt-header class="primary_bg" title="发现" style="position: sticky;top: 0px;"  :fixed="true">
     </mt-header>
     <div class="order_cell row">
       <div v-for="(item,index) in list" :key="index" class="col">

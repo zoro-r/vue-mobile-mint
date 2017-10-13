@@ -1,6 +1,6 @@
 @import './animates.css';
 @import './mixin.scss';
-$aniList: (slideInUp:slideOutDown, slideInRight:slideOutLeft, slideInLeft:slideOutRight);
+$aniList: (slideInUp:slideOutDown, slideInRight:slideOutLeft, slideInLeft:slideOutRight, bounceInLeft:bounceOutRight);
 //生成动画
 @each $name,
 $value in $aniList {
@@ -12,21 +12,24 @@ $value in $aniList {
   }
 }
 
-// //slideDown
-// .slideDown-enter-active {
-//   animation-name: slideInUp;
-//   animation-duration: $aniTime;
-// }
-// .slideDown-leave-active {
-//   animation-name: slideOutDown;
-//   animation-duration: .6s;
-// }
-// //slideLeft
-// .slideDown-enter-active {
-//   animation-name: slideInUp;
-//   animation-duration: .6s;
-// }
-// .slideDown-leave-active {
-//   animation-name: slideOutDown;
-//   animation-duration: .6s;
-// }
+.pageInRight-enter-active {
+  @include ani-block(slideInRight);
+}
+
+.pageInRight-leave-active {
+  @include ani-block(slideOutRight);
+}
+
+.slide-left-enter,
+.slide-right-leave-active {
+  opacity: 0;
+  -webkit-transform: translate(50px, 0);
+  transform: translate(50px, 0);
+}
+
+.slide-left-leave-active,
+.slide-right-enter {
+  opacity: 0;
+  -webkit-transform: translate(-50px, 0);
+  transform: translate(-50px, 0);
+}

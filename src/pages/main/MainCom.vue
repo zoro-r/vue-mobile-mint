@@ -92,9 +92,9 @@ export default {
     /**
      * 跳转商家列表
      */
-    toShopList(item) {
+    toShopDetail(item) {
       console.log("商家列表", item);
-      this.$router.push({ name: "shopList" })
+      this.$router.push({ name: "shopDetail" })
     },
     /**
     * 显示地址

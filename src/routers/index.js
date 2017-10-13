@@ -22,7 +22,17 @@ const router = new Router({
       hasFooter: true,
       noScroll: true
     },
-    children: [...main, ...mine]
+    children: [...main, ...mine, ...[{
+      name: "demo",
+      path: 'demo',
+      component(resolve) {
+        require.ensure([], () => resolve(require('../pages/demo/Demo.vue')), 'Demo')
+      },
+      meta: {
+        hasFooter: true,
+        noScroll: true
+      }
+    }]]
   }]
 })
 
