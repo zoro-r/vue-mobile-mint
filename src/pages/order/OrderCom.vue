@@ -1,13 +1,13 @@
 <template>
-  <section class="orderCom">
-    <mt-header class="primary_bg" title="订单" style="position: sticky;top: 0px;"  :fixed="true">
+  <page class="orderCom">
+    <mt-header slot="header" class="primary_bg" title="订单" :fixed="true">
     </mt-header>
-    <div class="order_content">
+    <div slot="content" class="order_content has-header">
       <div style="margin-top:10px;background:white" v-for="(item,index) in list" :key="index">
         <OrderItem :value="item" />
       </div>
     </div>
-  </section>
+  </page>
 </template>
 <script type="text/babel">
 export default {

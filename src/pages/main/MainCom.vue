@@ -1,70 +1,72 @@
 <template>
-  <section class="mainHome">
-    <section class="heard_card primary_mg primary_bg primary_flex_center fn-17">
-      <div @click="showLocation" class="index_left">
-        <img class="icon-18" src="static/img/icon/location.png" />
-        <span class="fn-16">闵行区浦江第一中学(浦锦路西50米)</span>
-        <img class="icon-10" src="static/img/icon/down-w.png" />
-      </div>
-      <aside class="index_right">
-        <div>
-          <h2>20.2°</h2>
-          <p>晴夜</p>
+  <page class="mainHome">
+    <div slot="content">
+      <section v-bind:style="{'margin-bottom':isMobile?'-18px':''}" class="platfrom-header heard_card primary_mg primary_bg primary_flex_center fn-17">
+        <div @click="showLocation" class="index_left">
+          <img class="icon-18" src="static/img/icon/location.png" />
+          <span class="fn-16">闵行区浦江第一中学(浦锦路西50米)</span>
+          <img class="icon-10" src="static/img/icon/down-w.png" />
         </div>
-        <!-- <lazy-image :src="'static/img/dark.png'" :placeholder="loaddingImg" /> -->
-        <img src="static/img/dark.png" alt="">
-      </aside>
-    </section>
-    <!-- <section style="min-height:3.5rem"> -->
-    <!-- <affix> -->
-    <section class="primary_bg input_box primary_flex_center search primary_mg" style="height:4rem;z-index:10;top:0px">
-      <div @click="showSearch" class="ipt_item primary_flex_center fn-12">
-        <img class="icon-10" src="static/img/icon/search.png" />&nbsp;&nbsp;搜索商家，商家名称
-      </div>
-    </section>
-    <!-- </affix> -->
-    <!-- </section> -->
-    <section class="primary_bg primary_mg_hor" style="height:0px;overflow:hidden;height:35px;">
-      <div style="overflow-x: scroll;white-space: nowrap;position:relative;height:45px">
-        <div class="input_box primary_flex_center scrllX fn-13" style="padding:0px;height:35px;">
-          <a v-for="item in tipList" :key="item">{{item}}</a>
-        </div>
-      </div>
-    </section>
-    <section class="primary_bg_white" style="height:175px;">
-      <mt-swipe :auto="0" height="100%">
-        <mt-swipe-item v-for="(item,index) in menuList" :key="index">
-          <div class="row">
-            <div class="col col_item" v-for="(it,index1) in item" :key="index1">
-              <div>
-                <!-- <span>{{it.img}}</span> -->
-                <!-- <img v-bind:src="it.img" /> -->
-                <lazy-image :src="it.img" :placeholder="loaddingImg" />
-              </div>
-              <span>{{it.text}}</span>
-            </div>
+        <aside class="index_right">
+          <div>
+            <h2>20.2°</h2>
+            <p>晴夜</p>
           </div>
-        </mt-swipe-item>
-      </mt-swipe>
-    </section>
-    <!-- 商家广告区域 -->
-    <shopAds></shopAds>
-    <!-- 商家列表 -->
-    <section class="shopList primary_bg_white">
-      <div class="primary_mg">
-        <span class="title ">推荐商家</span>
-      </div>
-      <div>
-        <shopItem v-for="(item,index) in shopList" :key="index"></shopItem>
-      </div>
-    </section>
-    <section class="footer_line">我是有底线了</section>
-  </section>
+          <!-- <lazy-image :src="'static/img/dark.png'" :placeholder="loaddingImg" /> -->
+          <img src="static/img/dark.png" alt="">
+        </aside>
+      </section>
+      <!-- <section style="min-height:3.5rem"> -->
+      <!-- <affix> -->
+      <section v-bind:style="{height:isMobile?'6rem':'4rem'}" class="primary_bg float-header input_box primary_flex_center search primary_mg" style="z-index:10;top:0px">
+        <div @click="showSearch" class="ipt_item primary_flex_center fn-12">
+          <img class="icon-10" src="static/img/icon/search.png" />&nbsp;&nbsp;搜索商家，商家名称
+        </div>
+      </section>
+      <!-- </affix> -->
+      <!-- </section> -->
+      <section class="primary_bg primary_mg_hor" style="height:0px;overflow:hidden;height:35px;">
+        <div style="overflow-x: scroll;white-space: nowrap;position:relative;height:45px">
+          <div class="input_box primary_flex_center scrllX fn-13" style="padding:0px;height:35px;">
+            <a v-for="item in tipList" :key="item">{{item}}</a>
+          </div>
+        </div>
+      </section>
+      <section class="primary_bg_white" style="height:175px;">
+        <mt-swipe :auto="0" height="100%">
+          <mt-swipe-item v-for="(item,index) in menuList" :key="index">
+            <div class="row">
+              <div class="col col_item" v-for="(it,index1) in item" :key="index1">
+                <div>
+                  <!-- <span>{{it.img}}</span> -->
+                  <!-- <img v-bind:src="it.img" /> -->
+                  <lazy-image :src="it.img" :placeholder="loaddingImg" />
+                </div>
+                <span>{{it.text}}</span>
+              </div>
+            </div>
+          </mt-swipe-item>
+        </mt-swipe>
+      </section>
+      <!-- 商家广告区域 -->
+      <shopAds></shopAds>
+      <!-- 商家列表 -->
+      <section class="shopList primary_bg_white">
+        <div class="primary_mg">
+          <span class="title ">推荐商家</span>
+        </div>
+        <div>
+          <shopItem v-for="(item,index) in shopList" :key="index"></shopItem>
+        </div>
+      </section>
+      <section class="footer_line">我是有底线了</section>
+    </div>
+  </page>
 </template>
 <script type="text/babel">
 import menuList from '../../assets/data/homeItem'
 export default {
-  name:"MainCom",
+  name: "MainCom",
   data() {
     return {
       menuList: menuList,
@@ -193,6 +195,9 @@ export default {
     height: auto;
     color: rgb(255, 255, 255);
     justify-content: space-between;
+    padding-bottom: 0px;
+    position: relative;
+    z-index: 20;
     .index_left {
       align-items: center;
       height: 3rem;

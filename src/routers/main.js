@@ -9,25 +9,25 @@ export default [{
   name: 'main',
   path: 'main',
   component: main,
-  children: [{
-    name: 'shopList',
-    path: 'shopList',
-    component: shopList,
-  }, {
-    name: 'shopDetail',
-    path: 'shopDetail',
-    component: shopDetail,
-    meta: {
-      hasFooter: false,
-      noScroll: true
-    }
-  }, {
-    name: 'shopPay',
-    path: 'shopPay',
-    component: shopPay,
-    meta: {
-      hasFooter: false,
-      noScroll: true
-    }
-  }]
+  children: []
+}, {
+  name: 'shopList',
+  path: 'shopList',
+  component: shopList,
+}, {
+  name: 'shopDetail',
+  path: 'shopDetail',
+  component: shopDetail,
+  meta: {
+    hasFooter: false,
+    noScroll: true
+  }
+}, {
+  name: 'shopPay',
+  path: 'shopPay',
+  component: shopPay,
+  meta: {
+    hasFooter: false,
+    noScroll: true
+  }
 }]

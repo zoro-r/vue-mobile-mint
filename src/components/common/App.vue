@@ -1,6 +1,7 @@
 <template>
-  <section>
-    <section v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll && !$store.state.common.noScroll? 'auto':'hidden'}" class="child-view scroll-content" id="scroll-content">
+  <section v-bind:class="isMobile?'platfrom-ios':''">
+    <!-- v-bind:style="{'overflow-y':isScroll && !$store.state.common.noScroll? 'hidden':'hidden'}" -->
+    <section v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" class="child-view scroll-content" id="scroll-content">
       <router-view> </router-view>
       <!-- 底部导航 -->
     </section>
@@ -97,17 +98,16 @@ export default {
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   will-change: scroll-position;
-  contain: size style layout;
-  &::before {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    content: "";
-    bottom: -1px;
-  }
-  &::after {
-    top: -1px;
-  }
+  contain: size style layout; // &::before {
+  //   position: absolute;
+  //   width: 1px;
+  //   height: 1px;
+  //   content: "";
+  //   bottom: -1px;
+  // }
+  // &::after {
+  //   top: -1px;
+  // }
 }
 </style>
 

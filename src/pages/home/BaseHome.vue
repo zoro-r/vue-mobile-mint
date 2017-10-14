@@ -1,5 +1,13 @@
 <template>
   <section class="main_page">
+    <!-- <mt-header style="-webkit-transform: translateZ(0)" slot="header" class="primary_bg" title="我的" :fixed="true">
+          <mt-button slot="left">
+            <img src="static/img/icon/reminder.png" style="width:17px" alt="">
+          </mt-button>
+          <mt-button slot="right">
+            <img src="static/img/icon/set.png" style="width:20px" alt="">
+          </mt-button>
+        </mt-header> -->
     <!-- 子页面 -->
     <transition :name="transitionName">
       <navigation>
@@ -11,22 +19,22 @@
     <transition name="slideInRight">
       <section v-show="$store.state.common.isHome" v-bind:style="{height:screenHeight - 55 +'px'}">
         <transition :name="$parent.transitionName">
-          <section v-show="$parent.selected == 1" class="tab_item_page scroll_content">
+          <section v-show="$parent.selected == 1" class="tab_item_page ">
             <MainCom />
           </section>
         </transition>
         <transition :name="$parent.transitionName">
-          <section v-show="$parent.selected == 2" class="tab_item_page scroll_content">
+          <section v-show="$parent.selected == 2" class="tab_item_page ">
             <SearchCom />
           </section>
         </transition>
         <transition :name="$parent.transitionName">
-          <section v-show="$parent.selected == 3" class="tab_item_page scroll_content">
+          <section v-show="$parent.selected == 3" class="tab_item_page ">
             <OrderCom />
           </section>
         </transition>
         <transition :name="$parent.transitionName">
-          <section v-show="$parent.selected == 4" class="tab_item_page scroll_content">
+          <section v-show="$parent.selected == 4" class="tab_item_page ">
             <MineCom/>
           </section>
         </transition>

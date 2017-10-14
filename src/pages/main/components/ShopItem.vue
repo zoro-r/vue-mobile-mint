@@ -1,5 +1,5 @@
 <template>
-  <section @click="$parent.toShopDetail(231312)" class="shopItem primary_mg">
+  <section @click="$parent.$parent.toShopDetail(231312)" class="shopItem primary_mg">
     <section class="left">
       <lazy-image :src="'static/img/shop/2.jpeg'" :placeholder="loaddingImg" />
     </section>

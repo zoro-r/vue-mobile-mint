@@ -129,6 +129,10 @@
     padding-bottom: 1rem; // bottom: 4.5rem!important;
   }
 
+  .has-header {
+    margin-top: 39px; // padding-bottom: 6rem;
+  }
+
   .transition_3 {
     transition: all ease .3s
   }
@@ -150,10 +154,6 @@
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     will-change: scroll-position;
-  }
-
-  .mint-header {
-    z-index: 20140920;
   }
 
   ; //------------------------函数生产区域
@@ -190,4 +190,20 @@
   } //-----------------------------设置字体颜色区域---------------------
   .fn-c-memo-light {
     color: $memo-color-light;
+  } //
+  .platfrom-ios {
+    .has-header {
+      margin-top: 59px; // padding-bottom: 6rem;
+    }
+    .mint-header {
+      z-index: 20140920;
+      padding-top: 20px;
+      height: 60px;
+    }
+    .platfrom-header {
+      padding-top: 20px!important
+    }
+    .float-header {
+      padding-top: 20px!important
+    }
   }

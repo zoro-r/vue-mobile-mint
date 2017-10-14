@@ -22,6 +22,7 @@ import '@/assets/lib/finger/alloy_finger.vue.js'
 import Navigation from 'vue-navigation'
 import vueScrollBehavior from './components/common/scrolleBhavior/src/vue-scroll-behavior'
 import utils from './utils'
+import Page from './components/common/Page.vue'
 // import 'vue-awesome/icons'
 import VueLazyImage from "vue-lazy-images";
 Vue.use(VueLazyImage)
@@ -31,13 +32,12 @@ require('swiper/dist/css/swiper.css')
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 Vue.use(VueAwesomeSwiper)
 //页面级别组件
-import page from './components/common/Page.vue'
-Vue.use('page', page)
 /**引入图标库 太大暂时不引入*/
 // Vue.component('icon', Icon)
 window.Vue = Vue
 window.utils = utils
 Vue.use(AlloyFingerVue)
+Vue.component('page', Page)
 Vue.config.productionTip = false
 Vue.use(vueScrollBehavior, {
   router: router
@@ -56,7 +56,8 @@ Vue.mixin({
     return {
       screenWidth: document.documentElement.clientWidth,
       screenHeight: document.documentElement.clientHeight,
-      loaddingImg: "static/img/common/loading1.gif"
+      loaddingImg: "static/img/common/loading1.gif",
+      isMobile: window.navigator.platform == 'iPhone'
     }
   },
   methods: {
@@ -73,6 +74,7 @@ Vue.mixin({
   }
 })
 if (window.navigator.platform == 'iPhone') {
+  console.log("app模式启动")
   //移动端组件---------------------start---------------------
   document.addEventListener('deviceready', function () {
     new Vue({
@@ -85,7 +87,7 @@ if (window.navigator.platform == 'iPhone') {
       }
     })
     window.navigator.splashscreen.hide();
-    StatusBar.overlaysWebView(false)
+    StatusBar.overlaysWebView(true)
     StatusBar.styleDefault();
     if (navigator.appVersion.indexOf('11') < 0) {
       //ios11 以下判断
@@ -102,7 +104,6 @@ if (window.navigator.platform == 'iPhone') {
     }
   })
 }
-
 window.addEventListener('statusTap', function () {
   // scroll-up with document.body.scrollTop = 0; or do whatever you want
   document.getElementsByClassName("child-view")[0].body.scrollTop = 0;

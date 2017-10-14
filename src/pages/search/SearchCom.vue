@@ -1,8 +1,8 @@
 <template>
-  <section class="searchHome">
-    <mt-header class="primary_bg" title="发现" style="position: sticky;top: 0px;"  :fixed="true">
+  <page class="searchHome">
+    <mt-header slot="header" class="primary_bg" title="发现" :fixed="true">
     </mt-header>
-    <div class="order_cell row">
+    <div slot="content" class="order_cell has-header row">
       <div v-for="(item,index) in list" :key="index" class="col">
         <div class="col_item">
           <h2 class="fn-16" v-bind:style="{color:item.color}">{{item.title}}</h2>
@@ -11,7 +11,7 @@
         <img :src="item.img" />
       </div>
       <div>
-        <img style="margin:5px 0px;width:100%;" src="../../assets/img/mine/5.jpeg" />
+        <img style="margin:5px 0px;width:100%;" src="../../assets/img/mine/rrr.jpeg" />
       </div>
       <div style="width:100%;">
         <SearchItem :type="1" label="美食热推" />
@@ -23,7 +23,7 @@
         <SearchItem :type="3" label="限时好礼" />
       </div>
     </div>
-  </section>
+  </page>
 </template>
 <script type="text/babel">
 export default {

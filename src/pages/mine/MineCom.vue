@@ -1,6 +1,6 @@
 <template>
-  <section class="mineCom">
-    <mt-header class="primary_bg" title="我的" style="position: sticky;top: 0px;" :fixed="true">
+  <page class="mineCom">
+    <mt-header style="-webkit-transform: translateZ(0)" slot="header" class="primary_bg" title="我的" :fixed="true">
       <mt-button slot="left">
         <img src="static/img/icon/reminder.png" style="width:17px" alt="">
       </mt-button>
@@ -8,63 +8,64 @@
         <img src="static/img/icon/set.png" style="width:20px" alt="">
       </mt-button>
     </mt-header>
-    <section class="content">
-      <section class="header primary_bg">
-        <div class="left">
-          <img src="static/img/header.jpg" alt="">
-        </div>
-        <section class="title">
-          <h3 class="fn-16">刘德华</h3>
-          <span class="fn-13">13771162599</span>
+    <div slot="content">
+      <section class="content has-header">
+        <section class="header primary_bg">
+          <div class="left">
+            <img src="static/img/header.jpg" alt="">
+          </div>
+          <section class="title">
+            <h3 class="fn-16">刘德华</h3>
+            <span class="fn-13">13771162599</span>
+          </section>
+          <div class="right">
+            <img src="static/img/icon/right-w.png" alt="">
+          </div>
         </section>
-        <div class="right">
-          <img src="static/img/icon/right-w.png" alt="">
+        <div class="content-tabs">
+          <div>
+            <h3>0.00
+              <span class="fn-10">元</span>
+            </h3>
+            <span>钱包</span>
+          </div>
+          <div>
+            <h3>1
+              <span class="fn-10">个</span>
+            </h3>
+            <span>优惠</span>
+          </div>
+          <div>
+            <h3>303
+              <span class="fn-10">分</span>
+            </h3>
+            <span>积分</span>
+          </div>
         </div>
+        <br/>
+        <section class="content-list">
+          <mt-cell is-link :title="item.title" v-for="item in list" :key="item.text">
+            <span>{{item.text}}</span>
+            <img slot="icon" :src="item.img" width="20" height="20">
+          </mt-cell>
+        </section>
       </section>
-      <div class="content-tabs">
-        <div>
-          <h3>0.00
-            <span class="fn-10">元</span>
-          </h3>
-          <span>钱包</span>
-        </div>
-        <div>
-          <h3>1
-            <span class="fn-10">个</span>
-          </h3>
-          <span>优惠</span>
-        </div>
-        <div>
-          <h3>303
-            <span class="fn-10">分</span>
-          </h3>
-          <span>积分</span>
-        </div>
-      </div>
       <br/>
       <section class="content-list">
-        <mt-cell is-link :title="item.title" v-for="item in list" :key="item.text">
+        <mt-cell is-link :title="item.title" v-for="item in list_two" :key="item.text">
           <span>{{item.text}}</span>
           <img slot="icon" :src="item.img" width="20" height="20">
         </mt-cell>
       </section>
-    </section>
-    <br/>
-    <section class="content-list">
-      <mt-cell is-link :title="item.title" v-for="item in list_two" :key="item.text">
-        <span>{{item.text}}</span>
-        <img slot="icon" :src="item.img" width="20" height="20">
-      </mt-cell>
-    </section>
-    <br/>
-    <section class="content-list">
-      <mt-cell is-link :title="item.title" v-for="item in list_three" :key="item.text">
-        <span>{{item.text}}</span>
-        <img slot="icon" :src="item.img" width="20" height="20">
-      </mt-cell>
-    </section>
-  </section>
-  </section>
+      <br/>
+      <section class="content-list">
+        <mt-cell is-link :title="item.title" v-for="item in list_three" :key="item.text">
+          <span>{{item.text}}</span>
+          <img slot="icon" :src="item.img" width="20" height="20">
+        </mt-cell>
+      </section>
+    </div>
+  </page>
 </template>
 <script type="text/babel">
 export default {

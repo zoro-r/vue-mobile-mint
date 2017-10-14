@@ -20,7 +20,7 @@ const router = new Router({
     },
     meta: {
       hasFooter: true,
-      noScroll: true
+      noScroll: false
     },
     children: [...main, ...mine, ...[{
       name: "demo",
