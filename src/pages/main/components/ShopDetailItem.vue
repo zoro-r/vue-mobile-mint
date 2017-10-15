@@ -36,9 +36,9 @@ export default {
   },
   data() {
     return {
-      scrollHeight: 10,
+      scrollHeight: (this.isMobile ? 20 : 32),
       scroll_right: [],
-      list_left: ['红包', '汉堡小子', '汉堡类', '养生粥', '小吃类', '手抓饼', '奶茶类', '果汁类', '甜品类', '冰品类', '套餐类'],
+      list_left: ['红包', '汉堡小子', '汉堡类', '养生粥', '小吃类', '手抓饼', '奶茶类', '果汁类', '甜品类', '冰品类', '套餐类', '汤', '主食', '酒水', '老板娘', '川菜', '健康时蔬', '包子', '油条', '烤猪'],
       list_right: [],
       foot_index: 0,
       needChange: true
@@ -85,7 +85,15 @@ export default {
         probeType: 3,
         // scrollbar: true
       });
+      this.meunScrollL.on('scroll', (pos) => {
+        if (pos.y > 0) {
+          this.$parent.$parent._enable()
+        }
+      })
       this.meunScrollR.on('scroll', (pos) => {
+        if (pos.y > 0) {
+          this.$parent.$parent._enable()
+        }
         let top = Math.abs(parseInt(pos.y))
         for (let i = 0; i < this.scroll_right.length; i++) {
           if (top > this.scroll_right[i].top && top < this.scroll_right[i].bottom) {
@@ -145,17 +153,17 @@ export default {
 @import 'src/assets/css/vars';
 .shop_detail_item {
   .scroll {
-    color: rgb(102, 102, 102);
+    color: $emphasize-color;
     display: flex;
     .left {
       flex: 0 0 80px;
       .current {
         background: white;
-        color: rgb(102, 102, 102);
+        color: $title-color;
       }
       li {
         height: 45px;
-        color: rgb(102, 102, 102);
+        color: $emphasize-color;
         justify-content: center;
       }
     }
@@ -164,7 +172,7 @@ export default {
       flex: 1;
       .foods_item {
         min-height: 140px;
-        color: rgb(102, 102, 102);
+        color: $emphasize-color;
         padding: $pd-md;
         .title {
           display: flex;
@@ -217,10 +225,11 @@ export default {
         list-style-type: none;
         padding: 0px;
         margin: 0px;
+        padding-bottom: 10px;
         &::after {
           display: block;
           content: "";
-          height: 100px;
+          height: 110px;
         }
         li {
           font-size: $fn-md;

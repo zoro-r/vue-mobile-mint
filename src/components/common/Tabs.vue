@@ -45,7 +45,7 @@ export default {
     align-items: center;
     height: 35px;
     background: #FFF;
-    border-bottom: 2px solid #E5E5E5;
+    border-bottom: 1px solid #E5E5E5;
     .tab-item {
       text-align: center;
       padding: 0 10px;

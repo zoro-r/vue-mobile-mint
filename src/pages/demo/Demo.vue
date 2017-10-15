@@ -1,154 +1,181 @@
 <template>
   <section class="demo">
-    <mt-header class="primary_bg" title="发现" style="position: sticky;top: 0px;" :fixed="true">
+    <mt-header slot="header" v-bind:style="{'background-color': 'rgba(38, 162, 255,'+Math.abs(0)/50+')'}" :fixed="true">
+      <mt-button @click="back" slot="left" icon="back"></mt-button>
     </mt-header>
-    <div class="scroll">
-      <div class="wrapper left" ref="wrapper_left">
-        <ul class="content">
-          <li class="menu_item" v-bind:class="[foot_index == index?'current':'']" @click="toFood($event,index)" v-for="(item,index) in list_left" :key="index">{{item}}</li>
-        </ul>
+    <h2 class="title" v-bind:style="{'top':Math.abs(top)>40?'10px': 50 + top + 'px','margin-left': Math.abs(top)>40?'10%': Math.abs(top)+'px'}">江氏国际饭店</h2>
+    <div class="scroll" ref="scroll">
+      <div>
+        <ShopDetailHeader :top="top" />
+        <div class="item" v-for="(item,index) in scroll_list" :key="index">
+          {{index}}
+        </div>
       </div>
-      <div class="wrapper right" ref="wrapper_right">
-        <ul class="content">
-          <li class="foods_item" v-for="(item,index) in list_right" :key="index">{{item}}</li>
-        </ul>
-      </div>
+    </div>
     </div>
   </section>
 </template>
 <script type="text/babel">
 import BScroll from 'better-scroll'
+import ShopDetailHeader from '../../pages/main/components/ShopDetailHeader'
 export default {
   name: "demo",
   components: {
+    ShopDetailHeader
   },
   data() {
     return {
-      scroll_right: [],
-      list_left: [],
-      list_right: [],
+      scroll_list: [],
       foot_index: 0,
-      needChange: true
+      needChange: true,
+      top: 0,
+      imgStyle: {}
     };
   },
   methods: {
-    /**
-     * 跳转到商品
-     */
-    toFood(event, index) {
-      this.foot_index = index;
-      let el = this.scroll_right[index].el;
-      this.needChange = false;
-      this.meunScrolllR.scrollToElement(el, 200)
-      setTimeout(() => {
-        this.needChange = true;
-      }, 200);
-    },
-    /**
-     * 初始化滚动数据
-     */
-    _initScrollData() {
-      let foodsList = this.$refs.wrapper_right.getElementsByClassName('foods_item');
-      let height = 0;
-      for (let i = 0; i < foodsList.length; i++) {
-        height += foodsList[i].scrollHeight;
-        this.scroll_right.push({
-          index: i,
-          el: foodsList[i],
-          top: height - foodsList[i].scrollHeight,
-          bottom: height
-        })
-      }
-    }
-
   },
   watch: {
-    //控制左边菜单栏的滚动
-    foot_index(newVal) {
-      this.meunScrollL.scrollToElement(this.$refs.wrapper_left.getElementsByClassName('menu_item')[newVal], 800, 0, -100)
-    }
   },
   mounted() {
-    for (let i = 0; i <= 20; i++) {
-      this.list_left.push(i)
+    for (let i = 0; i <= 1000; i++) {
+      this.scroll_list.push(i)
     }
-    for (let i = 0; i <= 20; i++) {
-      this.list_right.push(i)
-    }
-    this.$nextTick(() => {
-      this.meunScrollL = new BScroll(this.$refs.wrapper_left, {
+    this.$nextTick(e => {
+      this.meunScrollR = new BScroll(this.$refs.scroll, {
         click: true,
         probeType: 3,
-        scrollbar: true
+        bounce: false
       });
-      this.meunScrolllR = new BScroll(this.$refs.wrapper_right, {
-        click: true,
-        probeType: 3,
-        scrollbar: true
-      });
-      this.meunScrolllR.on('scroll', (pos) => {
-        // if (this.scroll_right[this.foot_index].top < Math.abs(parseInt(pos.y))) {
-        //   console.log(this.scroll_right[this.foot_index])
-        // }
-        let top = Math.abs(parseInt(pos.y))
-        for (let i = 0; i < this.scroll_right.length; i++) {
-          if (top > this.scroll_right[i].top && top < this.scroll_right[i].bottom) {
-            this.needChange && (this.foot_index = this.scroll_right[i].index)
-          }
-        }
+      this.meunScrollR.on("scroll", pos => {
+        console.log(parseInt(pos.y))
+        this.top = parseInt(pos.y)
+        this.imgStyle = {
+          transform: this.top < 50 ? 'scale(' + (80 + this.top) / 80 + ')' : 'scale(1)'
+        };
       })
-      //初始化数据
-      this._initScrollData()
     })
   }
 };
 </script>
 <style lang="scss">
-.scroll {
+@import 'src/assets/css/vars';
+$height:80px;
+.title {
+  position: absolute;
+  top: 46px;
+  padding: 3px;
+  left: 100px;
+  font-size: 14px;
+  z-index: 11;
+  color: rgb(255, 255, 255);
+}
+
+.shopDetail_header {
+  color: $bg-color;
+  padding: 0px $pd-md;
+  width: 100%;
+  min-height: 150px;
+  background-color: rgb(141, 40, 18);
+  .back {
+    min-height: 45px;
+  }
+  .heard_content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    img {
+      width: $height;
+      height: $height;
+    }
+    .detail {
+      padding-top: 20px;
+      width: calc(100% - 90px);
+      span {
+        width: 100%;
+        display: inline-block;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: $fn-tn;
+        padding: 3px;
+      }
+      .pinpai {
+        content: "品牌";
+        left: 0px;
+        background: linear-gradient(-139deg, rgb(255, 241, 0), rgb(255, 227, 57));
+        margin-right: .22rem;
+        font-size: $fn-tn;
+        padding: 3px;
+        border-radius: .2rem;
+        width: .3rem;
+        color: rgb(111, 63, 21);
+      }
+    }
+  }
+  .youhui {
+    padding-top: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .man {
+      &::before {
+        content: "满";
+        background: red;
+        width: 20px;
+        box-sizing: border-box;
+        margin-right: $pd-md/2;
+      }
+    }
+    .huodong {
+      display: flex;
+      align-items: center;
+      img {
+        width: 8px;
+        transform: rotate(-90deg)
+      }
+    }
+  }
+}
+
+.base_header {
+  margin-top: 60px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  background-color: $primary-color;
+  font-size: $fn-hg;
   display: flex;
   .left {
-    flex: 0 0 80px;
-    .current {
-      background: blue;
-    }
-    li {
-      height: 80px;
+    flex: .5;
+  }
+  .title {
+    height: 100%;
+    flex: 1;
+    position: relative;
+    h1 {
+      // bottom: 0px;
+      position: absolute;
     }
   }
   .right {
-    flex: 1;
-    li {
-      height: 140px;
-    }
+    flex: .5;
   }
-  .wrapper {
-    .bscroll-indicator {
-      border: none!important;
-      width: 3px!important;
-      right: 0px;
-    }
-    position: relative;
-    margin-top: 80px;
-    bottom: 0;
-    overflow: hidden;
-    background: rgba(1, 1, 1, .2);
-    overflow: hidden;
-    height: 300px; // width: 120px;
-    ul {
-      list-style-type: none;
-      padding: 0px;
-      margin: 0px;
-      li {
-        font-size: 15px;
-        border-bottom: 1px solid black;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        text-align: center;
-      }
-    }
+}
+
+.scroll {
+  position: relative;
+  bottom: 0px;
+  overflow: hidden;
+  height: 500px;
+  .item {
+    height: 50px;
+    color: white;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    background: red;
   }
 }
 </style>

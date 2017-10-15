@@ -1,28 +1,15 @@
 <template>
   <page @scroll="onscroll" class="shopDetail">
+    <div slot="header">
+      <mt-header v-bind:style="{'background-color': 'rgba(38, 162, 255,'+Math.abs(0)/50+')'}" :fixed="true">
+        <mt-button @click="back" slot="left" icon="back"></mt-button>
+        <mt-button icon="more" slot="right"></mt-button>
+      </mt-header>
+      <h2 class="title" v-bind:class="[isMobile?'mobileTitle':'']" v-bind:style="{'top':Math.abs(top)>105?'10px':50 + top*.38 + 'px','margin-left': Math.abs(top)>40?'-18px': - Math.abs(top*.3)+'px'}">江氏国际宇宙大酒店</h2>
+    </div>
     <div v-bind:style="{height:screenHeight + 60 + 'px'}" slot="content" ref="shopDetail">
       <div>
-        <div class="shopDetail_header platfrom-header">
-          <div @click="back" class="back">
-            <img style="width:16px;margin-top:10px" src="../../../static/img/icon/left-w.png" />
-          </div>
-          <div class="heard_content">
-            <img src="../../assets/img/shop/1.jpeg" alt="">
-            <div class="detail">
-              <h2>最高鸡秘（永泰路）</h2>
-              <span> 蜂鸟快送/42分钟到达/配送费￥3</span>
-              <span>
-                本店食品均为现做,制作+外送都需要消耗时间,为了你能及时用餐,请提前三十分钟预定，避免高峰期等待时间长,阴雨天气会延长一些! 投诉电话：13761960768 2016年9月
-              </span>
-            </div>
-          </div>
-          <div class="youhui fn-12">
-            <span class="man">满50减9，满80减14</span>
-            <div class="huodong">2个活动
-              <img src="../../../static/img/icon/down-w.png" />
-            </div>
-          </div>
-        </div>
+        <ShopDetailHeader :top="top" />
         <!-- 内容区域 -->
         <div class="text_content">
           <!-- 顶部切换导航栏 -->
@@ -53,14 +40,18 @@
 import tabs from '../../components/common/Tabs'
 import ShopDetailItem from './components/ShopDetailItem'
 import BScroll from 'better-scroll'
+import ShopDetailHeader from './components/ShopDetailHeader'
 export default {
   name: 'ShopDetail',
   components: {
-    tabs, ShopDetailItem
+    tabs,
+    ShopDetailItem,
+    ShopDetailHeader
   },
   data() {
     return {
       selected: '1',
+      top: 0,
       left: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     }
   },
@@ -72,6 +63,9 @@ export default {
     onscroll(el, pos) {
       console.log(pos.top)
       // this.$store.commit('NO_SCROLL', pos.top > 80)
+      if (Math.abs(pos.top) > 10) {
+        console.log(32132)
+      }
     },
     //滚动区域
     _initScrollArea() {
@@ -81,6 +75,19 @@ export default {
         bounce: false
         // scrollbar: true
       });
+      this.meunScrollR.on("scroll", pos => {
+        this.top = parseInt(pos.y)
+        console.log(this.top)
+        if (Math.abs(pos.y) > 127) {
+          this.meunScrollR.disable();
+        }
+      })
+    },
+    //启动
+    _enable() {
+      setTimeout(() => {
+        this.meunScrollR.enable();
+      }, 0);
     }
   },
   mounted() {
@@ -98,59 +105,17 @@ $FooterHeight:45px;
   position: relative;
   bottom: 0;
   overflow: hidden;
-  .shopDetail_header {
-    color: $bg-color;
-    padding: 0px $pd-md;
-    width: 100%;
-    min-height: 120px;
-    background-color: rgb(182, 182, 182);
-    .back {
-      min-height: 35px;
-    }
-    .heard_content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      img {
-        width: $height;
-        height: $height;
-      }
-      .detail {
-        // flex: 1;
-        width: calc(100% - 70px);
-        span {
-          width: 100%;
-          display: inline-block;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          font-size: $fn-tn;
-        }
-      }
-    }
-    .youhui {
-      padding-top: 3px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      .man {
-        &::before {
-          content: "满";
-          background: red;
-          width: 20px;
-          box-sizing: border-box;
-          margin-right: $pd-md/2;
-        }
-      }
-      .huodong {
-        display: flex;
-        align-items: center;
-        img {
-          width: 8px;
-          transform: rotate(-90deg)
-        }
-      }
+  .title {
+    position: absolute;
+    top: 46px;
+    padding: 3px;
+    left: 100px;
+    font-size: 14px;
+    z-index: 11;
+    color: rgb(255, 255, 255);
+    &.mobileTitle {
+      // top: 60px;
+      padding-top: 20px;
     }
   }
   .shopDetail_footer {

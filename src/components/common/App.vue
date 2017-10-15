@@ -1,7 +1,7 @@
 <template>
   <section v-bind:class="isMobile?'platfrom-ios':''">
     <!-- v-bind:style="{'overflow-y':isScroll && !$store.state.common.noScroll? 'hidden':'hidden'}" -->
-    <section v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" class="child-view scroll-content" id="scroll-content">
+    <section style="overflow-y:hidden" v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" class="child-view scroll-content" id="scroll-content">
       <router-view> </router-view>
       <!-- 底部导航 -->
     </section>
