@@ -1,5 +1,5 @@
 <template>
-  <page @scroll="onscroll" class="shopDetail">
+  <page class="shopDetail">
     <div slot="header">
       <mt-header v-bind:style="{'background-color': 'rgba(38, 162, 255,'+Math.abs(0)/50+')'}" :fixed="true">
         <mt-button @click="back" slot="left" icon="back"></mt-button>
@@ -22,18 +22,10 @@
         </div>
       </div>
     </div>
-    <footer slot="footer" class="shopDetail_footer">
-      <div class="gouwuc">
-        <div class="car">
-          <img src="../../assets/img/shop/shopping-cart-w.png" alt="">
-        </div>
-      </div>
-      <div class="content">
-        <h2>￥24</h2>
-        <span>配送费￥5</span>
-      </div>
-      <div @click="go('shopPay')" class="jiesuan">去结算</div>
-    </footer>
+    <div slot="footer" class="shopDetail_footer">
+      <div class="ads fn-9">满25减12，满45减18，满80减28</div>
+      <ShopCar ref="shopCar"></ShopCar>
+    </div>
   </page>
 </template>
 <script>
@@ -41,12 +33,14 @@ import tabs from '../../components/common/Tabs'
 import ShopDetailItem from './components/ShopDetailItem'
 import BScroll from 'better-scroll'
 import ShopDetailHeader from './components/ShopDetailHeader'
+import ShopCarA from './components/ShopCar'
 export default {
   name: 'ShopDetail',
   components: {
     tabs,
     ShopDetailItem,
-    ShopDetailHeader
+    ShopDetailHeader,
+    ShopCar: ShopCarA
   },
   data() {
     return {
@@ -60,12 +54,10 @@ export default {
       this.$store.commit('POP_STATUS', false)
     },
     //监听 页面滚动
-    onscroll(el, pos) {
-      console.log(pos.top)
-      // this.$store.commit('NO_SCROLL', pos.top > 80)
-      if (Math.abs(pos.top) > 10) {
-        console.log(32132)
-      }
+    addToCar(el, item, type) {
+      type == 'add' ?
+        this.$refs.shopCar.drop(el) :
+        this.$refs.shopCar.minus(el);
     },
     //滚动区域
     _initScrollArea() {
@@ -77,8 +69,8 @@ export default {
       });
       this.meunScrollR.on("scroll", pos => {
         this.top = parseInt(pos.y)
-        console.log(this.top)
-        if (Math.abs(pos.y) > 127) {
+        let heght = this.isMobile ? 119 : 99;
+        if (Math.abs(pos.y) > heght) {
           this.meunScrollR.disable();
         }
       })
@@ -119,52 +111,14 @@ $FooterHeight:45px;
     }
   }
   .shopDetail_footer {
-    min-height: $FooterHeight;
-    background: rgb(61, 61, 63);
     position: fixed;
     bottom: 0px;
     width: 100%;
-    display: flex;
-    color: white;
-    align-items: center;
-    .gouwuc {
-      flex: .4;
-      .car {
-        position: absolute;
-        width: $FooterHeight;
-        height: $FooterHeight;
-        margin-top: -30px;
-        left: 15px;
-        background: $primary-color;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 5px solid rgba(1, 1, 1, .7);
-        img {
-          width: 20px;
-        }
-      }
-    }
-    .content {
-      flex: 1;
-      span {
-        font-size: $fn-tn;
-      }
-    }
-    .jiesuan {
-      flex: .5;
-      background-color: $primary-green;
-      height: $FooterHeight;
-      width: 100%;
+    .ads {
       text-align: center;
-      line-height: $FooterHeight;
-      font-size: $fn-md;
-      font-weight: 400;
+      padding: 2px;
+      background-color: $primary-warm;
     }
-  }
-  .shopDetail_content {
-    // height: 600px;
   }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <section class="locationPop">
     <mt-popup v-model="$store.state.common.popObj.locationPop" position="bottom" class="mint-popup" :modal="true">
-      <section class="primary_bg header">
+      <section class="primary_bg header platfrom-header">
         <div class="x">
           <div @click="close" class="left">
             <img src="static/img/icon/close.png" alt="">
@@ -19,7 +19,7 @@
           </div>
         </div>
       </section>
-      <section class="scroll-content" style="margin-top:82px;background:rgb(220,220,220)">
+      <section class="scroll-content" style="margin-top:102px;background:rgb(220,220,220)">
         <div v-for="(item,index) in data" :key="index" class="list-item">
           <p class="fn-13">
             浦江·世博家园十街坊联航路1325弄33号221室一号房间的

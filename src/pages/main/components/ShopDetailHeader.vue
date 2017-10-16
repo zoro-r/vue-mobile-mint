@@ -79,7 +79,7 @@ $height:80px;
       width: $height;
       height: $height;
       box-shadow: 0px 0px 5px rgba(1, 1, 1, .3);
-      margin-bottom: -2px;
+      margin-bottom: -10px;
     }
     .detail {
       padding-top: 20px;

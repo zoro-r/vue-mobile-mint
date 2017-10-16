@@ -54,7 +54,7 @@ Vue.use(Navigation, {
 Vue.mixin({
   data() {
     return {
-      screenWidth: document.documentElement.clientWidth,
+      screenWidth: document.documentElement.clientWidth || 0,
       screenHeight: document.documentElement.clientHeight,
       loaddingImg: "static/img/common/loading1.gif",
       isMobile: window.navigator.platform == 'iPhone'

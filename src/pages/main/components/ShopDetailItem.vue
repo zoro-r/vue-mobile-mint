@@ -18,7 +18,16 @@
                 <span class="d_title">{{it.name}}</span><br/>
                 <span>{{it.title}}</span>
                 <div class="down">
-                  <span class="price">{{it.price}}</span>
+                  <span class="price" v-html="it.price"></span>
+                  <div class="add_content">
+                    <div v-bind:style="{width:it.count>0?'50px':'0px'}" style="transition: all .25s linear;">
+                      <div style="height:20px;overflow:hidden;">
+                        <mt-button @click="minus($event,it)" type="primary" class="add_button" plain>-</mt-button>
+                        <span class="fn-12" v-html="it.count"></span>
+                      </div>
+                    </div>
+                    <mt-button @click="add($event,it)" class="add_button" type="primary">+</mt-button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -58,6 +67,21 @@ export default {
       }, 200);
     },
     /**
+     * 添加到购物车
+     */
+    add(el, it) {
+      console.log(it)
+      it.count++;
+      this.$parent.$parent.addToCar(el, it, 'add')
+    },
+    /**
+    * 减去
+    */
+    minus(el, it) {
+      it.count--;
+      this.$parent.$parent.addToCar(el, it)
+    },
+    /**
      * 初始化滚动数据
      */
     _initScrollData() {
@@ -81,7 +105,7 @@ export default {
         // scrollbar: true
       });
       this.meunScrollR = new BScroll(this.$refs.wrapper_right, {
-        click: true,
+        click: false,
         probeType: 3,
         // scrollbar: true
       });
@@ -131,7 +155,8 @@ export default {
           img: require("../../../assets/img/shop/" + i + ".jpeg"),
           title: "月销321份，好评率100%",
           name: "炸鸡，啤酒",
-          price: "3.5￥"
+          price: "<font class='fn-10'>￥</font>3.5",
+          count: 0
         })
       }
       this.list_right.push({
@@ -201,11 +226,33 @@ export default {
             .d_title {
               font-size: $fn-md;
               color: $title-color;
+              margin-bottom: 5px;
             }
             .down {
+              display: flex; //
+              justify-content: space-between;
+              align-items: center;
+              margin-top: 5px;
+              padding-right: 8px;
               .price {
                 color: $warning-color;
                 font-size: $fn-md;
+              }
+              .add_content {
+                display: flex;
+                justify-content: space-between; // min-width: 70px;
+                span {
+                  margin-left: 8px;
+                }
+                .add_button {
+                  border-radius: 50%;
+                  width: 20px;
+                  height: 20px;
+                  padding: 0px;
+                  margin: 0px;
+                  line-height: 15px;
+                  font-size: $fn-hg; // color: $white-color;
+                }
               }
             }
           }

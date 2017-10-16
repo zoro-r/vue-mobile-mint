@@ -18,6 +18,7 @@
   }
 
   body {
+    // font-family: cursive;
     @include box(100%);
     user-select: none;
     color: $normal-color;
@@ -60,7 +61,7 @@
     height: 0px;
   }
 
-  .footer_fixd {
+  .transition {
     transition: all .25s linear;
   }
 
@@ -201,9 +202,9 @@
       height: 60px;
     }
     .platfrom-header {
-      padding-top: 20px!important
+      padding-top: 25px!important
     }
     .float-header {
-      padding-top: 20px!important
+      padding-top: 25px!important
     }
   }

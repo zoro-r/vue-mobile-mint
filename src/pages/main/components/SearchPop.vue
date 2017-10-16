@@ -2,7 +2,7 @@
   <section class="searchPop">
     <!-- popup-transition="popup-fade" -->
     <mt-popup position="right" v-model="$store.state.common.popObj.searchPop" class="mint-popup" :modal="true">
-      <div class="primary_flex_center searchBar">
+      <div class="primary_flex_center searchBar platfrom-header">
         <img @click="$store.state.common.isPop = false" v-bind:style="{width:isFocus?'0rem':'2.2rem'}" src="static/img/icon/left.png" class="transition_3" />
         <section class="search">
           <!-- <mt-search v-model="value" :result.sync="result"></mt-search> -->
