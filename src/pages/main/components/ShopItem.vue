@@ -1,93 +1,93 @@
 <template>
-  <section @click="$parent.$parent.toShopDetail(231312)" class="shopItem primary_mg">
-    <section class="left">
-      <lazy-image :src="'static/img/shop/2.jpeg'" :placeholder="loaddingImg" />
-    </section>
-    <section class="right">
+  <div @click="$parent.$parent.toShopDetail(231312)" class="shopItem primary_mg">
+    <div class="left">
+      <lazy-image :src="'static/img/shop/2.jpeg'" :img-class="['classname1','classname2']" :placeholder="loaddingImg" />
+    </div>
+    <div class="right">
       <div class="shop_detail">
-        <section class="index_1 primary_flex_center">
+        <div class="index_1 primary_flex_center">
           <h2 class="isp">
             <span class="fn-12" style="font-weight:700;color:black">上海麦当劳瞿溪路餐厅十一号接到的小刘</span>
           </h2>
-          <section class="index_right">
+          <div class="index_right">
             <span>保</span>
             <span>票</span>
-          </section>
-        </section>
-        <section class="index_1 primary_flex_center">
+          </div>
+        </div>
+        <div class="index_1 primary_flex_center">
           <h2 class=" fn-c">
             <Star :score="7"></Star>
             <span>3.5</span>
             <span>月售3615单</span>
           </h2>
-          <section class="index_right">
+          <div class="index_right">
             <span class="primary_bg fn-8" style=" color: white;border:none;padding:2px;border-redius:3px">
               蜂鸟专送
             </span>
-          </section>
-        </section>
-        <section class="index_1 primary_flex_center">
+          </div>
+        </div>
+        <div class="index_1 primary_flex_center">
           <h2>
             <span>¥40起送</span>
             <span class="has_before">配送费¥5</span>
           </h2>
-          <section class="index_right">
+          <div class="index_right">
             <span class="c_span">20m</span>
             <span class="c_span has_before">3分钟</span>
-          </section>
-        </section>
+          </div>
+        </div>
       </div>
       <!-- 第二列 -->
       <div class="shop_detail" style="border:none;padding-top:5px;height:auto;">
-        <section @click.stop="down=!down" class="index_1 primary_flex_center">
+        <div @click.stop="down=!down" class="index_1 primary_flex_center">
           <h2>
             <span class="shou">首</span>
             <span>新用户下单立减17.0元</span>
           </h2>
-          <section class="index_right ">
+          <div class="index_right ">
             <span class="showac fn-10 primary_flex_center" style="border:none">
               4个活动
               <img v-bind:class="[down?'':'fz']" class="icon-10 icon_img" src="static/img/icon/down.png" />
             </span>
-          </section>
-        </section>
-        <section class="index_1 primary_flex_center">
+          </div>
+        </div>
+        <div class="index_1 primary_flex_center">
           <h2>
             <span class="jian">减</span>
             <span>满70减5</span>
           </h2>
-        </section>
+        </div>
         <!-- <transition name="show-hide"> -->
-        <section v-bind:style="{height: down?'0px':4 * 1.7+.5+'rem'}" class="transition_3">
-          <section class="index_1 primary_flex_center">
+        <div v-bind:style="{height: down?'0px':4 * 1.7+.5+'rem'}" class="transition_3">
+          <div class="index_1 primary_flex_center">
             <h2>
               <span class="te">品</span>
               <span>蜀地冒菜</span>
             </h2>
-          </section>
-          <section class="index_1 primary_flex_center">
+          </div>
+          <div class="index_1 primary_flex_center">
             <h2>
               <span class="te">满</span>
               <span>满120.0元赠送大可乐或雪碧1份，满70.0元赠送荔枝汁1份</span>
             </h2>
-          </section>
-          <section class="index_1 primary_flex_center">
+          </div>
+          <div class="index_1 primary_flex_center">
             <h2>
               <span class="zeng">折</span>
               <span>折扣活动</span>
             </h2>
-          </section>
-          <section class="index_1 primary_flex_center">
+          </div>
+          <div class="index_1 primary_flex_center">
             <h2>
               <span class="zeng">折</span>
               <span>折扣活动</span>
             </h2>
-          </section>
-        </section>
+          </div>
+        </div>
         <!-- </transition> -->
       </div>
-    </section>
-  </section>
+    </div>
+  </div>
 </template>
 
 <script>

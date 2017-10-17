@@ -40,7 +40,7 @@
                 <div>
                   <!-- <span>{{it.img}}</span> -->
                   <!-- <img v-bind:src="it.img" /> -->
-                  <lazy-image :src="it.img" :placeholder="loaddingImg" />
+                  <lazy-image :src="it.img" :img-class="['detailImg']" :placeholder="loaddingImg" />
                 </div>
                 <span>{{it.text}}</span>
               </div>

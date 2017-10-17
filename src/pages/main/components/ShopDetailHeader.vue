@@ -1,5 +1,5 @@
 <template>
-  <section class="shop_detail_header">
+  <div class="shop_detail_header">
     <div>
       <div v-bind:style="{background: 'linear-gradient(to bottom, #8d2812 0%, #8d2812 '+(75 - top*.2)+'%, #fff '+(73 - top*.2)+'%, #fff 100%)'}" class="shopDetail_header platfrom-header">
         <div class="back">
@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 <script type="text/babel">
 export default {
@@ -53,85 +53,88 @@ export default {
 <style lang="scss" scoped>
 @import 'src/assets/css/vars';
 $height:80px;
-.title {
-  position: absolute;
-  top: 46px;
-  padding: 3px;
-  left: 100px;
-  font-size: 14px;
-  z-index: 11;
-  color: rgb(255, 255, 255);
-}
+.shop_detail_header {
 
-.shopDetail_header {
-  color: $bg-color;
-  padding: 0px $pd-md 5px $pd-md;
-  width: 100%;
-  min-height: 150px;
-  .back {
-    min-height: 45px;
+  .title {
+    position: absolute;
+    top: 46px;
+    padding: 3px;
+    left: 100px;
+    font-size: 14px;
+    z-index: 11;
+    color: rgb(255, 255, 255);
   }
-  .heard_content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    img {
-      width: $height;
-      height: $height;
-      box-shadow: 0px 0px 5px rgba(1, 1, 1, .3);
-      margin-bottom: -10px;
+
+  .shopDetail_header {
+    color: $bg-color;
+    padding: 0px $pd-md 5px $pd-md;
+    width: 100%;
+    min-height: 150px;
+    .back {
+      min-height: 45px;
     }
-    .detail {
-      padding-top: 20px;
-      width: calc(100% - 90px);
-      span {
-        width: 100%;
-        display: inline-block;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        font-size: $fn-tn;
-        border-radius: .2rem;
-        padding: 3px;
-      }
-      .pinpai {
-        left: 0px;
-        background: linear-gradient(-139deg, rgb(255, 241, 0), rgb(255, 227, 57));
-        margin-right: .22rem;
-        font-size: $fn-tn;
-        padding: 3px;
-        border-radius: .2rem;
-        width: .3rem;
-        color: rgb(111, 63, 21);
-      }
-    }
-  }
-  .youhui {
-    // padding-top: 2px;
-    margin-top: 20px;
-    color: $description-color;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .man {
-      &::before {
-        content: "满";
-        background: #E33D0A;
-        padding: 1px;
-        border-radius: .2rem;
-        color: $white-color;
-        width: 20px;
-        box-sizing: border-box;
-        margin-right: $pd-md/2;
-      }
-    }
-    .huodong {
+    .heard_content {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       img {
-        margin-left: 3px;
-        width: 8px;
+        width: $height;
+        height: $height;
+        box-shadow: 0px 0px 5px rgba(1, 1, 1, .3);
+        margin-bottom: -10px;
+      }
+      .detail {
+        padding-top: 20px;
+        width: calc(100% - 90px);
+        span {
+          width: 100%;
+          display: inline-block;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          font-size: $fn-tn;
+          border-radius: .2rem;
+          padding: 3px;
+        }
+        .pinpai {
+          left: 0px;
+          background: linear-gradient(-139deg, rgb(255, 241, 0), rgb(255, 227, 57));
+          margin-right: .22rem;
+          font-size: $fn-tn;
+          padding: 3px;
+          border-radius: .2rem;
+          width: .3rem;
+          color: rgb(111, 63, 21);
+        }
+      }
+    }
+    .youhui {
+      // padding-top: 2px;
+      margin-top: 20px;
+      color: $description-color;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .man {
+        &::before {
+          content: "满";
+          background: #E33D0A;
+          padding: 1px;
+          border-radius: .2rem;
+          color: $white-color;
+          width: 20px;
+          box-sizing: border-box;
+          margin-right: $pd-md/2;
+        }
+      }
+      .huodong {
+        display: flex;
+        align-items: center;
+        img {
+          margin-left: 3px;
+          width: 8px;
+        }
       }
     }
   }

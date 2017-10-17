@@ -21,9 +21,9 @@
           <!-- 底部导航 -->
         </div>
       </div>
+      <detailPop />
     </div>
     <div slot="footer" class="shopDetail_footer">
-      <div class="ads fn-9">满25减12，满45减18，满80减28</div>
       <ShopCar ref="shopCar"></ShopCar>
     </div>
   </page>
@@ -37,6 +37,7 @@ import ShopCarA from './components/ShopCar'
 export default {
   name: 'ShopDetail',
   components: {
+    detailPop: r => { require.ensure([], () => r(require('./components/components/DetailPop')), 'DetailPop') },
     tabs,
     ShopDetailItem,
     ShopDetailHeader,
@@ -44,25 +45,32 @@ export default {
   },
   data() {
     return {
+      detail: {},
+      detailPop: false,
       selected: '1',
       top: 0,
       left: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     }
   },
   methods: {
+    showDetail(item) {
+      this.detailPop = true;
+      this.detail = item;
+    },
     hidePop() {
       this.$store.commit('POP_STATUS', false)
     },
     //监听 页面滚动
     addToCar(el, item, type) {
       type == 'add' ?
-        this.$refs.shopCar.drop(el) :
-        this.$refs.shopCar.minus(el);
+        this.$refs.shopCar.drop(el, item) :
+        this.$refs.shopCar.minus(item);
     },
     //滚动区域
     _initScrollArea() {
       this.meunScrollR = new BScroll(this.$refs.shopDetail, {
         click: true,
+        tab: true,
         probeType: 3,
         bounce: false
         // scrollbar: true
@@ -114,11 +122,6 @@ $FooterHeight:45px;
     position: fixed;
     bottom: 0px;
     width: 100%;
-    .ads {
-      text-align: center;
-      padding: 2px;
-      background-color: $primary-warm;
-    }
   }
 }
 </style>

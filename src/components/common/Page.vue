@@ -5,6 +5,7 @@
       <slot name="content"></slot>
     </div>
     <slot name="footer"></slot>
+    <slot name="other"></slot>
   </div>
 </template>
 

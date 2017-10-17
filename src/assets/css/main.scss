@@ -61,8 +61,8 @@
     height: 0px;
   }
 
-  .transition {
-    transition: all .25s linear;
+  .transition_3 {
+    transition: all .35s linear;
   }
 
   .primary_bg {
@@ -155,6 +155,23 @@
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     will-change: scroll-position;
+  }
+
+  .add_content {
+    display: flex;
+    justify-content: space-between; // min-width: 70px;
+    span {
+      margin-left: 8px;
+    }
+    .add_button {
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      padding: 0px;
+      margin: 0px;
+      line-height: 15px;
+      font-size: $fn-hg; // color: $white-color;
+    }
   }
 
   ; //------------------------函数生产区域

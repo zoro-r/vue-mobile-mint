@@ -1,5 +1,5 @@
 <template>
-  <section class="shop_detail_item">
+  <div class="shop_detail_item">
     <div class="scroll">
       <div v-bind:style="{height:screenHeight - scrollHeight + 'px'}" class="wrapper left" ref="wrapper_left">
         <ul class="content">
@@ -13,7 +13,9 @@
               <font class="biaoti">{{item.title}}</font>大家喜欢吃，才叫真好吃。
             </span>
             <div class="item_detail" v-for="(it,index) in item.list" :key="index">
-              <img class="h_img" :src="it.img" :alt="it.name" />
+              <button @click.stop="$parent.$parent.showDetail(it)" v-bind:style="{'background-image':'url('+it.img+')'}" class="h_img">
+                <!-- <img :src="it.img" :alt="it.name" /> -->
+              </button>
               <div class="content">
                 <span class="d_title">{{it.name}}</span><br/>
                 <span>{{it.title}}</span>
@@ -22,11 +24,11 @@
                   <div class="add_content">
                     <div v-bind:style="{width:it.count>0?'50px':'0px'}" style="transition: all .25s linear;">
                       <div style="height:20px;overflow:hidden;">
-                        <mt-button @click="minus($event,it)" type="primary" class="add_button" plain>-</mt-button>
+                        <mt-button @click.stop="$parent.$parent.addToCar($event,it)" type="primary" class="add_button" plain>-</mt-button>
                         <span class="fn-12" v-html="it.count"></span>
                       </div>
                     </div>
-                    <mt-button @click="add($event,it)" class="add_button" type="primary">+</mt-button>
+                    <mt-button @click.stop="$parent.$parent.addToCar($event,it,'add')" class="add_button" type="primary">+</mt-button>
                   </div>
                 </div>
               </div>
@@ -35,7 +37,7 @@
         </ul>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 <script type="text/babel">
 import BScroll from 'better-scroll'
@@ -71,14 +73,14 @@ export default {
      */
     add(el, it) {
       console.log(it)
-      it.count++;
+      // it.count++;
       this.$parent.$parent.addToCar(el, it, 'add')
     },
     /**
     * 减去
     */
     minus(el, it) {
-      it.count--;
+      // it.count--;
       this.$parent.$parent.addToCar(el, it)
     },
     /**
@@ -156,7 +158,8 @@ export default {
           title: "月销321份，好评率100%",
           name: "炸鸡，啤酒",
           price: "<font class='fn-10'>￥</font>3.5",
-          count: 0
+          count: 0,
+          id: i
         })
       }
       this.list_right.push({
@@ -218,6 +221,9 @@ export default {
           border-bottom: 1px solid $divider-color;
           .h_img {
             width: 80px;
+            height: 80px;
+            border: none;
+            background-size: 100% 100%;
           }
           .content {
             flex: 1;
@@ -237,22 +243,6 @@ export default {
               .price {
                 color: $warning-color;
                 font-size: $fn-md;
-              }
-              .add_content {
-                display: flex;
-                justify-content: space-between; // min-width: 70px;
-                span {
-                  margin-left: 8px;
-                }
-                .add_button {
-                  border-radius: 50%;
-                  width: 20px;
-                  height: 20px;
-                  padding: 0px;
-                  margin: 0px;
-                  line-height: 15px;
-                  font-size: $fn-hg; // color: $white-color;
-                }
               }
             }
           }
@@ -278,7 +268,8 @@ export default {
           content: "";
           height: 110px;
         }
-        li {
+        .menu_item {
+          height: 70px;
           font-size: $fn-md;
           border-bottom: 1px solid $divider-color;
           display: flex;

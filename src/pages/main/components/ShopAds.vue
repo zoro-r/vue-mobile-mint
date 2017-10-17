@@ -1,16 +1,16 @@
 <template>
-  <section class="shopAds">
-    <section class="primary_mg_hor primary_bg_white" style="height:90px">
+  <div class="shopAds">
+    <div class="primary_mg_hor primary_bg_white" style="height:90px">
        <mt-swipe :auto="2000" height="100%">
         <mt-swipe-item v-for="(item,index) in imgList" :key="index">
           <img src="static/img/common/youhui.png" style="width: 100%" />
         </mt-swipe-item>
       </mt-swipe>
       <!-- <img src="static/img/common/youhui.png" style="width: 100%" /> -->
-    </section>
+    </div>
     <div>
       <!-- 第一列 -->
-      <section class="row">
+      <div class="row">
         <div class="col_1">
           <h2>限量抢购</h2>
           <h3>超值美味 9.9元起</h3>
@@ -26,9 +26,9 @@
           </h3>
           <img src="static/img/shop/4.png" />
         </div>
-      </section>
+      </div>
       <!-- 第二列 -->
-      <section class="row">
+      <div class="row">
         <div class="col_1 col_2">
           <h3 class="fn-14">天天特价</h3>
           <font class="box" style="color:red">低至一折</font>
@@ -44,9 +44,9 @@
           <font class="box">尖货来袭</font>
           <img src="static/img/shop/7.png" />
         </div>
-      </section>
+      </div>
     </div>
-  </section>
+  </div>
 </template>
 <script type="text/babel">
 export default {

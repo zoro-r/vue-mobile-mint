@@ -1,10 +1,10 @@
 <template>
-  <section v-bind:class="isMobile?'platfrom-ios':''">
+  <div v-bind:class="isMobile?'platfrom-ios':''">
     <!-- v-bind:style="{'overflow-y':isScroll && !$store.state.common.noScroll? 'hidden':'hidden'}" -->
-    <section style="overflow-y:hidden" v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" class="child-view scroll-content" id="scroll-content">
+    <div style="overflow-y:hidden" v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" class="child-view scroll-content" id="scroll-content">
       <router-view> </router-view>
       <!-- 底部导航 -->
-    </section>
+    </div>
     <transition name="slideInUp">
       <mt-tabbar v-show="$store.state.common.hasFooter" v-model="selected">
         <mt-tab-item id="1">
@@ -21,7 +21,7 @@
         </mt-tab-item>
       </mt-tabbar>
     </transition>
-  </section>
+  </div>
 </template>
 
 <script>

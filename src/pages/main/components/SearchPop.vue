@@ -1,32 +1,32 @@
 <template>
-  <section class="searchPop">
+  <div class="searchPop">
     <!-- popup-transition="popup-fade" -->
     <mt-popup position="right" v-model="$store.state.common.popObj.searchPop" class="mint-popup" :modal="true">
       <div class="primary_flex_center searchBar platfrom-header">
         <img @click="$store.state.common.isPop = false" v-bind:style="{width:isFocus?'0rem':'2.2rem'}" src="static/img/icon/left.png" class="transition_3" />
-        <section class="search">
+        <div class="search">
           <!-- <mt-search v-model="value" :result.sync="result"></mt-search> -->
           <input ref="input" @focus="onfocus" @blur="onblur" class="fn-12" type="search" placeholder="请输入商家、商品名称" />
-        </section>
+        </div>
         <span @click="cancel" class="cancel fn-15 transition_3">取消</span>
       </div>
       <!-- 历史搜索 -->
-      <section class="hot_search">
+      <div class="hot_search">
         <h2>历史搜索</h2>
         <div class="row">
           <mt-button v-for="(item,index) in history" :key="index" class="item">{{item}}</mt-button>
         </div>
-      </section>
+      </div>
       <br/>
       <!-- 热门搜索 -->
-      <section class="hot_search">
+      <div class="hot_search">
         <h2>热门搜索</h2>
         <div class="row">
           <mt-button v-for="(item,index) in data" :key="index" class="item">{{item}}</mt-button>
         </div>
-      </section>
+      </div>
     </mt-popup>
-  </section>
+  </div>
 </template>
 <script >
 export default {

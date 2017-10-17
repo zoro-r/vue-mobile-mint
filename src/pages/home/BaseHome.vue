@@ -1,5 +1,5 @@
 <template>
-  <section class="main_page">
+  <div class="main_page">
     <!-- <mt-header style="-webkit-transform: translateZ(0)" slot="header" class="primary_bg" title="我的" :fixed="true">
           <mt-button slot="left">
             <img src="static/img/icon/reminder.png" style="width:17px" alt="">
@@ -17,34 +17,34 @@
     <!-- 模块区域 -->
     <!-- v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" class="child-view scroll_content" -->
     <transition name="slideInRight">
-      <section v-show="$store.state.common.isHome" v-bind:style="{height:screenHeight - 55 +'px'}">
+      <div v-show="$store.state.common.isHome" v-bind:style="{height:screenHeight - 55 +'px'}">
         <transition :name="$parent.transitionName">
-          <section v-show="$parent.selected == 1" class="tab_item_page ">
+          <div v-show="$parent.selected == 1" class="tab_item_page ">
             <MainCom />
-          </section>
+          </div>
         </transition>
         <transition :name="$parent.transitionName">
-          <section v-show="$parent.selected == 2" class="tab_item_page ">
+          <div v-show="$parent.selected == 2" class="tab_item_page ">
             <SearchCom />
-          </section>
+          </div>
         </transition>
         <transition :name="$parent.transitionName">
-          <section v-show="$parent.selected == 3" class="tab_item_page ">
+          <div v-show="$parent.selected == 3" class="tab_item_page ">
             <OrderCom />
-          </section>
+          </div>
         </transition>
         <transition :name="$parent.transitionName">
-          <section v-show="$parent.selected == 4" class="tab_item_page ">
+          <div v-show="$parent.selected == 4" class="tab_item_page ">
             <MineCom/>
-          </section>
+          </div>
         </transition>
-      </section>
+      </div>
     </transition>
     <!-- 搜索弹出框 -->
     <SearchPop />
     <!-- 定位选择框 -->
     <LocationPop/>
-  </section>
+  </div>
 </template>
 <script>
 import MainCom from '../main/MainCom'
