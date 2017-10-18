@@ -60,6 +60,7 @@ export default {
      * 跳转到商品
      */
     toFood(event, index) {
+      console.log("我点击了")
       let el = this.scroll_right[index].el;
       this.needChange = false;
       this.meunScrollR.scrollToElement(el, 200)

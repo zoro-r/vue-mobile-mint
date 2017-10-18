@@ -1,5 +1,6 @@
 <template>
   <div class="shop_car">
+    <div @click="$parent.$parent.detailPop = !$parent.$parent.detailPop" v-show="$parent.$parent.detailPop" class="shade_modal_bottom"></div>
     <div @click="clickTime!=0&&(show=!show)" v-if="show" class="shade_modal"></div>
     <div class="ads fn-9">满25减12，满45减18，满80减28</div>
     <div v-bind:style="{height:show?(55*goods_list.length + 57) +'px':'0px'}" class="goods transition_3">
@@ -198,6 +199,14 @@ export default {
 $height_size:5.5rem;
 $FooterHeight:45px;
 .shop_car {
+  .shade_modal_bottom {
+    position: absolute;
+    background: rgba(1, 1, 1, .2);
+    bottom: 0px;
+    height: $FooterHeight + 18px;
+    width: 100%;
+    z-index: 11;
+  }
   .shade_modal {
     height: 900px;
     background: rgba(1, 1, 1, .2);

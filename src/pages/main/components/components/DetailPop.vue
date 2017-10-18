@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-      img: '../../../../assets/img/shop/detail.jpeg'
+      img: require('../../../../assets/img/shop/detail.jpeg')
     };
   },
   components: {
@@ -56,7 +56,7 @@ export default {
 @import 'src/assets/css/vars';
 .detailPop {
   .mint-popup {
-    height: 430px;
+    height: 67%;
     width: 86%;
     top: 15%;
     border-radius: 3px;

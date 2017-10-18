@@ -16,15 +16,17 @@
           <tabs :tabs="['商品','评价','店铺']"></tabs>
           <!-- 中间内容区域 -->
           <div class="shopDetail_content">
-            <shop-detail-item />
+            <shop-detail-item ref="shopDetailItem" />
           </div>
           <!-- 底部导航 -->
         </div>
       </div>
-      <detailPop />
     </div>
-    <div slot="footer" class="shopDetail_footer">
+    <div slot="footer" v-bind:style="{'z-index':zIndex}" class="shopDetail_footer">
       <ShopCar ref="shopCar"></ShopCar>
+    </div>
+    <div slot="other">
+      <detailPop />
     </div>
   </page>
 </template>
@@ -47,6 +49,7 @@ export default {
     return {
       detail: {},
       detailPop: false,
+      zIndex: 2003,
       selected: '1',
       top: 0,
       left: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
@@ -54,6 +57,7 @@ export default {
   },
   methods: {
     showDetail(item) {
+      this.zIndex += 2;
       this.detailPop = true;
       this.detail = item;
     },
@@ -80,6 +84,8 @@ export default {
         let heght = this.isMobile ? 119 : 99;
         if (Math.abs(pos.y) > heght) {
           this.meunScrollR.disable();
+        } else {
+          // this.$refs.shopDetailItem._enable()
         }
       })
     },
@@ -122,6 +128,7 @@ $FooterHeight:45px;
     position: fixed;
     bottom: 0px;
     width: 100%;
+    z-index: 2008;
   }
 }
 </style>
