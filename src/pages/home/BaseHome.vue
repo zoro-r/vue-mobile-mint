@@ -11,12 +11,12 @@
     <!-- 子页面 -->
     <transition :name="transitionName">
       <navigation>
-        <router-view style="min-height:100vh;transition: all .3s ease-out;"></router-view>
+        <router-view style="min-height:100vh;transition: all .3s cubic-bezier(.55,0,.1,1);"></router-view>
       </navigation>
     </transition>
     <!-- 模块区域 -->
     <!-- v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" v-bind:style="{'overflow-y':isScroll? 'auto':'hidden'}" class="child-view scroll_content" -->
-    <transition name="slideInRight">
+    <transition>
       <div v-show="$store.state.common.isHome" v-bind:style="{height:screenHeight - 55 +'px'}">
         <transition :name="$parent.transitionName">
           <div v-show="$parent.selected == 1" class="tab_item_page ">

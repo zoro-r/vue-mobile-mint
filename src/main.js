@@ -15,6 +15,7 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 //----------
 import '@/assets/css/main.scss'
+require('swiper/dist/css/swiper.css')//引入swiper滑动组件
 import '@/filters/globalFilter.js'
 import '@/assets/lib/finger/alloy_finger.js'
 import '@/assets/lib/finger/alloy_finger.vue.js'
@@ -23,21 +24,25 @@ import Navigation from 'vue-navigation'
 import vueScrollBehavior from './components/common/scrolleBhavior/src/vue-scroll-behavior'
 import utils from './utils'
 import Page from './components/common/Page.vue'
-// import 'vue-awesome/icons'
 import VueLazyImage from "vue-lazy-images";
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import Tabs from './components/common/Tabs'
+//引入点击
+import FastClick from 'fastclick'
+
+if ('addEventListener' in document) {
+  document.addEventListener('DOMContentLoaded', function () {
+    FastClick.attach(document.body);
+  }, false);
+}
+Vue.use(VueAwesomeSwiper)
 Vue.use(VueLazyImage)
 Vue.use(MintUI)
-//引入swiper滑动组件
-require('swiper/dist/css/swiper.css')
-import VueAwesomeSwiper from 'vue-awesome-swiper'
-Vue.use(VueAwesomeSwiper)
-//页面级别组件
-/**引入图标库 太大暂时不引入*/
-// Vue.component('icon', Icon)
 window.Vue = Vue
 window.utils = utils
 Vue.use(AlloyFingerVue)
 Vue.component('page', Page)
+Vue.component('tabs', Tabs)
 Vue.config.productionTip = false
 Vue.use(vueScrollBehavior, {
   router: router
@@ -49,8 +54,6 @@ Vue.use(Navigation, {
   keyName: 'RH',
   id: "scroll-content"
 })
-// Vue.use(vueg, router)
-
 Vue.mixin({
   data() {
     return {

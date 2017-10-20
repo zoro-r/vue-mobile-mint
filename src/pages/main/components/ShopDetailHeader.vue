@@ -3,11 +3,10 @@
     <div>
       <div v-bind:style="{background: 'linear-gradient(to bottom, #8d2812 0%, #8d2812 '+(75 - top*.2)+'%, #fff '+(73 - top*.2)+'%, #fff 100%)'}" class="shopDetail_header platfrom-header">
         <div class="back">
-          <!-- <img style="width:16px;margin-top:10px" src="../../../static/img/icon/left-w.png" /> -->
         </div>
-        <div v-bind:style="{'opacity': (100 - Math.abs(top))/100}">
+        <div v-bind:style="{'opacity': (90 - Math.abs(top))/90}">
           <div class="heard_content">
-            <img v-bind:style="{ transform: this.top < 50 ? 'scale(' + (180 + this.top) / 180 + ')' : 'scale(1)'}" src="../../../assets/img/shop/header.jpeg" alt="">
+            <img v-bind:style="{ transform: this.top < 50 ? 'scale(' + (280 + this.top) / 270 + ')' : 'scale(1)'}" src="../../../assets/img/shop/header.jpeg" alt="">
             <div class="detail">
               <!-- <h2>最高鸡秘（永泰路）</h2> -->
               <span>
@@ -71,7 +70,7 @@ $height:80px;
     width: 100%;
     min-height: 150px;
     .back {
-      min-height: 45px;
+      min-height: 40px;
     }
     .heard_content {
       display: flex;
@@ -84,7 +83,7 @@ $height:80px;
         margin-bottom: -10px;
       }
       .detail {
-        padding-top: 20px;
+        padding-top: 10px;
         width: calc(100% - 90px);
         span {
           width: 100%;

@@ -5,17 +5,19 @@
         <mt-button @click="back" slot="left" icon="back"></mt-button>
         <mt-button icon="more" slot="right"></mt-button>
       </mt-header>
-      <h2 class="title" v-bind:class="[isMobile?'mobileTitle':'']" v-bind:style="{'top':Math.abs(top)>105?'10px':50 + top*.38 + 'px','margin-left': Math.abs(top)>40?'-18px': - Math.abs(top*.3)+'px'}">江氏国际宇宙大酒店</h2>
+      <h2 class="title" v-bind:class="[isMobile?'mobileTitle':'']" v-bind:style="{'top':Math.abs(top)>105?'10px':40 + top*.30 + 'px','margin-left': Math.abs(top)>40?'-18px': - Math.abs(top*.3)+'px'}">江氏国际宇宙大酒店</h2>
     </div>
-    <div v-bind:style="{height:screenHeight + 60 + 'px'}" slot="content" ref="shopDetail">
+    <div v-if="showContent" v-bind:style="{height:screenHeight + 60 + 'px'}" slot="content" ref="shopDetail">
       <div>
-        <ShopDetailHeader :top="top" />
+        <div style="min-height:157px">
+          <ShopDetailHeader :top="top" />
+        </div>
         <!-- 内容区域 -->
         <div class="text_content">
           <!-- 顶部切换导航栏 -->
           <tabs :tabs="['商品','评价','店铺']"></tabs>
           <!-- 中间内容区域 -->
-          <div class="shopDetail_content">
+          <div v-bind:style="{height:screenHeight - scrollHeight + 'px'}" class="shopDetail_content">
             <shop-detail-item ref="shopDetailItem" />
           </div>
           <!-- 底部导航 -->
@@ -30,30 +32,48 @@
     </div>
   </page>
 </template>
+
 <script>
-import tabs from '../../components/common/Tabs'
-import ShopDetailItem from './components/ShopDetailItem'
-import BScroll from 'better-scroll'
-import ShopDetailHeader from './components/ShopDetailHeader'
-import ShopCarA from './components/ShopCar'
+import BScroll from "better-scroll";
 export default {
-  name: 'ShopDetail',
+  name: "ShopDetail",
   components: {
-    detailPop: r => { require.ensure([], () => r(require('./components/components/DetailPop')), 'DetailPop') },
-    tabs,
-    ShopDetailItem,
-    ShopDetailHeader,
-    ShopCar: ShopCarA
+    detailPop: r => {
+      require.ensure(
+        [],
+        () => r(require("./components/components/DetailPop")),
+        "DetailPop"
+      );
+    },
+    ShopDetailItem: r => {
+      require.ensure(
+        [],
+        () => r(require("./components/ShopDetailItem")),
+        "ShopDetailItem"
+      );
+    },
+    ShopDetailHeader: r => {
+      require.ensure(
+        [],
+        () => r(require("./components/ShopDetailHeader")),
+        "ShopDetailHeader"
+      );
+    },
+    ShopCar: r => {
+      require.ensure([], () => r(require("./components/ShopCar")), "ShopCar");
+    }
   },
   data() {
     return {
+      showContent: false,
+      scrollHeight: this.isMobile ? 20 : 32,
       detail: {},
       detailPop: false,
       zIndex: 2003,
-      selected: '1',
+      selected: "1",
       top: 0,
       left: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    }
+    };
   },
   methods: {
     showDetail(item) {
@@ -62,51 +82,54 @@ export default {
       this.detail = item;
     },
     hidePop() {
-      this.$store.commit('POP_STATUS', false)
+      this.$store.commit("POP_STATUS", false);
     },
     //监听 页面滚动
     addToCar(el, item, type) {
-      type == 'add' ?
-        this.$refs.shopCar.drop(el, item) :
-        this.$refs.shopCar.minus(item);
+      type == "add"
+        ? this.$refs.shopCar.drop(el, item)
+        : this.$refs.shopCar.minus(item);
     },
     //滚动区域
     _initScrollArea() {
-      this.meunScrollR = new BScroll(this.$refs.shopDetail, {
+      this.meunScrollMain = new BScroll(this.$refs.shopDetail, {
         click: true,
         tab: true,
         probeType: 3,
         bounce: false
         // scrollbar: true
       });
-      this.meunScrollR.on("scroll", pos => {
-        this.top = parseInt(pos.y)
-        let heght = this.isMobile ? 119 : 99;
-        if (Math.abs(pos.y) > heght) {
-          this.meunScrollR.disable();
+      this.meunScrollMain.on("scroll", pos => {
+        this.top = parseInt(pos.y);
+        if (Math.abs(pos.y) > 99) {
+          this.meunScrollMain.disable();
         } else {
           // this.$refs.shopDetailItem._enable()
         }
-      })
+      });
     },
     //启动
     _enable() {
       setTimeout(() => {
-        this.meunScrollR.enable();
+        this.meunScrollMain.enable();
       }, 0);
     }
   },
   mounted() {
-    this.$nextTick(() => {
-      this._initScrollArea();
-    })
+    setTimeout(() => {
+      this.showContent = true;
+      this.$nextTick(() => {
+        this._initScrollArea();
+      });
+    }, 350);
   }
-}
+};
 </script>
+
 <style rel="stylesheet/scss" lang="scss" scoped>
-@import 'src/assets/css/vars';
-$height:60px;
-$FooterHeight:45px;
+@import "src/assets/css/vars";
+$height: 60px;
+$FooterHeight: 45px;
 .shopDetail {
   position: relative;
   bottom: 0;
@@ -116,7 +139,7 @@ $FooterHeight:45px;
     top: 46px;
     padding: 3px;
     left: 100px;
-    font-size: 14px;
+    font-size: 15px;
     z-index: 11;
     color: rgb(255, 255, 255);
     &.mobileTitle {

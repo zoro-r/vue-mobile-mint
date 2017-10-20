@@ -3,14 +3,14 @@
     <div class="scroll">
       <div v-bind:style="{height:screenHeight - scrollHeight + 'px'}" class="wrapper left" ref="wrapper_left">
         <ul class="content">
-          <li class="menu_item" v-bind:class="[foot_index == index?'current':'']" @click="toFood($event,index)" v-for="(item,index) in list_left" :key="index">{{item}}</li>
+          <button class="menu_item" v-bind:class="[foot_index == index?'current':'']" @click="toFood($event,index)" v-for="(item,index) in list_left" :key="index">{{item}}</button>
         </ul>
       </div>
       <div v-bind:style="{height:screenHeight - scrollHeight + 'px'}" class="wrapper right" ref="wrapper_right">
         <ul class="content">
           <div class="foods_item" v-for="(item,index) in list_right" :key="index">
             <span class="title">
-              <font class="biaoti">{{item.title}}</font>大家喜欢吃，才叫真好吃。
+              <font class="biaoti primary_bg">{{item.title}}</font>大家喜欢吃，才叫真好吃。
             </span>
             <div class="item_detail" v-for="(it,index) in item.list" :key="index">
               <button @click.stop="$parent.$parent.showDetail(it)" v-bind:style="{'background-image':'url('+it.img+')'}" class="h_img">
@@ -22,10 +22,10 @@
                 <div class="down">
                   <span class="price" v-html="it.price"></span>
                   <div class="add_content">
-                    <div v-bind:style="{width:it.count>0?'50px':'0px'}" style="transition: all .25s linear;">
-                      <div style="height:20px;overflow:hidden;">
+                    <div v-bind:style="{width:it.count>0?'62px':'0px'}" style="transition: all .25s linear;">
+                      <div style="height:25px;overflow:hidden;">
                         <mt-button @click.stop="$parent.$parent.addToCar($event,it)" type="primary" class="add_button" plain>-</mt-button>
-                        <span class="fn-12" v-html="it.count"></span>
+                        <span class="fn-14" v-html="it.count"></span>
                       </div>
                     </div>
                     <mt-button @click.stop="$parent.$parent.addToCar($event,it,'add')" class="add_button" type="primary">+</mt-button>
@@ -40,16 +40,36 @@
   </div>
 </template>
 <script type="text/babel">
-import BScroll from 'better-scroll'
+import BScroll from "better-scroll";
 export default {
   name: "shop_detail_item",
-  components: {
-  },
+  components: {},
   data() {
     return {
-      scrollHeight: (this.isMobile ? 20 : 32),
+      scrollHeight: this.isMobile ? 20 : 32,
       scroll_right: [],
-      list_left: ['红包', '汉堡小子', '汉堡类', '养生粥', '小吃类', '手抓饼', '奶茶类', '果汁类', '甜品类', '冰品类', '套餐类', '汤', '主食', '酒水', '老板娘', '川菜', '健康时蔬', '包子', '油条', '烤猪'],
+      list_left: [
+        "红包",
+        "汉堡小子",
+        "汉堡类",
+        "养生粥",
+        "小吃类",
+        "手抓饼",
+        "奶茶类",
+        "果汁类",
+        "甜品类",
+        "冰品类",
+        "套餐类",
+        "汤",
+        "主食",
+        "酒水",
+        "老板娘",
+        "川菜",
+        "健康时蔬",
+        "包子",
+        "油条",
+        "烤猪"
+      ],
       list_right: [],
       foot_index: 0,
       needChange: true
@@ -60,35 +80,37 @@ export default {
      * 跳转到商品
      */
     toFood(event, index) {
-      console.log("我点击了")
+      console.log("我点击了");
       let el = this.scroll_right[index].el;
       this.needChange = false;
-      this.meunScrollR.scrollToElement(el, 200)
+      this.meunScrollR.scrollToElement(el, 200);
       setTimeout(() => {
         this.foot_index = index;
         this.needChange = true;
-      }, 200);
+      }, 300);
     },
     /**
      * 添加到购物车
      */
     add(el, it) {
-      console.log(it)
+      console.log(it);
       // it.count++;
-      this.$parent.$parent.addToCar(el, it, 'add')
+      this.$parent.$parent.addToCar(el, it, "add");
     },
     /**
     * 减去
     */
     minus(el, it) {
       // it.count--;
-      this.$parent.$parent.addToCar(el, it)
+      this.$parent.$parent.addToCar(el, it);
     },
     /**
      * 初始化滚动数据
      */
     _initScrollData() {
-      let foodsList = this.$refs.wrapper_right.getElementsByClassName('foods_item');
+      let foodsList = this.$refs.wrapper_right.getElementsByClassName(
+        "foods_item"
+      );
       let height = 0;
       for (let i = 0; i < foodsList.length; i++) {
         height += foodsList[i].scrollHeight;
@@ -97,34 +119,37 @@ export default {
           el: foodsList[i],
           top: height - foodsList[i].scrollHeight,
           bottom: height
-        })
+        });
       }
     },
     //初始化滚动区域
     _initScrollArea() {
       this.meunScrollL = new BScroll(this.$refs.wrapper_left, {
-        click: true,
-        probeType: 3,
+        click: false,
+        probeType: 3
         // scrollbar: true
       });
       this.meunScrollR = new BScroll(this.$refs.wrapper_right, {
         click: false,
-        probeType: 3,
+        probeType: 3
         // scrollbar: true
       });
-      this.meunScrollL.on('scroll', (pos) => {
+      this.meunScrollL.on("scroll", pos => {
         if (pos.y > 0) {
-          this.$parent.$parent._enable()
+          this.$parent.$parent._enable();
         }
-      })
-      this.meunScrollR.on('scroll', (pos) => {
+      });
+      this.meunScrollR.on("scroll", pos => {
         if (pos.y > 0) {
-          this.$parent.$parent._enable()
+          this.$parent.$parent._enable();
         }
-        let top = Math.abs(parseInt(pos.y))
+        let top = Math.abs(parseInt(pos.y));
         for (let i = 0; i < this.scroll_right.length; i++) {
-          if (top > this.scroll_right[i].top && top < this.scroll_right[i].bottom) {
-            this.needChange && (this.foot_index = this.scroll_right[i].index)
+          if (
+            top >= this.scroll_right[i].top &&
+            top < this.scroll_right[i].bottom
+          ) {
+            this.needChange && (this.foot_index = this.scroll_right[i].index);
           }
         }
       });
@@ -144,9 +169,14 @@ export default {
   watch: {
     //控制左边菜单栏的滚动
     foot_index(newVal) {
-      this.meunScrollL.scrollToElement(this.$refs.wrapper_left.getElementsByClassName('menu_item')[newVal], 800, 0, -100)
+      this.meunScrollL.scrollToElement(
+        this.$refs.wrapper_left.getElementsByClassName("menu_item")[newVal],
+        800,
+        0,
+        -100
+      );
     },
-    ['$store.state.common.noScroll'](newVal) {
+    ["$store.state.common.noScroll"](newVal) {
       newVal ? this._enable() : this._disable();
     }
   },
@@ -161,17 +191,17 @@ export default {
           price: "<font class='fn-10'>￥</font>3.5",
           count: 0,
           id: i
-        })
+        });
       }
       this.list_right.push({
         title: this.list_left[i],
         list: tempList
-      })
+      });
     }
     //初始化数据
     this.$nextTick(() => {
       this._initScrollArea();
-    })
+    });
     setTimeout(() => {
       this._initScrollData();
     }, 200);
@@ -179,7 +209,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import 'src/assets/css/vars';
+@import "src/assets/css/vars";
 .shop_detail_item {
   .scroll {
     color: $emphasize-color;
@@ -187,7 +217,7 @@ export default {
     .left {
       flex: 0 0 80px;
       .current {
-        background: white;
+        background-color: $white-color !important;
         color: $title-color;
       }
       li {
@@ -207,12 +237,14 @@ export default {
           display: flex;
           font-size: $fn-sm;
           border-bottom: 1px solid $divider-color;
-          height: 30px;
+          height: 28px;
           align-items: center;
           .biaoti {
-            color: black;
-            font-size: $fn-md;
-            margin: 4px;
+            color:white;
+            font-size: $fn-sm;
+            padding: 0px 2px;
+            margin-right:5px;
+            border-radius: 2px;
           }
         }
         .item_detail {
@@ -271,12 +303,14 @@ export default {
         }
         .menu_item {
           height: 70px;
+          border: none;
           font-size: $fn-md;
           border-bottom: 1px solid $divider-color;
           display: flex;
           width: 100%;
-          text-align: center;
+          text-align: left;
           align-items: center;
+          background-color: $bg-color;
         }
       }
     }

@@ -17,7 +17,7 @@
 }
 
 //生成动画
-@mixin ani-block($name:'slideUp', $aniTime:.5s) {
+@mixin ani-block($name:'slideUp', $aniTime:.3s) {
   animation-name: $name;
   animation-duration: $aniTime;
 }

@@ -8,10 +8,10 @@
         <div class="opt">
           <span class="price" v-html="$parent.$parent.detail.price"></span>
           <div class="add_content">
-            <div v-bind:style="{width:$parent.$parent.detail.count>0?'50px':'0px'}" style="transition: all .25s linear;">
-              <div style="height:20px;overflow:hidden;">
+            <div v-bind:style="{width:$parent.$parent.detail.count>0?'62px':'0px'}" style="transition: all .25s linear;">
+              <div style="height:25px;overflow:hidden;">
                 <mt-button @click.stop="$parent.$parent.addToCar($event,$parent.$parent.detail)" type="primary" class="add_button" plain>-</mt-button>
-                <span class="fn-12" v-html="$parent.$parent.detail.count"></span>
+                <span class="fn-14" v-html="$parent.$parent.detail.count"></span>
               </div>
             </div>
             <mt-button @click.stop="$parent.$parent.addToCar($event,$parent.$parent.detail,'add')" class="add_button" type="primary">+</mt-button>

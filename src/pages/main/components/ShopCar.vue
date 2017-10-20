@@ -21,9 +21,9 @@
           <div class="right">
             <div class="add_content">
               <div>
-                <div style="height:20px;overflow:hidden;">
+                <div style="height:25px;overflow:hidden;">
                   <mt-button @click="minus(item,index)" type="primary" class="add_button" plain>-</mt-button>
-                  <span class="fn-12">{{item.count}}</span>
+                  <span class="fn-14">{{item.count}}</span>
                 </div>
               </div>
               <mt-button @click="drop" class="add_button" type="primary">+</mt-button>
@@ -68,9 +68,8 @@
 
 <script>
 export default {
-  name: 'shopCar',
-  components: {
-  },
+  name: "shopCar",
+  components: {},
   data() {
     return {
       show: false,
@@ -96,7 +95,7 @@ export default {
       dropBalls: [],
       goods_list: [],
       clickTime: 0
-    }
+    };
   },
   methods: {
     clear() {
@@ -109,13 +108,13 @@ export default {
     minus(item, index) {
       item.count--;
       for (let i in this.goods_list) {
-        console.log(this.goods_list[i].id)
+        console.log(this.goods_list[i].id);
         if (this.goods_list[i].id == item.id) {
           index = i;
         }
       }
       if (item.count <= 0) {
-        this.goods_list.splice(index, 1)
+        this.goods_list.splice(index, 1);
       }
       this.clickTime--;
       if (this.clickTime == 0) {
@@ -131,14 +130,15 @@ export default {
           flag = true;
         }
       }
-      !flag && (this.goods_list.push(item))
+      !flag && this.goods_list.push(item);
       this.isStart = true;
       // el = this.$refs.gouwuche;
       el = el.target;
       //触发一次事件就会将所有小球进行遍历
       for (let i = 0; i < this.balls.length; i++) {
         let ball = this.balls[i];
-        if (!ball.show) { //将false的小球放到dropBalls
+        if (!ball.show) {
+          //将false的小球放到dropBalls
           ball.show = true;
           ball.el = el; //设置小球的el属性为一个dom对象
           this.dropBalls.push(ball);
@@ -147,7 +147,8 @@ export default {
       }
     },
 
-    beforeEnter(el) { //这个方法的执行是因为这是一个vue的监听事件
+    beforeEnter(el) {
+      //这个方法的执行是因为这是一个vue的监听事件
       let count = this.balls.length;
       while (count--) {
         let ball = this.balls[count];
@@ -155,53 +156,56 @@ export default {
           let rect = ball.el.getBoundingClientRect(); //获取小球的相对于视口的位移(小球高度)
           let x = rect.left - 39;
           let y = -(window.innerHeight - rect.top - 30); //负数,因为是从左上角往下的的方向
-          el.style.display = ''; //清空display
+          el.style.display = ""; //清空display
           el.style.webkitTransform = `translate3d(0,${y}px,0)`;
           el.style.transform = `translate3d(0,${y}px,0)`;
           //处理内层动画
-          let inner = el.getElementsByClassName('inner-hook')[0]; //使用inner-hook类来单纯被js操作
+          let inner = el.getElementsByClassName("inner-hook")[0]; //使用inner-hook类来单纯被js操作
           inner.style.webkitTransform = `translate3d(${x}px,0,0)`;
           inner.style.transform = `translate3d(${x}px,0,0)`;
         }
       }
     },
 
-    enter(el, done) { //这个方法的执行是因为这是一个vue的监听事件
+    enter(el, done) {
+      //这个方法的执行是因为这是一个vue的监听事件
       /* eslint-disable no-unused-vars */
       let rf = el.offsetHeight; //触发重绘html
-      this.$nextTick(() => { //让动画效果异步执行,提高性能
-        el.style.webkitTransform = 'translate3d(0,0,0)';
-        el.style.transform = 'translate3d(0,0,0)';
+      this.$nextTick(() => {
+        //让动画效果异步执行,提高性能
+        el.style.webkitTransform = "translate3d(0,0,0)";
+        el.style.transform = "translate3d(0,0,0)";
         //处理内层动画
-        let inner = el.getElementsByClassName('inner-hook')[0]; //使用inner-hook类来单纯被js操作
-        inner.style.webkitTransform = 'translate3d(0,0,0)';
-        inner.style.transform = 'translate3d(0,0,0)';
-        el.addEventListener('transitionend', done); //Vue为了知道过渡的完成，必须设置相应的事件监听器。
+        let inner = el.getElementsByClassName("inner-hook")[0]; //使用inner-hook类来单纯被js操作
+        inner.style.webkitTransform = "translate3d(0,0,0)";
+        inner.style.transform = "translate3d(0,0,0)";
+        el.addEventListener("transitionend", done); //Vue为了知道过渡的完成，必须设置相应的事件监听器。
       });
     },
 
-    afterEnter(el) { //这个方法的执行是因为这是一个vue的监听事件
-      console.log("事件完成")
+    afterEnter(el) {
+      //这个方法的执行是因为这是一个vue的监听事件
+      console.log("事件完成");
       setTimeout(() => {
         this.isStart = false;
       }, 0);
       let ball = this.dropBalls.shift(); //完成一次动画就删除一个dropBalls的小球
       if (ball) {
         ball.show = false;
-        el.style.display = 'none'; //隐藏小球
+        el.style.display = "none"; //隐藏小球
       }
     }
-  },
-}
+  }
+};
 </script>
 <style lang="scss">
-@import 'src/assets/css/vars';
-$height_size:5.5rem;
-$FooterHeight:45px;
+@import "src/assets/css/vars";
+$height_size: 5.5rem;
+$FooterHeight: 45px;
 .shop_car {
   .shade_modal_bottom {
     position: absolute;
-    background: rgba(1, 1, 1, .2);
+    background: rgba(1, 1, 1, 0.2);
     bottom: 0px;
     height: $FooterHeight + 18px;
     width: 100%;
@@ -209,7 +213,7 @@ $FooterHeight:45px;
   }
   .shade_modal {
     height: 900px;
-    background: rgba(1, 1, 1, .2);
+    background: rgba(1, 1, 1, 0.2);
   }
   .ads {
     text-align: center;
@@ -255,7 +259,7 @@ $FooterHeight:45px;
         display: flex;
         align-items: center;
         padding: 0px $mg-lg;
-        border-bottom: 1px solid rgba(1, 1, 1, .05);
+        border-bottom: 1px solid rgba(1, 1, 1, 0.05);
         height: 55px;
         .money {
           margin-right: 10px;
@@ -280,7 +284,7 @@ $FooterHeight:45px;
           }
         }
         .right {
-          flex: 0 0 70px;
+          flex: 0 0 90px;
         }
       }
     }
@@ -293,7 +297,8 @@ $FooterHeight:45px;
     color: white;
     align-items: center;
     .gouwuc {
-      flex: .45;
+      flex: 0.45;
+      z-index: 22;
       .car {
         position: absolute;
         width: $FooterHeight+5px;
@@ -316,7 +321,7 @@ $FooterHeight:45px;
       flex: 1;
     }
     .jiesuan {
-      flex: .5;
+      flex: 0.5;
       background-color: $primary-green;
       height: $FooterHeight;
       width: 100%;
@@ -334,14 +339,14 @@ $FooterHeight:45px;
         position: fixed;
         left: 32px;
         bottom: 22px;
-        z-index: 30000;
-        transition: all .6s cubic-bezier(0.49, -0.29, 0.75, 0.41);
+        z-index: 20;
+        transition: all 0.35s cubic-bezier(0.49, -0.29, 0.75, 0.41);
         .inner {
           width: 16px;
           height: 16px;
           border-radius: 50%;
           background: $primary-color;
-          transition: all .6s linear;
+          transition: all 0.35s linear;
           z-index: 32131231;
         }
       }

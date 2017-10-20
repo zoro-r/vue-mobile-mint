@@ -165,8 +165,8 @@
     }
     .add_button {
       border-radius: 50%;
-      width: 20px;
-      height: 20px;
+      width: 25px;
+      height: 25px;
       padding: 0px;
       margin: 0px;
       line-height: 15px;
@@ -174,6 +174,12 @@
     }
   }
 
+  .mint-header .is-left {
+    .mint-button {
+      width: 100%;
+      text-align: left;
+    }
+  }
   ; //------------------------函数生产区域
   @for $i from 8 through 25 {
     .fn-#{$i} {
