@@ -28,6 +28,6 @@ export default [{
   component: shopPay,
   meta: {
     hasFooter: false,
-    noScroll: true
+    noScroll: false
   }
 }]

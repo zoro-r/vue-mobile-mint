@@ -1,7 +1,7 @@
 <template>
   <page class="shopDetail">
     <div slot="header">
-      <mt-header v-bind:style="{'background-color': 'rgba(38, 162, 255,'+Math.abs(0)/50+')'}" :fixed="true">
+      <mt-header style="background-color: rgba(38, 162, 255,0)" :fixed="true">
         <mt-button @click="back" slot="left" icon="back"></mt-button>
         <mt-button icon="more" slot="right"></mt-button>
       </mt-header>
@@ -121,7 +121,7 @@ export default {
       this.$nextTick(() => {
         this._initScrollArea();
       });
-    }, 350);
+    }, 300);
   }
 };
 </script>
@@ -131,6 +131,9 @@ export default {
 $height: 60px;
 $FooterHeight: 45px;
 .shopDetail {
+  background: url("../../assets/img/shop/loadding-bg.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   position: relative;
   bottom: 0;
   overflow: hidden;

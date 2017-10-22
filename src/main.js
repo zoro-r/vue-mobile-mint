@@ -60,7 +60,7 @@ Vue.mixin({
       screenWidth: document.documentElement.clientWidth || 0,
       screenHeight: document.documentElement.clientHeight,
       loaddingImg: "static/img/common/loading1.gif",
-      isMobile: window.navigator.platform == 'iPhone'
+      isMobile: window.navigator.platform !== 'iPhone'
     }
   },
   methods: {
@@ -68,7 +68,7 @@ Vue.mixin({
       this.$router.push(url)
     },
     back(url) {
-      router.goBack(url)
+      this.$router.back()
     },
     //返回首页
     toHome() {
