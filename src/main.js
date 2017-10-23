@@ -60,7 +60,7 @@ Vue.mixin({
       screenWidth: document.documentElement.clientWidth || 0,
       screenHeight: document.documentElement.clientHeight,
       loaddingImg: "static/img/common/loading1.gif",
-      isMobile: window.navigator.platform !== 'iPhone'
+      isMobile: window.navigator.platform == 'iPhone'
     }
   },
   methods: {
@@ -90,8 +90,8 @@ if (window.navigator.platform == 'iPhone') {
       }
     })
     window.navigator.splashscreen.hide();
-    StatusBar.overlaysWebView(true)
-    StatusBar.styleDefault();
+    // StatusBar.overlaysWebView(true)
+    // StatusBar.styleDefault();
     if (navigator.appVersion.indexOf('11') < 0) {
       //ios11 以下判断
     }

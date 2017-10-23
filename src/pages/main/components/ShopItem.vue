@@ -7,7 +7,7 @@
       <div class="shop_detail">
         <div class="index_1 primary_flex_center">
           <h2 class="isp">
-            <span class="fn-12" style="font-weight:700;color:black">上海麦当劳瞿溪路餐厅十一号接到的小刘</span>
+            <span class="fn-13" style="font-weight:700;color:black">上海麦当劳瞿溪路餐厅十一号接到的小刘</span>
           </h2>
           <div class="index_right">
             <span>保</span>
@@ -38,8 +38,8 @@
         </div>
       </div>
       <!-- 第二列 -->
-      <div class="shop_detail" style="border:none;padding-top:5px;height:auto;">
-        <div @click.stop="down=!down" class="index_1 primary_flex_center">
+      <div @click.stop="down=!down" class="shop_detail" style="border:none;padding-top:5px;height:auto;">
+        <div  class="index_1 primary_flex_center">
           <h2>
             <span class="shou">首</span>
             <span>新用户下单立减17.0元</span>
@@ -58,7 +58,7 @@
           </h2>
         </div>
         <!-- <transition name="show-hide"> -->
-        <div v-bind:style="{height: down?'0px':4 * 1.7+.5+'rem'}" class="transition_3">
+        <div v-bind:style="{height: down?'0px':4 * 2+.5+'rem'}" class="transition_3">
           <div class="index_1 primary_flex_center">
             <h2>
               <span class="te">品</span>
@@ -92,14 +92,20 @@
 
 <script>
 export default {
-  name: 'ShopItem',
+  name: "ShopItem",
   components: {
-    Star: r => { require.ensure([], () => r(require('../../../components/common/star/Star.vue')), 'Star') }
+    Star: r => {
+      require.ensure(
+        [],
+        () => r(require("../../../components/common/star/Star.vue")),
+        "Star"
+      );
+    }
   },
   data() {
     return {
       down: true
-    }
+    };
   },
   methods: {
     /**
@@ -110,13 +116,14 @@ export default {
       this.$parent.toShopList(231312);
     }
   }
-}
+};
 </script>
 <style lang="scss">
-$height_size:5.5rem;
+$height_size: 6.5rem;
 .shopItem {
   overflow: hidden;
   padding-bottom: 0px;
+  padding-top: 10px;
   position: relative;
   border-bottom: 1px solid rgb(238, 238, 238);
   background-color: rgb(255, 255, 255);
@@ -127,14 +134,14 @@ $height_size:5.5rem;
   .left {
     // width: 30%;
     img {
-      width: $height_size;
-      height: $height_size;
+      width: 89%;
+      // height: $height_size;
     }
   }
   .right {
-    width: 75%;
+    width: 78%;
     .shop_detail {
-      height: $height_size+.5rem;
+      height: $height_size+0.5rem;
       border-bottom: 1px dashed rgb(168, 168, 168);
       .has_before::before {
         content: "|";
@@ -149,7 +156,7 @@ $height_size:5.5rem;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          font-size: .9rem;
+          font-size: 1.1rem;
           font-weight: 200;
           &::last-of-type {
             margin-bottom: 5px;
@@ -157,18 +164,22 @@ $height_size:5.5rem;
         }
         .isp::before {
           content: "品牌";
-          background: linear-gradient(-139deg, rgb(255, 241, 0), rgb(255, 227, 57));
-          margin-right: .22rem;
+          background: linear-gradient(
+            -139deg,
+            rgb(255, 241, 0),
+            rgb(255, 227, 57)
+          );
+          margin-right: 0.22rem;
           font-size: 1rem;
-          padding: .3rem;
-          border-radius: .5rem;
-          width: .3rem;
-          color: rgb(111, 63, 21)
+          padding: 0.3rem;
+          border-radius: 0.5rem;
+          width: 0.3rem;
+          color: rgb(111, 63, 21);
         }
         .index_right {
           span {
-            padding: .1rem;
-            border-radius: .1rem;
+            padding: 0.1rem;
+            border-radius: 0.1rem;
             color: rgb(153, 153, 153);
             border: 1px solid rgb(221, 221, 221);
           }
@@ -179,7 +190,7 @@ $height_size:5.5rem;
           .showac {
             .icon_img {
               margin-left: 3px;
-              transition: all linear .5s;
+              transition: all linear 0.5s;
             }
             .fz {
               transform: rotateZ(180deg);

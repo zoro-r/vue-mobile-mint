@@ -3,14 +3,14 @@
     <div class="scroll">
       <div v-bind:style="{height:screenHeight - scrollHeight + 'px'}" class="wrapper left" ref="wrapper_left">
         <ul class="content">
-          <button class="menu_item" v-bind:class="[foot_index == index?'current':'']" @click="toFood($event,index)" v-for="(item,index) in list_left" :key="index">{{item}}</button>
+          <button class="menu_item fn-13" v-bind:class="[foot_index == index?'current':'']" @click="toFood($event,index)" v-for="(item,index) in list_left" :key="index">{{item}}</button>
         </ul>
       </div>
       <div v-bind:style="{height:screenHeight - scrollHeight + 'px'}" class="wrapper right" ref="wrapper_right">
         <ul class="content">
           <div class="foods_item" v-for="(item,index) in list_right" :key="index">
             <span class="title">
-              <font class="biaoti primary_bg">{{item.title}}</font>大家喜欢吃，才叫真好吃。
+              <font class="biaoti primary_bg">{{item.title}}</font>
             </span>
             <div class="item_detail" v-for="(it,index) in item.list" :key="index">
               <button @click.stop="$parent.$parent.showDetail(it)" v-bind:style="{'background-image':'url('+it.img+')'}" class="h_img">
@@ -215,13 +215,13 @@ export default {
     color: $emphasize-color;
     display: flex;
     .left {
-      flex: 0 0 80px;
+      flex: 0 0 85px;
       .current {
         background-color: $white-color !important;
         color: $title-color;
       }
       li {
-        height: 45px;
+        height: 40px;
         color: $emphasize-color;
         justify-content: center;
       }
@@ -240,10 +240,10 @@ export default {
           height: 28px;
           align-items: center;
           .biaoti {
-            color:white;
+            color: white;
             font-size: $fn-sm;
             padding: 0px 2px;
-            margin-right:5px;
+            margin-right: 5px;
             border-radius: 2px;
           }
         }
@@ -302,15 +302,16 @@ export default {
           height: 110px;
         }
         .menu_item {
-          height: 70px;
+          color: $primary-color-g;
+          min-height: 50px;
           border: none;
-          font-size: $fn-md;
-          border-bottom: 1px solid $divider-color;
+          border-bottom: 0.5px solid $divider-color;
           display: flex;
           width: 100%;
           text-align: left;
           align-items: center;
-          background-color: $bg-color;
+          background-color: rgb(246, 246, 246);
+          padding-right: 0px;
         }
       }
     }

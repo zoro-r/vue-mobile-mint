@@ -193,7 +193,7 @@
   @for $i from 8 through 25 {
     .fn-#{$i} {
       font-size: .1rem * $i;
-      font-weight: 100*($i - 7)
+      font-weight: 100*($i - 9)
     }
   }
 

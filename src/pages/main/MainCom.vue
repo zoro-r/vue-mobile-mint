@@ -59,50 +59,52 @@
           <shopItem v-for="(item,index) in shopList" :key="index"></shopItem>
         </div>
       </section>
-      <section class="footer_line">我是有底线了</section>
+      <section class="footer_line fn-13">我是有底线了</section>
     </div>
   </page>
 </template>
 <script type="text/babel">
-import menuList from '../../assets/data/homeItem'
+import menuList from "../../assets/data/homeItem";
 export default {
   name: "MainCom",
   data() {
     return {
       menuList: menuList,
-      topStatus: '',
+      topStatus: "",
       wrapperHeight: 0,
       translate: 0,
       moveTranslate: 0,
-      tipList: [
-        "烧烤", "馒头", "麻辣烫", "粥", "面包", "芒果", "拉面", "酸辣粉", "冒菜", "蛋糕"
-      ],
+      tipList: ["烧烤", "馒头", "麻辣烫", "粥", "面包", "芒果", "拉面", "酸辣粉", "冒菜", "蛋糕"],
       shopList: [1, 1, 1, 2, 3, 4, 5, 6]
     };
   },
   components: {
-    ShopItem: r => { require.ensure([], () => r(require('./components/ShopItem')), 'ShopItem') },
-    ShopAds: r => { require.ensure([], () => r(require('./components/ShopAds')), 'ShopAds') },
+    ShopItem: r => {
+      require.ensure([], () => r(require("./components/ShopItem")), "ShopItem");
+    },
+    ShopAds: r => {
+      require.ensure([], () => r(require("./components/ShopAds")), "ShopAds");
+    }
   },
   methods: {
     /**
      * 显示搜索框
      */
     showSearch() {
-      this.$store.commit('POP_STATUS_S', true)
+      this.$store.commit("POP_STATUS_S", true);
     },
     /**
      * 跳转商家列表
      */
     toShopDetail(item) {
       console.log("商家列表", item);
-      this.$router.push({ name: "shopDetail" })
+      this.$router.push({ name: "shopDetail" });
     },
     /**
     * 显示地址
     */
     showLocation() {
-      this.$store.commit('POP_STATUS_L', true)
+      this.$store.commit("POP_STATUS_L", true);
     }
   }
 };
@@ -152,7 +154,7 @@ export default {
     }
   }
   .scrllX {
-    justify-content: left!important;
+    justify-content: left !important;
     position: absolute;
     z-index: 1;
     height: 50px;
@@ -166,13 +168,17 @@ export default {
   .search {
     position: sticky;
     top: 0px;
-     ::after {
+    ::after {
       content: "";
       position: absolute;
       width: 100%;
       height: 0px;
       left: 0;
-      background-image: linear-gradient(90deg, rgb(0, 170, 255), rgb(0, 133, 255));
+      background-image: linear-gradient(
+        90deg,
+        rgb(0, 170, 255),
+        rgb(0, 133, 255)
+      );
     }
   }
   .input_box {
@@ -197,13 +203,14 @@ export default {
     justify-content: space-between;
     padding-bottom: 0px;
     position: relative;
-    z-index: 20;
+    z-index: 200;
     .index_left {
       align-items: center;
-      height: 3rem;
+      height: 4rem;
       display: flex;
       -webkit-box-align: center;
       width: 60%;
+      padding-top: 10px;
       span {
         font-weight: 600;
         margin: 0 5px;
@@ -219,6 +226,7 @@ export default {
       display: flex;
       align-items: center;
       text-align: right;
+      padding-top: 10px;
       img {
         height: 28px;
         margin: 0px 5px 0px 5px;

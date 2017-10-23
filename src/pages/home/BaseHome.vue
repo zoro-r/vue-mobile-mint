@@ -1,13 +1,5 @@
 <template>
   <div class="main_page">
-    <!-- <mt-header style="-webkit-transform: translateZ(0)" slot="header" class="primary_bg" title="我的" :fixed="true">
-          <mt-button slot="left">
-            <img src="static/img/icon/reminder.png" style="width:17px" alt="">
-          </mt-button>
-          <mt-button slot="right">
-            <img src="static/img/icon/set.png" style="width:20px" alt="">
-          </mt-button>
-        </mt-header> -->
     <!-- 子页面 -->
     <transition :name="transitionName">
       <navigation>
@@ -52,24 +44,11 @@ export default {
   name: 'BaseHome',
   data() {
     return {
-      swiperOption: {
-        // effect: 'cube',
-        // grabCursor: true,
-        // cube: {
-        //   shadow: true,
-        //   slideShadows: true,
-        //   shadowOffset: 20,
-        //   shadowScale: 0.94
-        // }
-      },
       transitionName: 'slide-left',
       isScroll: true,
-      // $parent.transitionName: "slideInRight",
       showHome: false
     }
   },
-  //  r => { require.ensure([], () => r(require('../../components/common/LogoFooter')), 'logoFooter') },
-
   components: {
     MainCom,
     MineCom: r => { require.ensure([], () => r(require('../mine/MineCom')), 'MineCom') },

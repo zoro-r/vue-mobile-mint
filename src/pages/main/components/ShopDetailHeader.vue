@@ -4,7 +4,7 @@
       <div v-bind:style="{background: 'linear-gradient(to bottom, #8d2812 0%, #8d2812 '+(75 - top*.2)+'%, #fff '+(73 - top*.2)+'%, #fff 100%)'}" class="shopDetail_header platfrom-header">
         <div class="back">
         </div>
-        <div v-bind:style="{'opacity': (90 - Math.abs(top))/90}">
+        <div v-bind:style="{'opacity': (60 - Math.abs(top))/60}">
           <div class="heard_content">
             <img v-bind:style="{ transform: this.top < 50 ? 'scale(' + (280 + this.top) / 270 + ')' : 'scale(1)'}" src="../../../assets/img/shop/header.jpeg" alt="">
             <div class="detail">
@@ -18,7 +18,7 @@
               </span>
             </div>
           </div>
-          <div class="youhui fn-12">
+          <div class="youhui">
             <span class="man">满50减9，满80减14</span>
             <div class="huodong">2个活动
               <img src="../../../../static/img/icon/down.png" />
@@ -111,6 +111,8 @@ $height:80px;
     .youhui {
       // padding-top: 2px;
       margin-top: 20px;
+      font-size: $fn-sm;
+      font-weight: 200;
       color: $description-color;
       display: flex;
       justify-content: space-between;

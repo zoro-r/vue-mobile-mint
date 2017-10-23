@@ -9,13 +9,15 @@
     </div>
     <div v-if="showContent" v-bind:style="{height:screenHeight + 60 + 'px'}" slot="content" ref="shopDetail">
       <div>
-        <div style="min-height:157px">
+        <div style="min-height:157px;">
           <ShopDetailHeader :top="top" />
         </div>
         <!-- 内容区域 -->
         <div class="text_content">
           <!-- 顶部切换导航栏 -->
-          <tabs :tabs="['商品','评价','店铺']"></tabs>
+          <div class="tabsss" >
+            <tabs :tabs="['商品','评价4.5分']"></tabs>
+          </div>
           <!-- 中间内容区域 -->
           <div v-bind:style="{height:screenHeight - scrollHeight + 'px'}" class="shopDetail_content">
             <shop-detail-item ref="shopDetailItem" />
@@ -137,6 +139,15 @@ $FooterHeight: 45px;
   position: relative;
   bottom: 0;
   overflow: hidden;
+  .text_content {
+    background: $white-color;
+    .tabsss {
+      box-shadow:0px 2px 1px $divider-color;
+      padding-right: 55%;
+      height: 35px;
+      margin-bottom: 1px;
+    }
+  }
   .title {
     position: absolute;
     top: 46px;
