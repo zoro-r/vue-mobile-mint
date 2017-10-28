@@ -70,6 +70,11 @@
     border: none;
   }
 
+  .primary_border {
+    border: 1px solid $primary-color;
+    border-radius: 2px;
+  }
+
   .primary-header {
     background: -webkit-gradient(linear, left top, right top, from(rgb(0, 170, 255)), to(rgb(0, 133, 255)));
   }
@@ -238,5 +243,36 @@
     }
     .float-header {
       padding-top: 20px!important
+    }
+  }
+
+  .pay_footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    background: $white-color;
+    box-sizing: border-box;
+    font-size: $fn-lg;
+    align-items: center;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, .5);
+    line-height: 50px;
+		font-weight: 500;
+		z-index: 20000;
+    .left {
+      height: 100%;
+      flex: 1;
+      padding-left: $pd-md;
+      color: $white-color;
+      background: rgba(0, 0, 0, .7)
+    }
+    .right {
+      flex: 0 0 80px;
+      height: 100%;
+      text-align: center;
+      background: $primary-green;
+      color: $white-color;
     }
   }

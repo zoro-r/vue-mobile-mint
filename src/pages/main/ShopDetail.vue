@@ -142,7 +142,7 @@ $FooterHeight: 45px;
   .text_content {
     background: $white-color;
     .tabsss {
-      box-shadow:0px 2px 1px $divider-color;
+      box-shadow: 0px 2px 1px $divider-color;
       padding-right: 55%;
       height: 35px;
       margin-bottom: 1px;
@@ -165,7 +165,7 @@ $FooterHeight: 45px;
     position: fixed;
     bottom: 0px;
     width: 100%;
-    z-index: 2008;
+		z-index: 2008;
   }
 }
 </style>

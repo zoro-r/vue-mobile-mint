@@ -5,15 +5,14 @@ import help from './help'
 import ui from './ui'
 import validator from './validator'
 import wx from './wx'
+import jsonp from './jsonp'
 
 const utils = {
   cache: cache,
   format: format,
-  http: http,
   help: help,
   ui: ui,
-  validator: validator,
-  wx: wx
+  jsonp: jsonp
 }
 
 export default utils

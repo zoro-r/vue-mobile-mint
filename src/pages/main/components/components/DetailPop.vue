@@ -1,6 +1,6 @@
 <template>
   <div class="detailPop">
-    <mt-popup v-model="$parent.$parent.detailPop" position="bottom" popup-transition="popup-fade" class="mint-popup" :modal="true">
+    <mt-popup v-model="$parent.$parent.detailPop" position="bottom"  class="mint-popup" :modal="true">
       <img v-lazy="img" class="detail-image" />
       <div class="content">
         <h2>湘西外婆菜丰盛套餐</h2>

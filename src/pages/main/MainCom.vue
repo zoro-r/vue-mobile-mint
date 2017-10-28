@@ -106,6 +106,8 @@ export default {
     showLocation() {
       this.$store.commit("POP_STATUS_L", true);
     }
+  },
+  created() {
   }
 };
 </script>

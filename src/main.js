@@ -1,10 +1,11 @@
 window.globalConfig = {
-  rootUrl: "http://10.0.16.28:8080/com.ifp.ipartner/",
-  iosUrl: "",
-  env: "int", //目前版本环境分别为---int---uat---sh
-  isDebug: false, //是否开启接口debug模式
-  plat: 'NATIVE', //WEB、NATIVE
-  timeout: 1000 * 180 //默认是3000毫秒
+	// rootUrl: "http://10.0.16.28:8080/com.ifp.ipartner/",
+	rootUrl: "http://192.168.2.143:8080/com.ifp.ipartner/",
+	iosUrl: "",
+	env: "int", //目前版本环境分别为---int---uat---sh
+	isDebug: false, //是否开启接口debug模式
+	plat: 'NATIVE', //WEB、NATIVE
+	timeout: 1000 * 180 //默认是3000毫秒
 }
 import Vue from 'vue'
 import App from './components/common/App'
@@ -31,9 +32,9 @@ import Tabs from './components/common/Tabs'
 import FastClick from 'fastclick'
 
 if ('addEventListener' in document) {
-  document.addEventListener('DOMContentLoaded', function () {
-    FastClick.attach(document.body);
-  }, false);
+	document.addEventListener('DOMContentLoaded', function () {
+		FastClick.attach(document.body);
+	}, false);
 }
 Vue.use(VueAwesomeSwiper)
 Vue.use(VueLazyImage)
@@ -45,71 +46,76 @@ Vue.component('page', Page)
 Vue.component('tabs', Tabs)
 Vue.config.productionTip = false
 Vue.use(vueScrollBehavior, {
-  router: router
+	router: router
 })
 Vue.use(Navigation, {
-  router,
-  store,
-  moduleName: 'policy',
-  keyName: 'RH',
-  id: "scroll-content"
+	router,
+	store,
+	moduleName: 'policy',
+	keyName: 'RH',
+	id: "scroll-content"
 })
 Vue.mixin({
-  data() {
-    return {
-      screenWidth: document.documentElement.clientWidth || 0,
-      screenHeight: document.documentElement.clientHeight,
-      loaddingImg: "static/img/common/loading1.gif",
-      isMobile: window.navigator.platform == 'iPhone'
-    }
-  },
-  methods: {
-    go(url) {
-      this.$router.push(url)
-    },
-    back(url) {
-      this.$router.back()
-    },
-    //返回首页
-    toHome() {
-      router.goBack("/baseHome")
-    }
-  }
+	data() {
+		return {
+			screenWidth: document.documentElement.clientWidth || 0,
+			screenHeight: document.documentElement.clientHeight,
+			loaddingImg: "static/img/common/loading1.gif",
+			isMobile: window.navigator.platform == 'iPhone'
+		}
+	},
+	methods: {
+		go(url) {
+			this.$router.push(url)
+		},
+		back(url) {
+			this.$router.back()
+		},
+		//返回首页
+		toHome() {
+			router.goBack("/baseHome")
+		}
+	}
 })
 if (window.navigator.platform == 'iPhone') {
-  console.log("app模式启动")
-  //移动端组件---------------------start---------------------
-  document.addEventListener('deviceready', function () {
-    new Vue({
-      el: '#app',
-      router,
-      store,
-      template: '<App/>',
-      components: {
-        App
-      }
-    })
-    window.navigator.splashscreen.hide();
-    // StatusBar.overlaysWebView(true)
-    // StatusBar.styleDefault();
-    if (navigator.appVersion.indexOf('11') < 0) {
-      //ios11 以下判断
-    }
-  }, false);
+	console.log("app模式启动")
+	//移动端组件---------------------start---------------------
+	document.addEventListener('deviceready', function () {
+		new Vue({
+			el: '#app',
+			router,
+			store,
+			template: '<App/>',
+			components: {
+				App
+			}
+		})
+		window.navigator.splashscreen.hide();
+		StatusBar.styleDefault();
+		window.addEventListener('native.keyboardshow', keyboardShowHandler);
+
+		function keyboardShowHandler(e) {
+			alert('Keyboard height is: ' + e.keyboardHeight);
+		}
+		cordova.plugins.Keyboard.disableScroll(true);
+		if (navigator.appVersion.indexOf('11') < 0) {
+			//ios11 以下判断
+		}
+	}, false);
 } else {
-  new Vue({
-    el: '#app',
-    router,
-    store,
-    template: '<App/>',
-    components: {
-      App
-    }
-  })
+	new Vue({
+		el: '#app',
+		router,
+		store,
+		template: '<App/>',
+		components: {
+			App
+		}
+	})
 }
 window.addEventListener('statusTap', function () {
-  // scroll-up with document.body.scrollTop = 0; or do whatever you want
-  document.getElementsByClassName("child-view")[0].body.scrollTop = 0;
-  console.log("我点击的statusTap")
+	// scroll-up with document.body.scrollTop = 0; or do whatever you want
+	document.getElementsByClassName("child-view")[0].body.scrollTop = 0;
+	console.log("我点击的statusTap")
 });
 //移动端组件---------------------end---------------------

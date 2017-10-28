@@ -1,140 +1,74 @@
 <template>
-  <section class="demo">
-    <mt-button style="margin-left:100px" @click='drop' primary>小球掉落</mt-button>
-    <div class="ball-container bounceIn">
-      <transition name="fade" v-for="(ball,index) in balls" :key="index" @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
-        <div class="ball" v-show="ball.show">
-          <div class="inner inner-hook"></div>
-        </div>
-      </transition>
-      <div ref="gouwuche bounceIn">dsadsada</div>
+  <section class="demo ">
+    <div id="canvasBox" class="canvasBox">
+      <canvas style="transform:scale(.5)" height="180px" :width="screenWidth" ref="canvas" ></canvas>
     </div>
-
-    <div class="ani animated" v-bind:class="[adni?'bounceIn':''] ">
-      dsadad
-    </div>
+    <!-- <div ref="scroll" class="container primary_bg">
+      <div class="item">
+      </div>
+    </div> -->
   </section>
 </template>
+
 <script type="text/babel">
-import BScroll from 'better-scroll'
+import BScroll from "better-scroll";
 export default {
   name: "demo",
-  components: {
-  },
+  components: {},
   data() {
-    return {
-      balls: [
-        {
-          show: false
-        },
-        {
-          show: false
-        },
-        {
-          show: false
-        },
-        {
-          show: false
-        },
-        {
-          show: false
-        }
-      ],
-      dropBalls: [],
-      adni: false
-    }
+    return {};
   },
   methods: {
-    drop(el) {
-      this.adni = true;
-      // el = this.$refs.gouwuche;
-      el = el.target;
-      //触发一次事件就会将所有小球进行遍历
-      for (let i = 0; i < this.balls.length; i++) {
-        let ball = this.balls[i];
-        if (!ball.show) { //将false的小球放到dropBalls
-          ball.show = true;
-          ball.el = el; //设置小球的el属性为一个dom对象
-          this.dropBalls.push(ball);
-          return;
-        }
-      }
-    },
-
-    beforeEnter(el) { //这个方法的执行是因为这是一个vue的监听事件
-      let count = this.balls.length;
-      while (count--) {
-        let ball = this.balls[count];
-        if (ball.show) {
-          console.log(ball)
-          let rect = ball.el.getBoundingClientRect(); //获取小球的相对于视口的位移(小球高度)
-          let x = rect.left - 32;
-          let y = -(window.innerHeight - rect.top - 22); //负数,因为是从左上角往下的的方向
-          el.style.display = ''; //清空display
-          el.style.webkitTransform = `translate3d(0,${y}px,0)`;
-          el.style.transform = `translate3d(0,${y}px,0)`;
-          //处理内层动画
-          let inner = el.getElementsByClassName('inner-hook')[0]; //使用inner-hook类来单纯被js操作
-          inner.style.webkitTransform = `translate3d(${x}px,0,0)`;
-          inner.style.transform = `translate3d(${x}px,0,0)`;
-        }
-      }
-    },
-
-    enter(el, done) { //这个方法的执行是因为这是一个vue的监听事件
-      /* eslint-disable no-unused-vars */
-      let rf = el.offsetHeight; //触发重绘html
-      this.$nextTick(() => { //让动画效果异步执行,提高性能
-        el.style.webkitTransform = 'translate3d(0,0,0)';
-        el.style.transform = 'translate3d(0,0,0)';
-        //处理内层动画
-        let inner = el.getElementsByClassName('inner-hook')[0]; //使用inner-hook类来单纯被js操作
-        inner.style.webkitTransform = 'translate3d(0,0,0)';
-        inner.style.transform = 'translate3d(0,0,0)';
-        el.addEventListener('transitionend', done); //Vue为了知道过渡的完成，必须设置相应的事件监听器。
-      });
-    },
-
-    afterEnter(el) { //这个方法的执行是因为这是一个vue的监听事件
-      console.log("事件完成")
-      let ball = this.dropBalls.shift(); //完成一次动画就删除一个dropBalls的小球
-      if (ball) {
-        ball.show = false;
-        el.style.display = 'none'; //隐藏小球
-      }
+    _initHtml() {
+      let canvas = this.$refs.canvas;
+      let ctx = canvas.getContext("2d");
+      ctx.fillStyle = "#b1b1b1";
+      ctx.strokeStyle = "rgb(118,113,108)";
+      // 为了让效果更好 设置上角的一点点高光
+      ctx.shadowColor = "#ccc";
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 2;
+      ctx.shadowBlur = 1;
+      // 画笔宽度为1
+      ctx.lineWidth = 1;
+      let circle = {
+        x: this.screenWidth / 2, //圆心的x轴坐标值
+        y: 24, //圆心的y轴坐标值
+        r: 40 //圆的半径
+      };
+      ctx.fillStyle = "#b1b1b1";
+      ctx.arc(circle.x, circle.y, circle.r, 0, Math.PI, true);
+      ctx.arc(circle.x, circle.y*2, circle.r/2, 0, Math.PI, false);
+      ctx.stroke();
+      ctx.fill();
     }
   },
-  watch: {
-  },
   mounted() {
+    this.$nextTick(() => {
+      // this.meunScrollMain = new BScroll(this.$refs.scroll, {
+      //   click: true,
+      //   tab: true,
+      //   probeType: 3,
+      //   bounce: true
+      // });
+      this._initHtml();
+    });
   }
 };
 </script>
+
 <style lang="scss">
-@import 'src/assets/css/vars';
-$height:80px;
+@import "src/assets/css/vars";
+$height: 80px;
 .demo {
-  .ani{
-    width:100px;
-    height: 100px;
-    display: block;
-    background: blue;
-    color:white;
-  }
-  .ball-container {
-    .ball {
-      position: fixed;
-      left: 32px;
-      bottom: 22px;
-      z-index: 200;
-      transition: all .6s cubic-bezier(0.49, -0.29, 0.75, 0.41);
-      .inner {
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
-        background: rgb(0, 160, 220);
-        transition: all .6s linear;
-      }
+  .container {
+    height: 500px;
+    // overflow: scroll;
+    .item {
+      height: 1000px;
+      background: green;
+      width: 80%;
+      margin: auto;
     }
   }
 }
