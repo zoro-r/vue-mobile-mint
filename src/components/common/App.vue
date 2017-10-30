@@ -2,7 +2,7 @@
   <div v-bind:class="isMobile?'platfrom-ios':''">
     <!-- v-bind:style="{'overflow-y':isScroll && !$store.state.common.noScroll? 'hidden':'hidden'}" -->
     <div style="overflow-y:hidden" v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" class="child-view scroll-content" id="scroll-content">
-      <router-view> </router-view>
+      <router-view></router-view>
       <!-- 底部导航 -->
     </div>
     <transition name="slideInUp">

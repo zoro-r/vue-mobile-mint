@@ -77,9 +77,9 @@ Vue.mixin({
 		}
 	}
 })
+//移动端组件---------------------start---------------------
 if (window.navigator.platform == 'iPhone') {
 	console.log("app模式启动")
-	//移动端组件---------------------start---------------------
 	document.addEventListener('deviceready', function () {
 		new Vue({
 			el: '#app',
@@ -95,7 +95,7 @@ if (window.navigator.platform == 'iPhone') {
 		window.addEventListener('native.keyboardshow', keyboardShowHandler);
 
 		function keyboardShowHandler(e) {
-			alert('Keyboard height is: ' + e.keyboardHeight);
+			console.log('Keyboard height is: ' + e.keyboardHeight);
 		}
 		cordova.plugins.Keyboard.disableScroll(true);
 		if (navigator.appVersion.indexOf('11') < 0) {

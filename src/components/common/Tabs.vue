@@ -4,7 +4,7 @@
       <div class="tab-bar">
         <div v-for="(item,index) in tabs" :key="index" @click="change(item,index)" class="tab-item" :style="{width:100/tabs.length+'%'}" :class="{active:tabIndexValue==index}">{{item}}</div>
       </div>
-      <div class="tab-line" style="transition:all .3s ease-out;" :style="{width:100/tabs.length-4+'%',left:100/tabs.length*tabIndexValue+17.5+'%'}">
+      <div class="tab-line" style="transition:all .3s ease-out;" :style="{width:100/tabs.length-4+'%',left:100/tabs.length*tabIndexValue+19.5+'%'}">
       </div>
     </div>
   </div>

@@ -134,7 +134,7 @@ $height: 60px;
 $FooterHeight: 45px;
 .shopDetail {
   background: url("../../assets/img/shop/loadding-bg.png");
-  background-size: 100% 100%;
+  background-size: 100%;
   background-repeat: no-repeat;
   position: relative;
   bottom: 0;
@@ -143,7 +143,7 @@ $FooterHeight: 45px;
     background: $white-color;
     .tabsss {
       box-shadow: 0px 2px 1px $divider-color;
-      padding-right: 55%;
+      padding-right: 45%;
       height: 35px;
       margin-bottom: 1px;
     }
