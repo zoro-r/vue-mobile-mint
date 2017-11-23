@@ -2,6 +2,8 @@
   <page class="searchHome">
     <mt-header slot="header" class="primary_bg" title="发现" :fixed="true">
     </mt-header>
+
+
     <div slot="content" class="order_cell has-header row">
       <div v-for="(item,index) in list" :key="index" class="col">
         <div class="col_item">
@@ -10,6 +12,8 @@
         </div>
         <img :src="item.img" />
       </div>
+
+			
       <div>
         <img style="margin:5px 0px;width:100%;" src="../../assets/img/mine/rrr.jpeg" />
       </div>

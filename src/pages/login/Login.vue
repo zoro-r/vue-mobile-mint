@@ -8,7 +8,10 @@
 				{{isPwd?'密码登陆':'账号登陆'}}
 			</mt-button>
 		</mt-header>
+
+		
 		<div slot="content">
+			<!-- 密码登陆 -->
 			<div v-if="isPwd">
 				<div class="has-header login_content">
 					<div style="position:relative">
@@ -19,6 +22,8 @@
 					<p class="waring fn-12">温馨提示，未注册饿了么账号的手机号，登录时将自动注册，且表示您已同意《用户协议》</p>
 				</div>
 			</div>
+
+			<!-- 验证码登陆 -->
 			<div v-else>
 				<div class="has-header login_content">
 						<mt-field placeholder="手机号码" v-model="modal.userName"></mt-field>
@@ -46,11 +51,10 @@
 				isPwd:true
 			};
 		},
-		components: {},
-		watch: {},
 		methods: {
 			/**
 			 * 发送验证码
+			 * 优化 @计算时间差
 			 */
 			sendCode() {
 				setInterval(e => {

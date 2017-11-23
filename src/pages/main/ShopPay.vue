@@ -5,6 +5,7 @@
 				<div class="back_btn" @click.stop="back">
 					<img src="../../../static/img/icon/left-w.png" />
 				</div>
+
 				<h2 v-bind:style="{opacity:(27-top)/27}">订单配送至</h2>
 				<div v-bind:style="{top:22 + mobile - (top<32?top:32) + 'px'}" class="float_title">
 					<h2>
@@ -15,6 +16,8 @@
 				<h2 v-bind:style="{opacity:(27-top)/27}" class="info">刘德华 13771162366</h2>
 			</div>
 		</div>
+
+		<!-- 支付内容 -->
 		<div class="msg_content" slot="content">
 			<div class="time">
 				<div class="left">
@@ -27,6 +30,8 @@
 				</div>
 				<img src="../../../static/img/icon/right.png" alt="">
 			</div>
+
+			<!-- 商品展示 -->
 			<div class="order">
 				<h2 class="title">
 					<font>CoCo都可（灵岩南路店）</font>
@@ -55,6 +60,8 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- 底部导航 -->
 		<div slot="footer">
 			<div class="pay_footer">
 				<div class="left primary_bg_gray">￥28</div>

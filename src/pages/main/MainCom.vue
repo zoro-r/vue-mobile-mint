@@ -16,15 +16,15 @@
           <img src="static/img/dark.png" alt="">
         </aside>
       </section>
-      <!-- <section style="min-height:3.5rem"> -->
-      <!-- <affix> -->
+
+      <!-- 搜索商家，商家名称 -->
       <section v-bind:style="{height:isMobile?'6rem':'4rem'}" class="primary_bg float-header input_box primary_flex_center search primary_mg" style="z-index:10;top:0px">
         <div @click="showSearch" class="ipt_item primary_flex_center fn-12">
           <img class="icon-10" src="static/img/icon/search.png" />&nbsp;&nbsp;搜索商家，商家名称
         </div>
       </section>
-      <!-- </affix> -->
-      <!-- </section> -->
+
+      <!-- 小内容滚动区域 -->
       <section class="primary_bg primary_mg_hor" style="height:0px;overflow:hidden;height:35px;">
         <div style="overflow-x: scroll;white-space: nowrap;position:relative;height:45px">
           <div class="input_box primary_flex_center scrllX fn-13" style="padding:0px;height:35px;">
@@ -32,14 +32,14 @@
           </div>
         </div>
       </section>
+
+			<!-- 商家分裂 内容item区域 -->
       <section class="primary_bg_white" style="height:175px;">
         <mt-swipe :auto="0" height="100%">
           <mt-swipe-item v-for="(item,index) in menuList" :key="index">
             <div class="row">
               <div class="col col_item" v-for="(it,index1) in item" :key="index1">
                 <div>
-                  <!-- <span>{{it.img}}</span> -->
-                  <!-- <img v-bind:src="it.img" /> -->
                   <lazy-image :src="it.img" :img-class="['detailImg']" :placeholder="loaddingImg" />
                 </div>
                 <span>{{it.text}}</span>
@@ -48,14 +48,17 @@
           </mt-swipe-item>
         </mt-swipe>
       </section>
+
       <!-- 商家广告区域 -->
       <shopAds></shopAds>
+
       <!-- 商家列表 -->
       <section class="shopList primary_bg_white">
         <div class="primary_mg">
           <span class="title ">推荐商家</span>
         </div>
         <div>
+					<!-- 单个商家展示组件 -->
           <shopItem v-for="(item,index) in shopList" :key="index"></shopItem>
         </div>
       </section>
@@ -79,9 +82,11 @@ export default {
     };
   },
   components: {
+		//单个商品显示
     ShopItem: r => {
       require.ensure([], () => r(require("./components/ShopItem")), "ShopItem");
-    },
+		},
+		//商品广告
     ShopAds: r => {
       require.ensure([], () => r(require("./components/ShopAds")), "ShopAds");
     }
@@ -106,8 +111,6 @@ export default {
     showLocation() {
       this.$store.commit("POP_STATUS_L", true);
     }
-  },
-  created() {
   }
 };
 </script>

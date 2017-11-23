@@ -8,6 +8,8 @@
 				<img src="static/img/icon/set.png" style="width:20px" alt="">
 			</mt-button>
 		</mt-header>
+
+		<!-- 个人中心内容区域 -->
 		<div slot="content">
 			<section class="content has-header">
 				<section class="header primary_bg">
@@ -51,6 +53,8 @@
 				</section>
 			</section>
 			<br/>
+
+
 			<section class="content-list">
 				<mt-cell is-link :title="item.title" v-for="item in list_two" :key="item.text">
 					<span>{{item.text}}</span>
@@ -128,7 +132,6 @@
 				]
 			};
 		},
-		components: {},
 		methods: {
 			hide() {
 				this.$store.commit("SHOW_FOOTER", !this.$store.state.common.hasFooter);

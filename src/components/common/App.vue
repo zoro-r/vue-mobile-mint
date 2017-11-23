@@ -3,8 +3,8 @@
     <!-- v-bind:style="{'overflow-y':isScroll && !$store.state.common.noScroll? 'hidden':'hidden'}" -->
     <div style="overflow-y:hidden" v-bind:class="[$store.state.common.hasFooter?'has-footer':'']" class="child-view scroll-content" id="scroll-content">
       <router-view></router-view>
-      <!-- 底部导航 -->
     </div>
+		<!-- 底部导航 -->
     <transition name="slideInUp">
       <mt-tabbar v-show="$store.state.common.hasFooter" v-model="selected">
         <mt-tab-item id="1">
@@ -37,6 +37,7 @@ export default {
     }
   },
   watch: {
+		//监听控件弹出
     ['$store.state.common.popObj']: {
       handler(newVal) {
         this.isScroll = true;
@@ -48,7 +49,10 @@ export default {
         this.$store.commit('SHOW_FOOTER', this.isScroll)
       },
       deep: true
-    },
+		},
+		/**
+		 * 点击tab选中
+		 */
     selected(newVal, oldVal) {
       this.$store.commit('TAB_SELECTED', newVal)
       // this.savePositon()
@@ -98,16 +102,7 @@ export default {
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   will-change: scroll-position;
-  contain: size style layout; // &::before {
-  //   position: absolute;
-  //   width: 1px;
-  //   height: 1px;
-  //   content: "";
-  //   bottom: -1px;
-  // }
-  // &::after {
-  //   top: -1px;
-  // }
+  contain: size style layout; 
 }
 </style>
 

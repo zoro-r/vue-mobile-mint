@@ -7,28 +7,34 @@
       </mt-header>
       <h2 class="title" v-bind:class="[isMobile?'mobileTitle':'']" v-bind:style="{'top':Math.abs(top)>105?'10px':40 + top*.30 + 'px','margin-left': Math.abs(top)>40?'-18px': - Math.abs(top*.3)+'px'}">江氏国际宇宙大酒店</h2>
     </div>
+
     <div v-if="showContent" v-bind:style="{height:screenHeight + 60 + 'px'}" slot="content" ref="shopDetail">
       <div>
         <div style="min-height:157px;">
           <ShopDetailHeader :top="top" />
         </div>
+
         <!-- 内容区域 -->
         <div class="text_content">
           <!-- 顶部切换导航栏 -->
           <div class="tabsss" >
             <tabs :tabs="['商品','评价4.5分']"></tabs>
           </div>
+
           <!-- 中间内容区域 -->
           <div v-bind:style="{height:screenHeight - scrollHeight + 'px'}" class="shopDetail_content">
             <shop-detail-item ref="shopDetailItem" />
           </div>
-          <!-- 底部导航 -->
         </div>
       </div>
     </div>
+
+		<!-- 底部导航 -->
     <div slot="footer" v-bind:style="{'z-index':zIndex}" class="shopDetail_footer">
       <ShopCar ref="shopCar"></ShopCar>
     </div>
+
+		<!-- 商品详情弹出框 -->
     <div slot="other">
       <detailPop />
     </div>
@@ -78,11 +84,17 @@ export default {
     };
   },
   methods: {
+		/**
+		 * 显示详情
+		 */
     showDetail(item) {
       this.zIndex += 2;
       this.detailPop = true;
       this.detail = item;
-    },
+		},
+		/**
+		 * 隐藏弹出框
+		 */
     hidePop() {
       this.$store.commit("POP_STATUS", false);
     },
@@ -92,7 +104,9 @@ export default {
         ? this.$refs.shopCar.drop(el, item)
         : this.$refs.shopCar.minus(item);
     },
-    //滚动区域
+    /**@augments
+		 * 滚动区域
+		 */
     _initScrollArea() {
       this.meunScrollMain = new BScroll(this.$refs.shopDetail, {
         click: true,
@@ -110,7 +124,9 @@ export default {
         }
       });
     },
-    //启动
+    /** 
+		 * 启动 滚动
+		 */
     _enable() {
       setTimeout(() => {
         this.meunScrollMain.enable();
@@ -118,6 +134,7 @@ export default {
     }
   },
   mounted() {
+		//页面初始化后 初始化滚动
     setTimeout(() => {
       this.showContent = true;
       this.$nextTick(() => {
