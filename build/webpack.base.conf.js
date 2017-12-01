@@ -20,7 +20,9 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src')
+			'@': resolve('src'),
+			'swiper': 'swiper/dist/js/swiper.js',
+			'swiper-css': path.resolve(__dirname, '../node_modules/swiper/dist/css/')
     }
   },
   module: {
@@ -38,7 +40,8 @@ module.exports = {
     }, {
       test: /\.js$/,
       loader: 'babel-loader',
-      include: [resolve('src'), resolve('test')]
+			include: [resolve('src'), resolve('test')],
+			exclude: [/(node_modules)(?![/|\\](swiper))/]
     }, {
       test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
       loader: 'url-loader',

@@ -18,8 +18,8 @@ import 'mint-ui/lib/style.css'
 import '@/assets/css/main.scss'
 
 import "@/assets/lib/swiper/swiper.animate1.0.2.min.js"
-// require('swiper/dist/css/swiper.css')//引入swiper滑动组件
-import 'swiper/dist/css/swiper.css'
+require('swiper-css/swiper.css')//引入swiper滑动组件
+// import 'swiper/dist/css/swiper.css'
 import '@/filters/globalFilter.js'
 import '@/assets/lib/finger/alloy_finger.js'
 import '@/assets/lib/finger/alloy_finger.vue.js'
@@ -29,7 +29,7 @@ import vueScrollBehavior from './components/common/scrolleBhavior/src/vue-scroll
 import utils from './utils'
 import Page from './components/common/Page.vue'
 import VueLazyImage from "vue-lazy-images";
-import VueAwesomeSwiper from 'vue-awesome-swiper'
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import Tabs from './components/common/Tabs'
 //引入点击
 import FastClick from 'fastclick'
@@ -43,7 +43,8 @@ if ('addEventListener' in document) {
 }
 
 
-Vue.use(VueAwesomeSwiper)
+// Vue.use(swiper)
+// Vue.use(swiperSlide)
 Vue.use(VueLazyImage)
 Vue.use(MintUI)
 // window.Vue = Vue

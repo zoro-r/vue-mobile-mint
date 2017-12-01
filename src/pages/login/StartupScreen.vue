@@ -7,8 +7,13 @@
 					<img class="two ani" src="./../../assets/img/screen/2.png"  swiper-animate-effect="fadeInUpBig" swiper-animate-duration=".5s" swiper-animate-delay="0s">
 					<!-- <img class="three" src="./../../assets/img/screen/3.png" alt=""> -->
 				</swiper-slide>
-        <swiper-slide class="swiper_base">Slide 2</swiper-slide>
-        <swiper-slide class="swiper_base">Slide 3</swiper-slide>
+        <swiper-slide class="swiper_base secend"> 
+					<img src="./../../assets/img/screen/two.png" alt="">
+				</swiper-slide>
+        <swiper-slide class="swiper_base third">
+					<img src="./../../assets/img/screen/third.jpeg" alt="">
+					<mt-button class="btn_open" @click="toMain" plain>立即体验</mt-button>
+				</swiper-slide>
 				<div class="swiper-pagination" slot="pagination"></div>
       </swiper>
 	</div>
@@ -40,7 +45,14 @@ export default {
       }
     };
   },
-  methods: {},
+  methods: {
+		/**
+		 * 跳转至首页
+		 */
+		toMain(){
+			this.$router.push({name:"baseHome"})
+		}
+	},
   computed: {
     swiper() {
       return this.$refs.mySwiper.swiper;
@@ -48,7 +60,7 @@ export default {
   },
   mounted() {
     console.log("this is current swiper instance object", this.swiper);
-    // this.swiper.slideTo(3, 1000, false);
+    this.swiper.slideTo(3, 100, false);
   }
 };
 </script>
@@ -78,6 +90,25 @@ export default {
       height: 40%;
       width: 100%;
     }
-  }
+	}
+	&.secend{
+		img{
+			width: 100%;
+			height: 100%;
+		}
+	}
+	&.third{
+		// text-align: center;
+		img{
+			width: 100%;
+			height: 100%;
+		}
+	}
+	.btn_open{
+		position: absolute;
+		width: 100px;
+		bottom: 60px;
+		left: calc(50% - 50px);
+	}
 }
 </style>
