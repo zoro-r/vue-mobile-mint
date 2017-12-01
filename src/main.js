@@ -16,7 +16,10 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 //----------
 import '@/assets/css/main.scss'
-require('swiper/dist/css/swiper.css')//引入swiper滑动组件
+
+import "@/assets/lib/swiper/swiper.animate1.0.2.min.js"
+// require('swiper/dist/css/swiper.css')//引入swiper滑动组件
+import 'swiper/dist/css/swiper.css'
 import '@/filters/globalFilter.js'
 import '@/assets/lib/finger/alloy_finger.js'
 import '@/assets/lib/finger/alloy_finger.vue.js'
@@ -31,16 +34,20 @@ import Tabs from './components/common/Tabs'
 //引入点击
 import FastClick from 'fastclick'
 
+
+
 if ('addEventListener' in document) {
 	document.addEventListener('DOMContentLoaded', function () {
 		FastClick.attach(document.body);
 	}, false);
 }
+
+
 Vue.use(VueAwesomeSwiper)
 Vue.use(VueLazyImage)
 Vue.use(MintUI)
-window.Vue = Vue
-window.utils = utils
+// window.Vue = Vue
+// window.utils = utils
 Vue.use(AlloyFingerVue)
 Vue.component('page', Page)
 Vue.component('tabs', Tabs)
