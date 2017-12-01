@@ -64,7 +64,7 @@ export default {
       // };
       this.transitionName = oldVal < newVal ? "slideInRight" : "slideInLeft";
       // this.savePositon(oldVal)
-      this.$router.currentRoute.name !== 'home' && this.$router.push({ name: "home" })
+      this.$router.currentRoute.name !== 'home' && this.$router.push({ name: "baseHome" })
       // setTimeout(() => {
       // this.toPositon(oldVal)
       // }, 100);
