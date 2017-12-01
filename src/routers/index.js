@@ -12,7 +12,7 @@ const router = new Router({
 	routes: [{
 		name: "startscreen",
 		path: '/',
-		redirect: '	startscreen'
+		redirect: 'startscreen'
 	}, {
 		name: "baseHome",
 		path: '/baseHome',

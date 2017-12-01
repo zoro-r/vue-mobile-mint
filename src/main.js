@@ -29,7 +29,8 @@ import vueScrollBehavior from './components/common/scrolleBhavior/src/vue-scroll
 import utils from './utils'
 import Page from './components/common/Page.vue'
 import VueLazyImage from "vue-lazy-images";
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+// import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import Tabs from './components/common/Tabs'
 //引入点击
 import FastClick from 'fastclick'
@@ -45,6 +46,7 @@ if ('addEventListener' in document) {
 
 // Vue.use(swiper)
 // Vue.use(swiperSlide)
+Vue.use(VueAwesomeSwiper)
 Vue.use(VueLazyImage)
 Vue.use(MintUI)
 // window.Vue = Vue

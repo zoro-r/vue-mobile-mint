@@ -60,7 +60,7 @@ export default {
   },
   mounted() {
     console.log("this is current swiper instance object", this.swiper);
-    this.swiper.slideTo(3, 100, false);
+    // this.swiper.slideTo(3, 100, false);
   }
 };
 </script>
