@@ -53,6 +53,9 @@ cordova plugin add https://github.com/ionic-team/cordova-plugin-wkwebview-engine
 github地址 https://github.com/ionic-team/cordova-plugin-wkwebview-engine
 npm run build --report
 ```
+## 澄清一下 -webkit-overflow-scrolling 
+-webkit-overflow-scrolling ：touch 当为局部滚动（如给某个指定的div设置滚动）时候才需要设置，全局滚动无需设置（body滚动）
+
 
 github地址 https://github.com/ionic-team/cordova-plugin-wkwebview-engine
 
