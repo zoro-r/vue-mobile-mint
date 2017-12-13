@@ -1,6 +1,6 @@
 window.globalConfig = {
 	rootUrl: "",
-	isDebug: false, //是否开启接口debug模式
+	isDebug: true, //是否开启接口debug模式
 	plat: 'NATIVE', //WEB、NATIVE
 	timeout: 1000 * 180 //默认是3000毫秒
 }
@@ -66,7 +66,7 @@ Vue.mixin({
 			screenWidth: document.documentElement.clientWidth || 0,
 			screenHeight: document.documentElement.clientHeight,
 			loaddingImg: "static/img/common/loading1.gif",
-			isMobile: window.navigator.platform == 'iPhone'
+			isMobile: window.navigator.platform !== 'iPhone'
 		}
 	},
 	methods: {

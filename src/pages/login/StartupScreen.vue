@@ -26,9 +26,12 @@ export default {
   data() {
     return {
       swiperOption: {
+				//设置加载图片完成
+				preloadImages: true,
+				updateOnImagesReady : true,
         direction: "horizontal",
         effect: "fade",
-        height: 500,
+        height: window.height,
         pagination: {
           el: ".swiper-pagination",
           dynamicBullets: true
@@ -40,7 +43,10 @@ export default {
           },
           slideChangeTransitionEnd() {
             swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
-          }
+					},
+					 imagesReady: function(){
+      alert('图片加载完成了');
+    }, 
         }
       }
     };
