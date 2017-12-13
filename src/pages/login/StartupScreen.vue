@@ -1,10 +1,10 @@
 <template>
 	<div>
-			<!-- <div v-show="!imgLoaded">
+			<div v-if="!imgLoaded">
 				加载中...
-			</div> -->
+			</div>
 		  <!-- swiper -->
-      <div>
+      <div  v-bind:style="{'opacity':imgLoaded?1:0}">
 				<swiper :options="swiperOption" ref="mySwiper">
 					<swiper-slide class="swiper_base first">
 						<img class="one ani" src="./../../assets/img/screen/1.png" swiper-animate-effect="fadeInDown" swiper-animate-duration=".8s" swiper-animate-delay="0s">
@@ -54,9 +54,10 @@ export default {
           slideChangeTransitionEnd() {
             swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
           },
-          imagesReady() {
+          imagesReady:()=> {
 						console.log("页面图片加载完成，动画开始.......")
-						swiperAnimate(this);
+						this.imgLoaded = true;
+						swiperAnimate(this.$refs.mySwiper.swiper);
             // alert("图片加载完成了");
           }
         }
