@@ -7,9 +7,13 @@
       <div>
 				<swiper :options="swiperOption" ref="mySwiper">
 					<swiper-slide class="swiper_base first">
-						<img class="one ani" src="./../../assets/img/screen/1.png" swiper-animate-effect="bounceInDown" swiper-animate-duration="1s" swiper-animate-delay="0s">
-						<img class="two ani" src="./../../assets/img/screen/2.png"  swiper-animate-effect="fadeInUpBig" swiper-animate-duration=".5s" swiper-animate-delay="0s">
+						<img class="one ani" src="./../../assets/img/screen/1.png" swiper-animate-effect="fadeInDown" swiper-animate-duration=".8s" swiper-animate-delay="0s">
+						<img class="two ani" src="./../../assets/img/screen/2.png"  swiper-animate-effect="fadeInUpBig" swiper-animate-duration=".8s" swiper-animate-delay="0s">
 						<!-- <img class="three" src="./../../assets/img/screen/3.png" alt=""> -->
+					</swiper-slide>
+					<swiper-slide class="swiper_base secend-22"> 
+						<img class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration=".8s" swiper-animate-delay="0s" style="margin-top:40%;" src="../../assets/img/screen/22.png"/>
+						<img class="down ani" swiper-animate-effect="fadeInUp" swiper-animate-duration=".6s" swiper-animate-delay="0s"  src="../../assets/img/screen/11.png"/>
 					</swiper-slide>
 					<swiper-slide class="swiper_base secend"> 
 						<img src="./../../assets/img/screen/two.png" alt="">
@@ -51,6 +55,7 @@ export default {
             swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
           },
           imagesReady() {
+						console.log("页面图片加载完成，动画开始.......")
 						swiperAnimate(this);
             // alert("图片加载完成了");
           }
@@ -110,6 +115,16 @@ export default {
       height: 100%;
     }
   }
+	&.secend-22{
+		background: url('../../assets/img/screen/bg.png');
+		background-size: 100% 100%;
+		.down{
+			position: absolute;
+			width: 100%;
+			bottom: 0px;
+			left: 0px;
+		}
+	}
   &.third {
     // text-align: center;
     img {
