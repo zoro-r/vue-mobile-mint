@@ -102,11 +102,11 @@ export default {
       to(rgb(255, 255, 255))
     );
     .one {
-      height: 55%;
-      margin: 5% 10px;
+      height: 70%;
+			padding-top: 20%;
     }
     .two {
-      height: 40%;
+      height: 30%;
       width: 100%;
     }
   }

@@ -59,4 +59,4 @@ npm run build --report
 
 github地址 https://github.com/ionic-team/cordova-plugin-wkwebview-engine
 
-IOSApp下载地址：https://www.pgyer.com/nVE4
+IOSApp下载地址：https://www.pgyer.com/FmvM

@@ -19,7 +19,8 @@
       </section>
 
       <!-- 搜索商家，商家名称 -->
-      <section v-bind:style="{height:isMobile?'6rem':'4rem'}" class=" float-header input_box primary_flex_center search primary_mg" >
+			<section v-bind:style="{height:isMobile?'6rem':'4rem'}" class="primary_bg float-header input_box primary_flex_center search primary_mg" style="z-index:10;top:0px">
+      <!-- <section v-bind:style="{height:isMobile?'6rem':'4rem'}" class=" float-header input_box primary_flex_center search primary_mg" > -->
         <div @click="showSearch" class="ipt_item primary_flex_center fn-12">
           <img class="icon-10" src="static/img/icon/search.png" />&nbsp;&nbsp;搜索商家，商家名称
         </div>
