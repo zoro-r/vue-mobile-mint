@@ -84,7 +84,7 @@ Vue.mixin({
 })
 
 /*********************************移动app插件 ****************** */
-if (window.navigator.platform == 'iPhone') {
+if (window.navigator.platform == 'iPhone' && fasle) {
 	console.log("app模式启动")
 	document.addEventListener('deviceready', function () {
 		new Vue({
