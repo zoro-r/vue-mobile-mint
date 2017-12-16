@@ -4,8 +4,9 @@ window.globalConfig = {
 	plat: 'NATIVE', //WEB、NATIVE
 	timeout: 1000 * 180 //默认是3000毫秒
 }
-
-//***************************引入框架***************************** */
+//***************************引入外部扩展方法***************************** */
+import '@/assets/lib/extendFuc/extend.js'
+//***************************引入框架************************************ */
 import Vue from 'vue'
 import App from './components/common/App'
 import store from './vuex/store'
@@ -21,11 +22,11 @@ require('swiper-css/swiper.css')//引入swiper滑动组件
 import '@/filters/globalFilter.js'
 import '@/assets/lib/finger/alloy_finger.js'
 import '@/assets/lib/finger/alloy_finger.vue.js'
+
 import Navigation from 'vue-navigation'
 import vueScrollBehavior from './components/common/scrolleBhavior/src/vue-scroll-behavior'
 import VueLazyImage from "vue-lazy-images";
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-
 /*********************************自定义组件 ****************** */
 import utils from './utils'
 import Page from './components/common/Page.vue'
@@ -119,8 +120,6 @@ if (window.navigator.platform == 'iPhone' && false) {
 		}
 	})
 }
-
-
 if (window.navigator.platform == 'iPhone'){
 	//监听点击顶部bar的方法
 	window.addEventListener('statusTap', function () {
