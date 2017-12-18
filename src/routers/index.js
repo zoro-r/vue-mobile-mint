@@ -46,6 +46,7 @@ function directRightUrl () {
 }
 //制作权限控制
 router.beforeEach((to, from, next) => {
+	window.location=window.location.href
 	// directRightUrl()
 	console.log(to)
 	//是否显示底部导航
