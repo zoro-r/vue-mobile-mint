@@ -39,23 +39,14 @@ const router = new Router({
 
 
 function directRightUrl () {
-  let paths = window.location.href.split('#')
-  paths[1] = paths[1] || '/'
-  // 老式的#!分隔跳转
-  if (paths[0].charAt(paths[0].length - 1) !== '?') {
-    paths[0] = `${paths[0]}?`
-  }
-  if (paths[1].charAt(0) === '!') {
-     paths[1] = paths[1].substr(1)
-  }
-  let url = `${paths[0]}#${paths[1]}`
-  if (window.location.href !== url) {
-    window.location.href = url
-  }
+	console.log(window.location.href)
+	// if (window.location.href !== url) {
+  //   window.location.href = url
+  // }
 }
 //制作权限控制
 router.beforeEach((to, from, next) => {
-	directRightUrl()
+	// directRightUrl()
 	console.log(to)
 	//是否显示底部导航
 	store.commit('SHOW_FOOTER', to.meta.hasFooter);

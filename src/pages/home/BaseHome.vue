@@ -67,18 +67,21 @@ export default {
     LocationPop: r => { require.ensure([], () => r(require('../main/components/LocationPop')), 'LocationPop') },
   },
   methods: {
-  },
+	},
+	created(){
+		
+	},
   beforeRouteUpdate(to, from, next) {
 		// 监听路由变化 进行动画设置
     let isBack = this.$router.isBack
     if (isBack) {
-      this.transitionName = 'slide-right'
+			this.transitionName = 'slide-right'
     } else {
       this.transitionName = 'slide-left'
     }
     this.$router.isBack = false
     next()
-  },
+  }
 }
 </script>
 <style rel="stylesheet/scss" lang="scss" >

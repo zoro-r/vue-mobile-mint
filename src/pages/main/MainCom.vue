@@ -98,6 +98,7 @@ export default {
      * 显示搜索框
      */
     showSearch() {
+			location.reload();
       this.$store.commit("POP_STATUS_S", true);
     },
     /**
