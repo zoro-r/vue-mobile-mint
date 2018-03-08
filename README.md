@@ -1,4 +1,4 @@
-# n22-vue
+# 饿了么-ui
 
 ![neleme](https://github.com/jdfdcc/vue-mobile-mint/blob/master/static/img/show.gif)
 > A Vue.js project 仿饿了么
