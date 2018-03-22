@@ -10,9 +10,9 @@ import login from './login'
 Vue.use(Router)
 const router = new Router({
 	routes: [{
-		name: "startscreen",
+		name: "baseHome",
 		path: '/',
-		redirect: 'startscreen'
+		redirect: 'baseHome'
 	}, {
 		name: "baseHome",
 		path: '/baseHome',
