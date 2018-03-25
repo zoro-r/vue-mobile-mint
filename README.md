@@ -1,21 +1,17 @@
-# 饿了么-ui
+# 仿饿了么DEMO
 
 ![neleme](https://github.com/jdfdcc/vue-mobile-mint/blob/master/static/img/show.gif)
-> A Vue.js project 仿饿了么
 
 > 框架 mint-ui
 
-## Build Setup
+```
+git clone https://github.com/jdfdcc/vue-mobile-mint.git
 
-``` bash
-# install dependencies
-npm install
+cd vue-mobile-mint
 
-# serve with hot reload at localhost:8080
+npm install 
+
 npm run dev
-
-# build for production with minification
-npm run build
 
 ```
 
@@ -43,3 +39,7 @@ IOSApp下载地址：https://www.pgyer.com/FmvM
 突然好想重写一遍咋办......
 
 欢迎inssues 欢迎star
+
+群号:642855626 欢迎大家进群一起讨论关于前端的知识，一起讨论一起成长!!!
+
+
